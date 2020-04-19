@@ -29,7 +29,7 @@ class LinkController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'create', 'delete', 'update', 'short'],
+                        'actions' => ['index', 'create', 'delete', 'update'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -38,27 +38,14 @@ class LinkController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'short' => ['post'],
                     'create' => ['post'],
-                    'delete' => ['post'],
+                    'delete' => ['get','post'],
                     'update' => ['post'],
                 ],
             ],
         ];
     }
 
-    public function beforeAction($action)
-    {
-        $this->enableCsrfValidation = false;
-        return parent::beforeAction($action);
-    }
-
-    public function actionShort()
-    {
-        $request = Yii::$app->request;
-        $shorter = new Shorter();
-        return $shorter->getShortLink($request->post('target'));
-    }
 
     /**
      * Lists all Link models.

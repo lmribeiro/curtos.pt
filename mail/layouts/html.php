@@ -164,7 +164,7 @@ use yii\helpers\Url;
                                                 <td align="center" valign="top" style="padding-top:0px;padding-bottom:20px;padding-left:10px;padding-right:10px;" class="footerLinks">
                                                     <!-- Privacy Policy -->
                                                     <p class="text" style="color:#777777; font-family:'Open Sans', Helvetica, Arial, sans-serif; font-size:12px; font-weight:400; font-style:normal; letter-spacing:normal; line-height:20px; text-transform:none; text-align:center; padding:0; margin:0;" >
-                                                        <a href="<?= Url::to(['terms'])."?lg=".Yii::$app->language ?>" style="color:#777777;text-decoration:underline;" target="_blank"><?= Yii::t('app', 'Termos de Uso') ?></a>
+                                                        <a href="<?= Url::to(['terms']) ?>" style="color:#777777;text-decoration:underline;" target="_blank"><?= Yii::t('app', 'Termos de Uso') ?></a>
                                                     </p>
                                                 </td>
                                             </tr>

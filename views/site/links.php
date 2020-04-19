@@ -48,7 +48,7 @@ $this->params['modals'][] = "delete";
                                 'label' => Yii::t('app', 'Curto'),
                                 'format' => 'html',
                                 'value' => function ($model) {
-                                    return Html::a($model->short, Url::base(true)."/s?i=".$model->short, ['target' => 'new']);
+                                    return Html::a($model->short, Url::base(true)."/".$model->short, ['target' => 'new']);
                                 }
                             ],
                             'visit_count',

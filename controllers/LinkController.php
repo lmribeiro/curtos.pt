@@ -9,7 +9,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use app\components\Shorter;
 
 /**
  * LinkController implements the CRUD actions for Link model.
@@ -39,13 +38,18 @@ class LinkController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'create' => ['post'],
-                    'delete' => ['get','post'],
+                    'delete' => ['get', 'post'],
                     'update' => ['post'],
                 ],
             ],
         ];
     }
 
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+        return parent::beforeAction($action);
+    }
 
     /**
      * Lists all Link models.

@@ -41,7 +41,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'short', 'about', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account'],
+                        'actions' => ['index', 'short', 'about', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

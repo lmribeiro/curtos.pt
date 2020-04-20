@@ -218,7 +218,7 @@ class SiteController extends Controller
 
                     return $this->redirect(['login']);
                 }
-                $model->addError('username', $byEmail->errors['email'][0]);
+                $model->addError('emailusername', $byEmail->errors['email'][0]);
             } else {
                 $byUsername = new PasswordResetByUsername();
                 $byUsername->username = $model->emailusername;
@@ -229,7 +229,7 @@ class SiteController extends Controller
 
                     return $this->redirect(['login']);
                 }
-                $model->addError('username', $byUsername->errors['username'][0]);
+                $model->addError('emailusername', $byUsername->errors['username'][0]);
             }
         }
 

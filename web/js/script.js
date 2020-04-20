@@ -63,7 +63,7 @@ var app = (function () {
         copyText.select();
         setTimeout(function () {
             $("#target").val('');
-        }, 8000);
+        }, 500);
 
         $("#copy").toggleClass('d-none');
         app.notify("Copiado com sucesso!", "success", 100);

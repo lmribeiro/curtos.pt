@@ -4,12 +4,15 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 
 ?>
-<?php $form = ActiveForm::begin([
-    'id' => 'form-account-delete',
-    'action' => Url::to('account-delete')
-]); ?>
+<?php
+$form = ActiveForm::begin([
+            'id' => 'form-account-delete',
+            'action' => Url::to('account-delete')
+        ]);
 
-<div id="delete_modal" class="modal fade delete_modal" role="dialog" arian-hidden="true" tabindex="-1">
+?>
+
+<div id="delete_modal" class="modal fade" role="dialog" arian-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
@@ -30,7 +33,7 @@ use yii\helpers\Url;
 
 <?php ActiveForm::end(); ?>
 <script>
-    $('#form-account-delete').submit(function() {
+    $('#form-account-delete').submit(function () {
         $('#delete_modal').modal('hide');
     });
 </script>

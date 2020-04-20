@@ -10,6 +10,7 @@ use \yii\helpers\Url;
 
 $this->title = Yii::$app->name." | ".Yii::t('app', 'Links');
 $this->params['modals'][] = "delete";
+$this->params['modals'][] = "renew";
 
 ?>
 <div class="section">
@@ -17,7 +18,6 @@ $this->params['modals'][] = "delete";
         <div class="page-header">
             <div class="row">
                 <div class="col-md-8 mx-auto text-center">
-                    <!--<span class="badge badge-primary badge-pill mb-3">&nbsp;</span>-->
                     <h3 class="display-3"><?= Yii::t('app', 'Os teus Links') ?></h3>
                 </div>
             </div>
@@ -57,7 +57,7 @@ $this->params['modals'][] = "delete";
                             //'updated_at',
                             $actionCol = Yii::$app->params['actions'](
                             [
-                                'template' => '{delete}'
+                                'template' => '{expiration}&nbsp;{delete}'
                             ]),
                         ],
                     ]);

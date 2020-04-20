@@ -35,7 +35,7 @@ class LinkController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'create', 'delete', 'update', 'short'],
+                        'actions' => ['index', 'create', 'delete', 'update', 'renew', 'short'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -44,10 +44,11 @@ class LinkController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'short' => ['post'],
                     'create' => ['post'],
                     'delete' => ['get', 'post'],
                     'update' => ['post'],
+                    'renew' => ['get', 'post'],
+                    'short' => ['post'],
                 ],
             ],
         ];
@@ -144,6 +145,23 @@ class LinkController extends Controller
         $this->findModel($id)->delete();
         Yii::$app->getSession()->setFlash(
                 'success', Yii::t('app', 'Apagado com sucesso.')
+        );
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    /**
+     * Renew Link's expiration date
+     * 
+     * @param int $id Link's ID
+     * @return type
+     */
+    public function actionRenew($id)
+    {
+        $model = $this->findModel($id);
+        $model->expires_after = date('Y-m-d H:i:s', strtotime($model->expires_after." + 30 days"));
+        $model->save();
+        Yii::$app->getSession()->setFlash(
+                'success', Yii::t('app', 'Data de expiração renovada com sucesso.')
         );
         return $this->redirect(Yii::$app->request->referrer);
     }

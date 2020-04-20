@@ -20,7 +20,7 @@ return [
     'actionCol' => [
         'class' => 'yii\grid\ActionColumn',
         'headerOptions' => ['class' => 'text-center'],
-        'template' => '{view}&nbsp;{update}&nbsp;{delete}',
+        'template' => '{view}&nbsp;{update}&nbsp;{expiration}&nbsp;{delete}',
         'buttons' => [
             'view' => function ($url) {
                 return Html::tag('span', Html::a('<i class="fa fa-eye"></i>', $url, ['class' => 'btn btn-primary btn-sm btn-fab btn-icon btn-round']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Ver')]);
@@ -28,9 +28,11 @@ return [
             'update' => function ($url) {
                 return Html::tag('span', Html::a('<i class="fas fa-pencil-alt"></i>', $url, ['class' => ' text-warning']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Editar')]);
             },
+            'expiration' => function ($url, $model) {
+                return Html::tag('span', Html::a('<i class="fas fa-calendar-plus"></i>', '#', ['class' => 'btn btn-success btn-sm btn-fab btn-icon btn-round btn-renew', 'data-id' => $model->id, 'data-toggle' => 'modal', 'data-target' => '#renew_modal']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Renovar data de expiração')]);
+            },
             'delete' => function ($url, $model) {
-                $action = explode('?', $url);
-                return Html::tag('span', Html::a('<i class="fas fa-trash"></i>', '#', ['class' => 'btn btn-danger btn-sm btn-fab btn-icon btn-round btn-delete', 'data-url' => array_shift($action), 'data-id' => $model->id, 'data-toggle' => 'modal', 'data-target' => '#delete_modal']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Apagar')]);
+                return Html::tag('span', Html::a('<i class="fas fa-trash"></i>', '#', ['class' => 'btn btn-danger btn-sm btn-fab btn-icon btn-round btn-delete', 'data-id' => $model->id, 'data-toggle' => 'modal', 'data-target' => '#delete_modal']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Apagar')]);
             },
         ],
         'urlCreator' => function ($action, $data) {

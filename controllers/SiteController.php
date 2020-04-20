@@ -36,12 +36,12 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'short', 'about', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms'],
+                        'actions' => ['index', 'about', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'short', 'about', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms'],
+                        'actions' => ['index', 'about', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -71,12 +71,6 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
-    }
-
-    public function beforeAction($action)
-    {
-        $this->enableCsrfValidation = false;
-        return parent::beforeAction($action);
     }
 
     /**

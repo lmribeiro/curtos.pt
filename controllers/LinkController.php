@@ -3,12 +3,19 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Link;
-use app\models\LinkSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+use yii\web\{
+    Controller,
+    NotFoundHttpException
+};
+use yii\filters\{
+    VerbFilter,
+    AccessControl
+};
+use app\models\{
+    Link,
+    LinkSearch
+};
+use app\components\Shorter;
 
 /**
  * LinkController implements the CRUD actions for Link model.
@@ -28,7 +35,7 @@ class LinkController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'create', 'delete', 'update'],
+                        'actions' => ['index', 'create', 'delete', 'update', 'short'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -37,6 +44,7 @@ class LinkController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
+                    'short' => ['post'],
                     'create' => ['post'],
                     'delete' => ['get', 'post'],
                     'update' => ['post'],
@@ -49,6 +57,13 @@ class LinkController extends Controller
     {
         $this->enableCsrfValidation = false;
         return parent::beforeAction($action);
+    }
+
+    public function actionShort()
+    {
+        $request = Yii::$app->request;
+        $shorter = new Shorter();
+        return $shorter->getShortLink($request->post('target'));
     }
 
     /**

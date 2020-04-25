@@ -15,7 +15,7 @@ $resetLink = $shorter->getShortLink(
 
 ?>
 
-<?= Yii::t('app', 'Olá'); ?><?= Html::encode($user->username) ?>!
+<?= Yii::t('app', 'Olá'); ?> <?= Html::encode($user->username) ?>!
 <br/>
 <br/>
 <?= Yii::t('app', 'Bem-vindo e obrigado por te registares!'); ?>

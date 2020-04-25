@@ -36,12 +36,12 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'about', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms'],
+                        'actions' => ['index', 'about', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'about', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms'],
+                        'actions' => ['index', 'about', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms', 'short'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

@@ -36,12 +36,12 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'about', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short'],
+                        'actions' => ['index', 'about', 'docs', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'about', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms', 'short'],
+                        'actions' => ['index', 'about', 'docs', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms', 'short', 'renew-api-key'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -134,6 +134,11 @@ class SiteController extends Controller
         return $this->actionLogout();
     }
 
+    public function actionDocs()
+    {
+        return $this->render('api');
+    }
+
     /**
      * Site index
      * 
@@ -192,6 +197,21 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
         return $this->goHome();
+    }
+
+    /**
+     * renew API access key
+     * 
+     * @return redirect
+     */
+    public function actionRenewApiKey()
+    {
+        $user = Yii::$app->user->identity;
+        $user->generateAuthKey();
+        $user->save();
+        Yii::$app->getSession()
+                ->setFlash('success', Yii::t('app', 'Chave regenerada com sucesso.'));
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**

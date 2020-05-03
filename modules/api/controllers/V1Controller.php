@@ -3,6 +3,7 @@
 namespace app\modules\api\controllers;
 
 use yii\helpers\Url;
+use app\models\Link;
 use app\components\Shorter;
 
 class V1Controller extends ApiController
@@ -11,7 +12,8 @@ class V1Controller extends ApiController
     protected function verbs()
     {
         return [
-            'short' => ['POST', 'OPTIONS'],
+            'create' => ['POST', 'OPTIONS'],
+            'delete' => ['POST', 'OPTIONS'],
         ];
     }
 
@@ -19,12 +21,12 @@ class V1Controller extends ApiController
      * Creates a short link for the given target
      *  
      */
-    public function actionShort()
+    public function actionCreate()
     {
         $post = $this->getRequiredFields(['target']);
         $shorter = new Shorter();
 
-        $link = $shorter->getShortLink($post['target'], $this->user, $post['time' ?? false]);
+        $link = $shorter->getShortLink($post['target'], $this->user, $post['expires_after'] ?? false);
 
         $data = [
             'id' => $link->id,
@@ -35,6 +37,22 @@ class V1Controller extends ApiController
         ];
 
         $this->sendOk('Short link created with success', $data);
+    }
+
+    /**
+     * Delete a link with a given code
+     */
+    public function actionDelete()
+    {
+        $post = $this->getRequiredFields(['code']);
+
+        if (!$link = Link::findOne(['short' => $post['code']])) {
+            $this->sendError(404, 'Link not found');
+        }
+
+        $link->delete();
+
+        $this->sendOk('Short link deleted with success');
     }
 
 }

@@ -6,6 +6,7 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = Yii::$app->name." | ".Yii::t('app', 'Conta');
 $this->params['modals'][] = "accountDelete";
+$this->params['modals'][] = "apiKey";
 
 ?>
 <div class="section">
@@ -87,6 +88,29 @@ $this->params['modals'][] = "accountDelete";
                     </div>
 
                     <?php ActiveForm::end(); ?>
+                </div>
+            </div>
+
+            <div class="px-4">
+                <div class="row ">
+                    <div class="col-xs-12 col-lg-12  px-lg-5 mb-5 mt-5">
+                        <h5 class="mb-5"><?= Yii::t('app', 'API') ?></h5>
+                        <p>
+                            <?= Yii::t('app', 'Além deste site, também pode usar a API para criar e apagar links curtos. Se não sabe como funciona uma API, não a use. NÃO partilhe essa chave no lado do cliente do seu site.') ?>
+                        </p>
+
+                        <p class="mt-4">
+                            <b><?= Yii::t('app', 'Chave') ?>:</b> 
+                            <input id="api-key" class="text-success text-underline border-0" value="<?= Yii::$app->user->identity->auth_key ?>" />&nbsp;
+                            <button  type="button" onclick="javascript:app.copyKey()" data-toggle="tooltip" data-placement="top" title="<?= Yii::t('app', 'Copiar') ?>"  class="btn btn-sm btn-link" >
+                                <i class="far fa-copy fa-lg"></i>
+                            </button>
+                        </p>
+                        <a href="#"  class="btn btn-primary btn-sm shadow border-0" data-toggle='modal' data-target='#apiKey_modal' >
+                            <i class="fas fa-bolt"></i> <?= Yii::t('app', 'Regenerar Chave') ?>
+                        </a>    
+                    </div>
+
                 </div>
             </div>
 

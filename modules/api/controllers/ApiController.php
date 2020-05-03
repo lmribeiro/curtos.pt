@@ -4,7 +4,6 @@ namespace app\modules\api\controllers;
 
 use Yii;
 use app\models\User;
-use Closure;
 use yii\rest\Controller;
 use yii\filters\Cors;
 use yii\web\Response;
@@ -14,7 +13,6 @@ class ApiController extends Controller
 
     public $user = false;
     public $limit = 20;
-    protected $isAuthenticated = false;
 
     public function beforeAction($action)
     {
@@ -31,7 +29,6 @@ class ApiController extends Controller
             if ($auth_key = Yii::$app->request->getHeaders()->get('authorization')) {
 
                 if ($this->user = User::find()->where(['auth_key' => $auth_key, 'status' => User::STATUS_ACTIVE])->one()) {
-                    $this->isAuthenticated = true;
                     return true;
                 }
             }
@@ -46,19 +43,10 @@ class ApiController extends Controller
     {
         $behaviors = parent::behaviors();
 
-        // remove authentication filter
-        $auth = $behaviors['authenticator'];
-        unset($behaviors['authenticator']);
-
         // add CORS filter
         $behaviors['corsFilter'] = [
             'class' => Cors::className(),
         ];
-
-        // re-add authentication filter
-        $behaviors['authenticator'] = $auth;
-        // avoid authentication on CORS-pre-flight requests (HTTP OPTIONS method)
-        $behaviors['authenticator']['except'] = ['options'];
 
         return $behaviors;
     }
@@ -102,42 +90,31 @@ class ApiController extends Controller
     /**
      * Sends API success responses
      *
-     * @param type $status
-     * @param type $msg
-     * @param type $data
-     */
-    public function sendShortResponse($status, $msg, $data = null)
-    {
-        $returnArray["status"] = $status;
-        $returnArray["message"] = $msg;
-        $returnArray["data"] = $data;
-        self::sendResponse(200, json_encode($returnArray));
-    }
-
-    /**
-     * Sends API success responses
-     *
      * @param type $msg
      * @param type $obj
      */
-    public function sendOk($msg, $obj)
+    public function sendOk($msg, $obj = [])
     {
-        $returnArray = array();
-        $returnArray["code"] = 200;
-        $returnArray["status"] = $this->getStatusCodeMessage(200);
-        $returnArray["message"] = $msg;
-        $returnArray["data"] = $obj;
+        $returnArray = [
+            'name' => $this->getStatusCodeMessage(200),
+            'message' => $msg,
+            'code' => 200,
+            'status' => 200,
+            'data' => $obj
+        ];
 
         self::sendResponse(200, json_encode($returnArray));
     }
 
-    public function sendError($code, $msg, $obj = null)
+    public function sendError($code, $msg, $obj = [])
     {
-        $returnArray = array();
-        $returnArray["code"] = $code;
-        $returnArray["status"] = $this->getStatusCodeMessage($code);
-        $returnArray["message"] = $msg;
-        $returnArray["data"] = $obj;
+        $returnArray = [
+            'name' => $this->getStatusCodeMessage($code),
+            'message' => $msg,
+            'code' => $code,
+            'status' => $code,
+            'data' => $obj
+        ];
 
         self::sendResponse(200, json_encode($returnArray));
     }
@@ -152,7 +129,7 @@ class ApiController extends Controller
         $response = Yii::$app->response;
         $response->setStatusCode($status);
         $response->format = Response::FORMAT_JSON;
-        $response->headers->set('X-Powered-By', '360 CITY <www.360city.pt>');
+        $response->headers->set('X-Powered-By', 'Curtos.pt');
 
 
         if (empty($body)) {
@@ -261,16 +238,6 @@ class ApiController extends Controller
         $post = file_get_contents("php://input");
         $params = json_decode($post, true);
         return $params;
-    }
-
-    /**
-     * Check Permission for access
-     */
-    public function checkAccess()
-    {
-        if (!$this->isAuthenticated) {
-            $this->sendShortResponse('UNAUTHORIZED', Yii::t("app", 'Acesso negado'), null);
-        }
     }
 
 }

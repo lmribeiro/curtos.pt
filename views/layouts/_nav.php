@@ -33,6 +33,16 @@ use yii\helpers\Url;
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'Início') ?></span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= Url::to(['about']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "about" ? 'active' : '' ?>" role="button">
+                        <span class="nav-link-inner--text"><?= Yii::t('app', 'Sobre') ?></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= Url::to(['docs']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "docs" ? 'active' : '' ?>" role="button">
+                        <span class="nav-link-inner--text"><?= Yii::t('app', 'API') ?></span>
+                    </a>
+                </li>
                 <?php if (!Yii::$app->user->isGuest) { ?>
                     <li class="nav-item">
                         <a href="<?= Url::to(['links']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "admin" ? 'active' : '' ?>" role="button">
@@ -40,11 +50,6 @@ use yii\helpers\Url;
                         </a>
                     </li>
                 <?php } ?>
-                <li class="nav-item">
-                    <a href="<?= Url::to(['about']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "about" ? 'active' : '' ?>" role="button">
-                        <span class="nav-link-inner--text"><?= Yii::t('app', 'Sobre') ?></span>
-                    </a>
-                </li>
             </ul>
             <br/>
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">

@@ -54,19 +54,27 @@ var app = (function () {
         }
     };
 
-    // Open
+    // copy
     var copy = function () {
         var copyText = $("#target");
         copyText.select();
 //        copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
-        copyText.select();
         setTimeout(function () {
             $("#target").val('');
         }, 500);
 
         $("#copy").toggleClass('d-none');
         app.notify("Copiado com sucesso!", "success", 100);
+    };
+
+    // copy key
+    var copyKey = function () {
+        var copyText = $("#api-key");
+        copyText.select();
+        document.execCommand("copy");
+        
+        app.notify("Copiada com sucesso!", "success", 100);
     };
 
     // Notify Actions
@@ -95,6 +103,7 @@ var app = (function () {
         init: init,
         short: short,
         copy: copy,
+        copyKey: copyKey,
         validateUrl: validateUrl,
         notify: notify,
         notifyError: notifyError

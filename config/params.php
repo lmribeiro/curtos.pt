@@ -7,6 +7,7 @@ return [
     'adminEmail' => 'hello@curtos.pt',
     'senderEmail' => 'hello@curtos.pt',
     'senderName' => 'Curtos.pt ',
+    'expiresAfter' => 30, // Time in days
     'passwordResetTokenExpire' => 3600,
 //    'bsVersion' => '4.x',
     'actions' => function ($attributes) {

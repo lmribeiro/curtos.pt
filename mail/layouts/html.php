@@ -105,7 +105,7 @@ use yii\helpers\Url;
                         <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:separate;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;">
                             <tr>
                                 <td style="line-height: 23px;text-align: left; margin-bottom: 10px; font-family:sans-serif;font-size:14px;vertical-align:top;">
-                                    <a href="<?= Yii::$app->homeUrl ?>" target="_new">
+                                    <a href="<?= Yii::$app->homeUrl ?>">
                                         <img height="18px;" style="margin: 0 15px;" src="<?= Url::to('@web/img/name.svg', true) ?>">
                                     </a>
                                     <br/>
@@ -164,7 +164,7 @@ use yii\helpers\Url;
                                                 <td align="center" valign="top" style="padding-top:0px;padding-bottom:20px;padding-left:10px;padding-right:10px;" class="footerLinks">
                                                     <!-- Privacy Policy -->
                                                     <p class="text" style="color:#777777; font-family:'Open Sans', Helvetica, Arial, sans-serif; font-size:12px; font-weight:400; font-style:normal; letter-spacing:normal; line-height:20px; text-transform:none; text-align:center; padding:0; margin:0;" >
-                                                        <a href="<?= Url::to(['site/terms']) ?>" style="color:#777777;text-decoration:underline;" target="_blank"><?= Yii::t('app', 'Termos de Uso') ?></a>
+                                                        <a href="<?= Url::to(['terms']) ?>" style="color:#777777;text-decoration:underline;"><?= Yii::t('app', 'Termos de Uso') ?></a>
                                                     </p>
                                                 </td>
                                             </tr>

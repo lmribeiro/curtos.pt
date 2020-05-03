@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use yii\web\{
     Controller,
     NotFoundHttpException
@@ -62,9 +63,16 @@ class LinkController extends Controller
 
     public function actionShort()
     {
+        $user = false;
         $request = Yii::$app->request;
         $shorter = new Shorter();
-        return $shorter->getShortLink($request->post('target'));
+
+        if (!Yii::$app->user->isGuest) {
+            $user = Yii::$app->user->identity;
+        }
+
+        $link = $shorter->getShortLink($request->post('target'), $user);
+        return Url::base(true)."/".$link->short;
     }
 
     /**

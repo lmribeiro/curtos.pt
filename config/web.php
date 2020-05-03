@@ -65,10 +65,10 @@ $config = [
         ],
     ],
     'modules' => [
-//        'api' => [
-//            'class' => 'app\modules\api\Module',
-//            'defaultRoute' => 'default/index',
-//        ],
+        'api' => [
+            'class' => 'app\modules\api\Module',
+            'defaultRoute' => 'default/index',
+        ],
         'gridview' => [
             'class' => '\kartik\grid\Module',
         ],

@@ -3,20 +3,19 @@
 namespace app\components;
 
 use Yii;
-use yii\helpers\Url;
 use app\models\Link;
 
 class Shorter
 {
 
-    public $expiresAfter = 30;
+    public $expiresAfter;
 
     /**
      * Constructur
      */
     public function __construct()
     {
-        
+        $this->expiresAfter = Yii::$app->params['expiresAfter'];
     }
 
     /**
@@ -26,7 +25,7 @@ class Shorter
      * @param int $time Time to the link expire (in days)
      * @return string The short link
      */
-    public function getShortLink($target, $time = false)
+    public function getShortLink($target, $user, $time = false)
     {
         if (!$time) {
             $time = $this->expiresAfter;
@@ -37,12 +36,12 @@ class Shorter
         $model->target = $target;
         $model->expires_after = date('Y-m-d H:i:s', strtotime("+ ".$time." day"));
 
-        if (!Yii::$app->user->isGuest) {
-            $model->user_id = Yii::$app->user->identity->id;
+        if ($user) {
+            $model->user_id = $user->id;
         }
 
         if ($model->save()) {
-            return Url::base(true)."/".$model->short;
+            return $model;
         }
     }
 

@@ -14,13 +14,13 @@
 
 <h6 class="bd-title mt-2" id="encode"><?= Yii::t('app', 'Encoding') ?></h6>
 <p class="bd-lead">
-    <?= Yii::t('app', 'Use a codificação UTF-8 em todos os pedidos à API.') ?>.
+    <?= Yii::t('app', 'Use a codificação UTF-8 em todos os pedidos à API.') ?>
 </p>
 
 <h6 class="bd-title mt-2" id="version"><?= Yii::t('app', 'Versão') ?></h6>
 <p class="bd-lead">    
     <b>1.0.0 (Draft)</b><br/>
     <?= Yii::t('app', 'Data criação') ?>: 2020/05/03<br/>
-<!--    <?= Yii::t('app', 'Last Review') ?>: 04/06/2014<br/>-->
+    <?= Yii::t('app', 'Última atualização') ?>: 2020/05/04<br/>
     <?= Yii::t('app', 'Root URL') ?>: <a href="https://curtos.pt/">https://curtos.pt/</a><br/>
 </p>

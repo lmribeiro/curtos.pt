@@ -1,23 +1,20 @@
 <h5 class="bd-title mt-5" id="endpoints"><?= Yii::t('app', 'Endpoints') ?></h5>
-<p class="bd-lead">
-    Get started with Bootstrap, the world’s most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page.
-</p>
 
-<h6 class="bd-title mt-5" id="create"><?= Yii::t('app', 'Criar Link') ?></h6>
+<h6 class="bd-title mt-4" id="create"><?= Yii::t('app', 'Criar Link') ?></h6>
 <p class="bd-lead">
-    <?= Yii::t('app', 'Criar um link curto para o determinado link longo.') ?>
+    <?= Yii::t('app', 'Criar um link curto para o determinado target longo.') ?>
 </p>
 
 <p><b><?= Yii::t('app', 'Pedido') ?></b></p>
 <figure class="highlight">
-    <pre><code>POST /api/v1/create
+    <pre><code><span class="badge badge-success float-right">POST</span>Endpoint: /api/v1/create
 Host: https://curtos.pt</code></pre>
 
 </figure>
 
 <p><b><?= Yii::t('app', 'Payload') ?></b></p>
 <figure class="highlight">
-    <pre><code>{
+    <pre><code><span class="badge badge-secondary float-right">JSON</span>{
 	"target": "https://curtos.pt",
 	"expires_after": 60 //<?= Yii::t('app', 'Opcional') ?>
 
@@ -27,7 +24,7 @@ Host: https://curtos.pt</code></pre>
 
 <p><b><?= Yii::t('app', 'Resposta') ?></b></p>
 <figure class="highlight">
-    <pre><code>{
+    <pre><code><span class="badge badge-secondary float-right">JSON</span>{
     "name": "OK",
     "message": "Short link created with success",
     "code": 200,
@@ -35,7 +32,7 @@ Host: https://curtos.pt</code></pre>
     "data": {
         "id": 110,
         "code": "3825d5",
-        "target": "https://www.linkya.xyz",
+        "target": "https://www.curtos.pt/",
         "short": "http://localhost:8383/3825d5",
         "expires_after": "2020-07-02 23:53:46"
     }
@@ -49,14 +46,14 @@ Host: https://curtos.pt</code></pre>
 
 <p><b><?= Yii::t('app', 'Pedido') ?></b></p>
 <figure class="highlight">
-    <pre><code>POST /api/v1/delete
+    <pre><code><span class="badge badge-danger float-right">DELETE</span>Endpoint: /api/v1/delete
 Host: https://curtos.pt</code></pre>
 
 </figure>
 
 <p><b><?= Yii::t('app', 'Payload') ?></b></p>
 <figure class="highlight">
-    <pre><code>{
+    <pre><code><span class="badge badge-secondary float-right">JSON</span>{
 	"code": "18acbf"
 }</code></pre>
 
@@ -64,7 +61,7 @@ Host: https://curtos.pt</code></pre>
 
 <p><b><?= Yii::t('app', 'Resposta') ?></b></p>
 <figure class="highlight">
-    <pre><code>{
+    <pre><code><span class="badge badge-secondary float-right">JSON</span>{
     "name": "OK",
     "message": "Short link deleted with success",
     "code": 200,

@@ -13,7 +13,7 @@ class V1Controller extends ApiController
     {
         return [
             'create' => ['POST', 'OPTIONS'],
-            'delete' => ['POST', 'OPTIONS'],
+            'delete' => ['DELETE', 'OPTIONS'],
         ];
     }
 

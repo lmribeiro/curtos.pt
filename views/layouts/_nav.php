@@ -6,9 +6,9 @@ use yii\helpers\Url;
 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand mr-lg-5" href="<?= Yii::$app->homeUrl ?>">
-            <img src="<?= Url::to('@web/img/name.svg', true) ?>" style="height: 18px;">
+            <img src="<?= Url::to('@web/img/name.svg', true) ?>" style="height: 19px; margin-top: -6px;">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" style="margin-right: -10px;" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fas fa-bars fa-lg"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbar_global">
@@ -28,23 +28,23 @@ use yii\helpers\Url;
                 </div>
             </div>
             <ul class="navbar-nav align-items-lg-center">
-                <li class="nav-item">
+                <li class="nav-item text-uppercase">
                     <a href="<?= Yii::$app->homeUrl ?>" class="nav-link <?= Yii::$app->controller->action->id == "index" ? 'active' : '' ?>" role="button">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'Início') ?></span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item text-uppercase">
                     <a href="<?= Url::to(['about']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "about" ? 'active' : '' ?>" role="button">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'Sobre') ?></span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= Url::to(['api-v1']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "docs" ? 'active' : '' ?>" role="button">
+                <li class="nav-item text-uppercase">
+                    <a href="<?= Url::to(['api-v1']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "api-v1" ? 'active' : '' ?>" role="button">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'API') ?></span>
                     </a>
                 </li>
                 <?php if (!Yii::$app->user->isGuest) { ?>
-                    <li class="nav-item">
+                    <li class="nav-item text-uppercase">
                         <a href="<?= Url::to(['links']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "admin" ? 'active' : '' ?>" role="button">
                             <span class="nav-link-inner--text"><?= Yii::t('app', 'Links') ?></span>
                         </a>

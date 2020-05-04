@@ -6,7 +6,7 @@
 <h6 class="bd-title mt-2" id="auth"><?= Yii::t('app', 'Autenticação') ?></h6>
 <p class="bd-lead">
     <?= Yii::t('app', 'Para autenticação é necessário enviar a chave da API no Header Authorization de cada pedido.') ?>
-    <?= Yii::t('app', 'A chave da API pode ser configurada na sua conta depois de se registar.') ?>
+    <?= Yii::t('app', 'A chave da API pode ser configurada na tua conta depois de te registares.') ?>
 </p>
 <p class="bd-lead">
     <?= Yii::t('app', 'Para alguns endpoints a autenticação não é necessária.') ?>
@@ -14,7 +14,7 @@
 
 <h6 class="bd-title mt-2" id="encode"><?= Yii::t('app', 'Encoding') ?></h6>
 <p class="bd-lead">
-    <?= Yii::t('app', 'Use a codificação UTF-8 em todos os pedidos à API.') ?>
+    <?= Yii::t('app', 'Usa a codificação UTF-8 em todos os pedidos à API.') ?>
 </p>
 
 <h6 class="bd-title mt-2" id="version"><?= Yii::t('app', 'Versão') ?></h6>

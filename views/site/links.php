@@ -24,7 +24,7 @@ $this->params['modals'][] = "renew";
         </div>
     </div>
     <div class="container">
-        <div class="px-lg-3">
+        <div class="">
             <div class="row pt-4 px-0">
                 <div class="table-responsive-sm">
                     <?=

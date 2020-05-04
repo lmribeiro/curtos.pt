@@ -58,7 +58,11 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Sobre');
             <div class="col-md-4 mb-3">
                 <div class="info">
                     <h6><?= Yii::t('app', 'Tem uma API?') ?></h6>
-                    <p class="description opacity-8"><?= Yii::t('app', 'Curtos.pt ainda não tem uma API, mas o seu desenvolvimento está previsto.') ?></p>
+                    <p class="description opacity-8"><?= Yii::t('app', 'Sim, a API do Curtos.pt está disponivel desde o dia 24/05/2020.') ?>
+                        <a class="text-info" href="<?= \yii\helpers\Url::to(['api-v1']) ?>" class="nav-link">
+                            <?= Yii::t('app', 'Ver Documentação') ?>.
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>

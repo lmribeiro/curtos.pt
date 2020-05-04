@@ -11,7 +11,7 @@ $resetLink = $shorter->getShortLink(
         Yii::$app->urlManager->createAbsoluteUrl([
             'site/verify-account',
             'key' => $user->auth_key
-        ]), 1);
+        ]), false, 1);
 
 ?>
 

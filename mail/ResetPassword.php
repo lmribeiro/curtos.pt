@@ -12,7 +12,7 @@ $resetLink = $shorter->getShortLink(
         Yii::$app->urlManager->createAbsoluteUrl([
             'site/set-password',
             'token' => $user->password_reset_token
-        ]), 1);
+        ]), false, 1);
 
 ?>
 

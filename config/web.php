@@ -59,7 +59,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<alias:about|login|logout|signup|forgot|resend|account|delete-account|links|terms|set-password|reset-password|renew-api-key|docs>' => 'site/<alias>',
+                '<alias:about|login|logout|signup|forgot|resend|account|delete-account|links|terms|set-password|reset-password|renew-api-key|api-v1>' => 'site/<alias>',
                 '/<id:\w+>' => 'site/short',
             ],
         ],

@@ -39,7 +39,7 @@ use yii\helpers\Url;
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= Url::to(['docs']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "docs" ? 'active' : '' ?>" role="button">
+                    <a href="<?= Url::to(['api-v1']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "docs" ? 'active' : '' ?>" role="button">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'API') ?></span>
                     </a>
                 </li>

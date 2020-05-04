@@ -36,12 +36,12 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'about', 'docs', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short'],
+                        'actions' => ['index', 'about', 'api-v1', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'about', 'docs', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms', 'short', 'renew-api-key'],
+                        'actions' => ['index', 'about', 'api-v1', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms', 'short', 'renew-api-key'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -134,7 +134,7 @@ class SiteController extends Controller
         return $this->actionLogout();
     }
 
-    public function actionDocs()
+    public function actionApiV1()
     {
         return $this->render('api');
     }

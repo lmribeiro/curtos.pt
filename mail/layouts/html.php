@@ -145,7 +145,7 @@ use yii\helpers\Url;
                                                     <!-- Subscribe Info -->
                                                     <p class="text" style="color:#777777; font-family:'Open Sans', Helvetica, Arial, sans-serif; font-size:12px; font-weight:400; font-style:normal; letter-spacing:normal; line-height:20px; text-transform:none; text-align:center; padding:0; margin:0;" >
                                                         <?= Yii::t('app', 'Recebeste este e-mail porque estás registado no Curtos.pt.') ?><br/>
-                                                        <?= Yii::t('app', 'Se tiveres alguma dúvida contacta-nos pelo') ?> <a href="mailto:hello@curtos.pt" style="color:#777777;text-decoration:underline;" target="_blank">hello@curtos.pt</a>.<br>
+                                                        <?= Yii::t('app', 'Se tiveres alguma dúvida contacta-nos pelo') ?> <a href="mailto:hello@curtos.pt" style="color:#777777;text-decoration:underline;">hello@curtos.pt</a>.<br>
                                                     </p>
                                                 </td>
                                             </tr>

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use app\components\Shorter;
 
 /* @var $this yii\web\View */
@@ -8,11 +9,13 @@ use app\components\Shorter;
 
 $shorter = new Shorter();
 
-$resetLink = $shorter->getShortLink(
+$link = $shorter->getShortLink(
         Yii::$app->urlManager->createAbsoluteUrl([
             'site/set-password',
             'token' => $user->password_reset_token
         ]), false, 1);
+
+$resetLink = Url::base(true)."/".$link->short;
 
 ?>
 

@@ -3,15 +3,18 @@
 /* @var $admin app\models\User */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use app\components\Shorter;
 
 $shorter = new Shorter();
 
-$resetLink = $shorter->getShortLink(
+$link = $shorter->getShortLink(
         Yii::$app->urlManager->createAbsoluteUrl([
             'site/verify-account',
             'key' => $user->auth_key
         ]), false, 1);
+
+$resetLink = Url::base(true)."/".$link->short;
 
 ?>
 

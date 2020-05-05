@@ -52,10 +52,9 @@ $this->params['modals'][] = "apiKey";
                                 ->textInput(['placeholder' => $account->getAttributeLabel('email'), 'class' => 'form-control shadow border-0'])
 
                         ?>
-
                         <div class="row mt-4">
                             <div class="col-lg-12">
-                                <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-primary shadow border-0 float-right', 'type' => 'submit', 'id' => 'account-btn']); ?>
+                                <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-primary shadow border-0', 'type' => 'submit', 'id' => 'account-btn']); ?>
                             </div>
                         </div>
                     </div>
@@ -79,14 +78,12 @@ $this->params['modals'][] = "apiKey";
                                 ->passwordInput(['placeholder' => $password->getAttributeLabel('password'), 'class' => 'form-control shadow border-0'])
 
                         ?>
-
                         <div class="row mt-4">
                             <div class="col-lg-12">
-                                <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-primary shadow border-0 float-right', 'type' => 'submit', 'id' => 'password-btn']); ?>
+                                <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-primary shadow border-0', 'type' => 'submit', 'id' => 'password-btn']); ?>
                             </div>
                         </div>
                     </div>
-
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>
@@ -96,9 +93,8 @@ $this->params['modals'][] = "apiKey";
                     <div class="col-xs-12 col-lg-12 mb-5 mt-5">
                         <h5 class="mb-5"><?= Yii::t('app', 'API') ?></h5>
                         <p>
-                            <?= Yii::t('app', 'Além deste site, também pode usar a API para criar e apagar links curtos. Se não sabe como funciona uma API, não a use. NÃO partilhe essa chave no lado do cliente do seu site.') ?>
-                            <?= Yii::t('app', 'Tem duvidas?') ?> <?= Html::tag('span', Html::a(Yii::t('app', 'Veja a documentação'), 'api-v1')); ?>.
-
+                            <?= Yii::t('app', 'Além deste site, também podes usar a API para criar e apagar links curtos. Se não sabes como funciona uma API, não a uses nem partilhes esta chave com ninguem.') ?>
+                            <?= Yii::t('app', 'Tens duvidas?') ?> <?= Html::tag('span', Html::a(Yii::t('app', 'Vê a documentação'), 'api-v1')); ?>.
                         </p>
 
                         <p class="mt-4">
@@ -112,24 +108,22 @@ $this->params['modals'][] = "apiKey";
                             <i class="fas fa-bolt"></i> <?= Yii::t('app', 'Regenerar Chave') ?>
                         </a>    
                     </div>
-
                 </div>
             </div>
+            
             <div class="">
                 <div class="row ">
                     <div class="col-xs-12 col-lg-12 mb-5 mt-5">
                         <h5 class="mb-5 text-danger"><?= Yii::t('app', 'Apagar Conta') ?></h5>
                         <p class="text-danger"> 
-                            <?= Yii::t('app', 'Esta ação vai apagar todos os seus dados e links registados.') ?>
-                            <?= Yii::t('app', 'Depois de ativar esta opção a mesma não pode ser revertida nem os seus dados podem ser recuperados.') ?>
-                            <?= Yii::t('app', 'Continue apenas se tem a certeza que é isso que quer fazer.') ?>
-
+                            <?= Yii::t('app', 'Esta ação vai apagar todos os teus dados e links registados.') ?>
+                            <?= Yii::t('app', 'Depois de ativar esta opção a mesma não pode ser revertida nem os teus dados podem ser recuperados.') ?>
+                            <?= Yii::t('app', 'Continua apenas se tiveres a certeza que é isso que queres fazer.') ?>
                         </p>
                         <p class="mt-5">
                             <?= Html::tag('span', Html::a('<i class="fas fa-trash"></i> '.Yii::t('app', 'Apagar'), '#', ['class' => 'btn btn-danger shadow border-0', 'data-toggle' => 'modal', 'data-target' => '#delete_modal'])); ?>
                         </p>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ $form = ActiveForm::begin([
                 <button class="close" data-dismiss="modal">×</button>
             </div>
             <div class="modal-body">
-                <?= Yii::t('app', 'Tem a certeza que pretende renovar a data de expiração deste link?') ?>
+                <?= Yii::t('app', 'Tens a certeza que queres renovar a data de expiração deste link?') ?>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success" type="submit">

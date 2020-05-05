@@ -46,7 +46,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Sobre');
             <div class="col-md-4 mb-3">
                 <div class="info">
                     <h6><?= Yii::t('app', 'O link curto expira?') ?></h6>
-                    <p class="description opacity-8"><?= Yii::t('app', 'Normalmente um link curto expira em 30 dias. Uma vez expirado, o link é automáticamente apagado. Utilizadores registados podem prologar a data de expiração.') ?></p>
+                    <p class="description opacity-8"><?= Yii::t('app', 'Normalmente um link curto expira em 30 dias. Uma vez expirado, o link é automáticamente apagado. Utilizadores registados podem prelongar a data de expiração.') ?></p>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
@@ -58,7 +58,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Sobre');
             <div class="col-md-4 mb-3">
                 <div class="info">
                     <h6><?= Yii::t('app', 'Tem uma API?') ?></h6>
-                    <p class="description opacity-8"><?= Yii::t('app', 'Sim, a API do Curtos.pt está disponivel desde o dia 24/05/2020.') ?>
+                    <p class="description opacity-8"><?= Yii::t('app', 'Sim, o Curtos.pt está disponivel tanto para utilizadores registados como utilizadores sem registo.') ?>
                         <a class="text-info" href="<?= \yii\helpers\Url::to(['api-v1']) ?>" class="nav-link">
                             <?= Yii::t('app', 'Ver Documentação') ?>.
                         </a>

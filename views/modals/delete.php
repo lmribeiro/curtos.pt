@@ -18,7 +18,7 @@ $form = ActiveForm::begin([
                 <button class="close" data-dismiss="modal">×</button>
             </div>
             <div class="modal-body">
-                <?= Yii::t('app', 'Tem a certeza que pretende apagar este link?') ?>
+                <?= Yii::t('app', 'Tens a certeza que queres apagar este link?') ?>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-danger" type="submit">

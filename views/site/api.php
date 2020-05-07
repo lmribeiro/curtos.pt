@@ -42,7 +42,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'API');
                     </main>
                 </div>
                 <div class="col-3 mt-4">
-                    <nav aria-label="Secondary navigation" class="d-none d-xl-block col-12 bd-toc" style="position: fixed;top: 350px;">
+                    <nav id="nav" aria-label="Secondary navigation" class="d-none d-xl-block col-12 bd-toc" >
                         <ul class="section-nav">
                             <li class="toc-entry toc-h2">
                                 <a href="#intro"><?= Yii::t('app', 'Visão Geral') ?></a>
@@ -54,7 +54,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'API');
                                         <a href="#encode"><?= Yii::t('app', 'Encoding') ?></a>
                                     </li>
                                     <li class="toc-entry toc-h3">
-                                        <a href="#version"><?= Yii::t('app', 'Versão    ') ?></a>
+                                        <a href="#version"><?= Yii::t('app', 'Versão') ?></a>
                                     </li>
                                 </ul>
                             </li>
@@ -90,3 +90,15 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'API');
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $(window).bind('scroll', function () {
+            var navHeight = $(window).height() - 350;
+            if ($(window).scrollTop() > navHeight) {
+                $('#nav').addClass('fixed');
+            } else {
+                $('#nav').removeClass('fixed');
+            }
+        });
+    });
+</script>

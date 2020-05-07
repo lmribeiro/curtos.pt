@@ -18000,7 +18000,7 @@ a.btn-icon-only {
 
 .footer {
     background: hsl(206, 12%, 93%);
-    padding: 1.3rem 0;
+    padding: 1.3rem 0 0.1rem 0;
 }
 
 .footer .col-footer .heading {
@@ -22757,7 +22757,7 @@ pre>code.highlight {
 
 .section-nav {
     padding-left: 0;
-    border-left: 1px solid #eee;
+    border-left: 2px solid #ddd;
 }
 
 .section-nav ul {
@@ -23016,4 +23016,13 @@ pre>code.highlight {
 
 .visible-off {
     visibility: hidden;
+}
+.fixed {
+    position: fixed;
+    top: 0;
+    height: 70px;
+    z-index: 1;
+}
+.wrapper {
+    min-height: calc(100vh - 155px);
 }

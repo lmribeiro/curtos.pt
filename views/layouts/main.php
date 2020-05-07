@@ -58,7 +58,7 @@ AppAsset::register($this);
             <?= $content ?>
         </div>
 
-        <?php // include __DIR__.'/_footer.php'; ?>
+        <?php include __DIR__.'/_footer.php'; ?>
 
         <?= Modals::widget(['modals' => isset($this->params['modals']) ? $this->params['modals'] : [],]); ?>
 

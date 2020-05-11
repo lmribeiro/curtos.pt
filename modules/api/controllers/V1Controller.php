@@ -36,7 +36,7 @@ class V1Controller extends ApiController
             'expires_after' => date('Y-m-d H:i:s', strtotime($link->expires_after)),
         ];
 
-        $this->sendOk('Short link created with success', $data);
+        $this->sendOk(201, 'Short link created with success', $data);
     }
 
     /**
@@ -52,7 +52,7 @@ class V1Controller extends ApiController
 
         $link->delete();
 
-        $this->sendOk('Short link deleted with success');
+        $this->sendOk(200, 'Short link deleted with success');
     }
 
 }

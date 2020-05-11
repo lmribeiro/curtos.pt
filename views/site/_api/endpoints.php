@@ -25,15 +25,15 @@ Host: https://curtos.pt</code></pre>
 <p><b><?= Yii::t('app', 'Resposta') ?></b></p>
 <figure class="highlight">
     <pre><code><span class="badge badge-secondary float-right">JSON</span>{
-    "name": "OK",
+    "name": "Created",
     "message": "Short link created with success",
-    "code": 200,
-    "status": 200,
+    "code": 201,
+    "status": "OK",
     "data": {
         "id": 110,
         "code": "3825d5",
         "target": "https://www.curtos.pt/",
-        "short": "http://localhost:8383/3825d5",
+        "short": "https://www.curtos.pt/3825d5",
         "expires_after": "2020-07-02 23:53:46"
     }
 }</code></pre>
@@ -65,7 +65,7 @@ Host: https://curtos.pt</code></pre>
     "name": "OK",
     "message": "Short link deleted with success",
     "code": 200,
-    "status": 200,
+    "status": "OK",
     "data": []
 }</code></pre>
 </figure>

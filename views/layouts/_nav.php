@@ -53,17 +53,21 @@ use yii\helpers\Url;
             </ul>
             <br/>
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-                <li class="nav-item d-lg-block ml-lg-4">
-                    <?php if (Yii::$app->user->isGuest) { ?>
-                        <a href="<?= Url::to(['login']) ?>" class="btn btn-neutral">
+
+                <?php if (Yii::$app->user->isGuest) { ?>
+                    <li class="nav-item d-lg-block ml-lg-4">
+                        <a href="<?= Url::to(['login']) ?>" class="btn btn-md btn-neutral px-4">
                             <?= Yii::t('app', 'Entrar') ?>
                         </a>
-                        <a href="<?= Url::to(['signup']) ?>" class="btn btn-primary">
+                    </li>
+                    <li class="nav-item d-lg-block ml-lg-4">
+                        <a href="<?= Url::to(['signup']) ?>" class="btn btn-primary px-4">
                             <?= Yii::t('app', 'Registar') ?>
                         </a>
-                    <?php } else { ?>
+                    </li>
+                <?php } else { ?>
                     <li class="nav-item dropdown">
-                        <a href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" href="#" role="button">
+                        <a href="#" class="btn btn-md btn-neutral mr-3 px-4" data-toggle="dropdown" href="#" role="button">
                             <span class="fas fa-user-circle fa-lg"></span>
                             <?= Yii::$app->user->identity->name ?? Yii::$app->user->identity->username ?>
                         </a>
@@ -78,7 +82,6 @@ use yii\helpers\Url;
                         </div>
                     </li>
                 <?php } ?>
-                </li>
             </ul>
         </div>
     </div>

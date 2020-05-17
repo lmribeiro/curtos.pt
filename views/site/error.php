@@ -9,7 +9,7 @@ use yii\helpers\Html;
 $this->title = Yii::$app->name." | ".$name;
 
 ?>
-<div class="section">
+<div class="section mt-5">
     <div class="container">
         <div class="page-header">
             <div class="row">

@@ -4,7 +4,7 @@
 $this->title = Yii::$app->name." | ".Yii::t('app', 'Sobre');
 
 ?>
-<div class="section">
+<div class="section  mt-5">
     <div class="container">
         <div class="page-header">
             <div class="row">

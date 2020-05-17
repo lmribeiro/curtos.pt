@@ -11,7 +11,7 @@ $this->title = Yii::$app->name.' | '.Yii::t('app', 'Registar');
 
 ?>
 
-<section class="section">
+<section class="section mt-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-5">

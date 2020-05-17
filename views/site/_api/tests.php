@@ -4,7 +4,7 @@
 </p>
 <?php if (Yii::$app->user->isGuest) { ?>
     <p>
-        <a class="btn btn-secondary" href="<?= \yii\helpers\Url::to(['signup']) ?>"><?= Yii::t('app', 'Criar conta') ?></a>
+        <a class="btn btn-neutral" href="<?= \yii\helpers\Url::to(['signup']) ?>"><?= Yii::t('app', 'Criar conta') ?></a>
     </p>
 <?php } else { ?>
     <p class="bd-lead">

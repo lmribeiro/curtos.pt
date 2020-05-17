@@ -10,7 +10,7 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::$app->name.' | '.Yii::t('app', 'Entrar');
 
 ?>
-<section class="section">
+<section class="section mt-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-5">
@@ -57,7 +57,7 @@ $this->title = Yii::$app->name.' | '.Yii::t('app', 'Entrar');
                 </div>
                 <div class="row mt-3">
                     <div class="col-12 text-center">
-                        <a href="<?= Url::to(['reset-password']) ?>" class="text-light"><small><?= Yii::t('app', 'Recuperar password') ?></small></a>
+                        <a href="<?= Url::to(['reset-password']) ?>" class=""><small><?= Yii::t('app', 'Recuperar password') ?></small></a>
                     </div>
                 </div>
             </div>

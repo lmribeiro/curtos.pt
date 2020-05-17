@@ -22,7 +22,9 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/style.css',
+        'impact/dist/css/front.css',
+        'css/custom.css',
+        'css/night.css',
     ];
     public $js = [
 //        'js/jquery.min.js',

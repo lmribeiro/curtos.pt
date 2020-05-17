@@ -4,7 +4,7 @@
 $this->title = Yii::$app->name." | ".Yii::t('app', 'Os teus links... curtos!');
 
 ?>
-<div id="landing" class="section section-hero section-shaped">
+<div id="landing" class="section section-shaped mt-5">
     <div class="page-header">
         <div class="container shape-container d-flex align-items-center">
             <div class="col">

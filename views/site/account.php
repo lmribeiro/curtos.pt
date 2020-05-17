@@ -99,7 +99,7 @@ $this->params['modals'][] = "apiKey";
 
                         <p class="mt-4">
                             <b><?= Yii::t('app', 'Chave') ?>:</b> 
-                            <input id="api-key" class="text-success text-underline border-0" value="<?= Yii::$app->user->identity->auth_key ?>" />&nbsp;
+                            <input id="api-key" class="text-success text-underline border-0 bg-transparent" value="<?= Yii::$app->user->identity->auth_key ?>" />&nbsp;
                             <button  type="button" onclick="javascript:app.copyKey()" data-toggle="tooltip" data-placement="top" title="<?= Yii::t('app', 'Copiar') ?>"  class="btn btn-sm btn-link" >
                                 <i class="far fa-copy fa-lg"></i>
                             </button>

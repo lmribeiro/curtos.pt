@@ -48,39 +48,39 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'API');
                                 <a href="#intro"><?= Yii::t('app', 'Visão Geral') ?></a>
                                 <ul>
                                     <li class="toc-entry toc-h3">
-                                        <a href="#auth"><?= Yii::t('app', 'Autenticação') ?></a>
+                                        <a class="side-link" href="#auth"><?= Yii::t('app', 'Autenticação') ?></a>
                                     </li>
                                     <li class="toc-entry toc-h3">
-                                        <a href="#encode"><?= Yii::t('app', 'Encoding') ?></a>
+                                        <a class="side-link" href="#encode"><?= Yii::t('app', 'Encoding') ?></a>
                                     </li>
                                     <li class="toc-entry toc-h3">
-                                        <a href="#version"><?= Yii::t('app', 'Versão') ?></a>
+                                        <a class="side-link" href="#version"><?= Yii::t('app', 'Versão') ?></a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li class="toc-entry toc-h2">
-                                <a href="#tests"><?= Yii::t('app', 'Testar') ?></a>
+                                <a class="side-link" href="#tests"><?= Yii::t('app', 'Testar') ?></a>
                             </li>
 
                             <li class="toc-entry toc-h2">
-                                <a href="#codes"><?= Yii::t('app', 'Códigos de Resposta') ?></a>
+                                <a class="side-link" href="#codes"><?= Yii::t('app', 'Códigos de Resposta') ?></a>
                             </li>
 
                             <li class="toc-entry toc-h2">
                                 <a href="#endpoints"><?= Yii::t('app', 'Endpoints') ?></a>
                                 <ul>
                                     <li class="toc-entry toc-h3">
-                                        <a href="#create"><?= Yii::t('app', 'Criar') ?></a>
+                                        <a class="side-link" href="#create"><?= Yii::t('app', 'Criar') ?></a>
                                     </li>
                                     <li class="toc-entry toc-h3">
-                                        <a href="#delete"><?= Yii::t('app', 'Apagar') ?></a>
+                                        <a class="side-link" href="#delete"><?= Yii::t('app', 'Apagar') ?></a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li class="toc-entry toc-h2">
-                                <a href="#changelog"><?= Yii::t('app', 'Changelog') ?></a>
+                                <a class="side-link" href="#changelog"><?= Yii::t('app', 'Changelog') ?></a>
                             </li>
 
                         </ul>
@@ -93,7 +93,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'API');
 <script>
     $(document).ready(function () {
         $(window).bind('scroll', function () {
-            var navHeight = $(window).height() - 350;
+            var navHeight = $(window).height() - 652;
             if ($(window).scrollTop() > navHeight) {
                 $('#nav').addClass('fixed');
             } else {

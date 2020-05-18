@@ -24,7 +24,6 @@ class AppAsset extends AssetBundle
     public $css = [
         'ds/dist/css/front.css',
         'css/custom.css',
-        'css/night.css',
     ];
     public $js = [
 //        'js/jquery.min.js',

@@ -154,6 +154,9 @@ and open the template in the editor.
     font-weight: 600;
     line-height: 1.5;
 }
+.side-link.active {
+    color: red!important;
+}
 @media (max-width: 991.98px) {
     .navbar-collapse .navbar-toggler span {
         display: block;

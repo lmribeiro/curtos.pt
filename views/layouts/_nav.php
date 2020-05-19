@@ -45,7 +45,7 @@ use yii\helpers\Url;
                 </li>
                 <?php if (!Yii::$app->user->isGuest) { ?>
                     <li class="nav-item text-uppercase">
-                        <a href="<?= Url::to(['links']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "admin" ? 'active' : '' ?>" role="button">
+                        <a href="<?= Url::to(['links']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "links" ? 'active' : '' ?>" role="button">
                             <span class="nav-link-inner--text"><?= Yii::t('app', 'Links') ?></span>
                         </a>
                     </li>

@@ -50,13 +50,45 @@ use yii\helpers\Url;
                         </a>
                     </li>
                 <?php } ?>
+                <?php if (Yii::$app->user->isGuest) { ?>
+                    <a href="<?= Url::to(['login']) ?>" class="btn btn-neutral px-4 mb-3 mt-5 d-sm-none">
+                        <?= Yii::t('app', 'Entar') ?>
+                    </a>
+                    <a href="<?= Url::to(['signup']) ?>" class="btn btn-primary d-sm-none">
+                        <?= Yii::t('app', 'Registar') ?>
+                    </a> 
+                <?php } else { ?>
+                    <div class="d-sm-none">
+                        <p class="mt-5">
+                            <span class="fas fa-user-circle fa-lg"></span>
+                            <?= Yii::$app->user->identity->name ?? Yii::$app->user->identity->username ?>
+                        </p>
+                        <p>
+                            <a href="<?= Url::to(['account']) ?>" class="mt-2">
+                                <?= Yii::t('app', 'Conta') ?>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="<?= Url::to(['logout']) ?>" class="mt-2">
+                                <span class="nav-link-inner--text text-danger"><?= Yii::t('app', 'Sair') ?></span>
+                                <span class="float-right text-danger"><i class="fas fa-sign-out-alt"></i></span>
+                            </a>
+                        </p>
+                    </div>
+                <?php } ?>
+                    <div class="toggle-sm d-sm-flex d-lg-none">
+                    <?php include __DIR__.'/_toggler.php'; ?>
+                </div>
             </ul>
             <br/>
-            <ul class="navbar-nav align-items-lg-center ml-lg-auto">
 
+            <ul class="navbar-nav align-items-lg-center ml-lg-auto d-none d-lg-flex">
+                <li>
+                    <?php include __DIR__.'/_toggler.php'; ?>
+                </li>
                 <?php if (Yii::$app->user->isGuest) { ?>
                     <li class="nav-item d-lg-block ml-lg-4">
-                        <a href="<?= Url::to(['login']) ?>" class="btn btn-md btn-neutral px-4">
+                        <a href="<?= Url::to(['login']) ?>" class="btn btn-neutral px-4">
                             <?= Yii::t('app', 'Entrar') ?>
                         </a>
                     </li>
@@ -67,7 +99,7 @@ use yii\helpers\Url;
                     </li>
                 <?php } else { ?>
                     <li class="nav-item dropdown">
-                        <a href="#" class="btn btn-md btn-neutral mr-3 px-4" data-toggle="dropdown" href="#" role="button">
+                        <a href="#" class="btn btn-md btn-neutral px-4 mb-1" style="min-width: 190px;" data-toggle="dropdown" href="#" role="button">
                             <span class="fas fa-user-circle fa-lg"></span>
                             <?= Yii::$app->user->identity->name ?? Yii::$app->user->identity->username ?>
                         </a>

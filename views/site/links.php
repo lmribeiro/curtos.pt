@@ -13,7 +13,7 @@ $this->params['modals'][] = "delete";
 $this->params['modals'][] = "renew";
 
 ?>
-<div class="section  mt-5">
+<div class="section mt-5">
     <div class="container">
         <div class="page-header">
             <div class="row">

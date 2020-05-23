@@ -57,9 +57,9 @@ and open the template in the editor.
 }
 
 #landing .btn {
-    height: 50px;
-    margin-top: 6px;
-    border-radius: .5rem;
+    height: 52px;
+    margin-top: 8px;
+    border-radius: .2rem;
 }
 
 .visible-off {
@@ -157,6 +157,51 @@ and open the template in the editor.
 .side-link.active {
     color: red!important;
 }
+
+.tumbler_wrapper {
+    margin: 4px 15px;
+    width: 50px;
+    height: 28px;
+    background-color: transparent;
+    border: transparent;
+    border-radius: 30px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6px;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+}
+
+.tumbler_wrapper svg {
+    width: 15px;
+    height: 15px;
+}
+
+.tumbler {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-color: #d3d4d4;
+    transition: margin-left 0.5s, background-color 0.5s;
+}
+
+.tumbler--night-mode {
+    margin-left: calc(100% - 30px);
+}
+
+.sun-svg,
+.moon-svg {
+    display: none;
+}
+
+.toggle-sm {
+    position: absolute;
+    bottom: 1%;
+    left: 37%;
+}
+
 @media (max-width: 991.98px) {
     .navbar-collapse .navbar-toggler span {
         display: block;

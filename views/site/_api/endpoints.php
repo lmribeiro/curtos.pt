@@ -5,14 +5,14 @@
     <?= Yii::t('app', 'Criar um link curto para o determinado target longo.') ?>
 </p>
 
-<p><b><?= Yii::t('app', 'Pedido') ?></b></p>
+<p class="mt-3"><b><?= Yii::t('app', 'Pedido') ?></b></p>
 <figure class="highlight">
     <pre><code><span class="badge badge-success float-right">POST</span>Endpoint: /api/v1/create
 Host: https://curtos.pt</code></pre>
 
 </figure>
 
-<p><b><?= Yii::t('app', 'Payload') ?></b></p>
+<p class="mt-3"><b><?= Yii::t('app', 'Payload') ?></b></p>
 <figure class="highlight">
     <pre><code><span class="badge badge-secondary float-right">JSON</span>{
 	"target": "https://curtos.pt",
@@ -22,7 +22,7 @@ Host: https://curtos.pt</code></pre>
 
 </figure>
 
-<p><b><?= Yii::t('app', 'Resposta') ?></b></p>
+<p class="mt-3"><b><?= Yii::t('app', 'Resposta') ?></b></p>
 <figure class="highlight">
     <pre><code><span class="badge badge-secondary float-right">JSON</span>{
     "name": "Created",
@@ -44,14 +44,14 @@ Host: https://curtos.pt</code></pre>
     <?= Yii::t('app', 'Apagar um link curto com determinado código.') ?>
 </p>
 
-<p><b><?= Yii::t('app', 'Pedido') ?></b></p>
+<p class="mt-3"><b><?= Yii::t('app', 'Pedido') ?></b></p>
 <figure class="highlight">
     <pre><code><span class="badge badge-danger float-right">DELETE</span>Endpoint: /api/v1/delete
 Host: https://curtos.pt</code></pre>
 
 </figure>
 
-<p><b><?= Yii::t('app', 'Payload') ?></b></p>
+<p class="mt-3"><b><?= Yii::t('app', 'Payload') ?></b></p>
 <figure class="highlight">
     <pre><code><span class="badge badge-secondary float-right">JSON</span>{
 	"code": "18acbf"
@@ -59,7 +59,7 @@ Host: https://curtos.pt</code></pre>
 
 </figure>
 
-<p><b><?= Yii::t('app', 'Resposta') ?></b></p>
+<p class="mt-3"><b><?= Yii::t('app', 'Resposta') ?></b></p>
 <figure class="highlight">
     <pre><code><span class="badge badge-secondary float-right">JSON</span>{
     "name": "OK",

@@ -48,7 +48,7 @@ AppAsset::register($this);
 
     </head>
 
-    <body>
+    <body class="<?= Yii::$app->session->get('theme') ? 'night' : '' ?>">
 
         <?php $this->beginBody() ?>
 
@@ -64,6 +64,22 @@ AppAsset::register($this);
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57195491-7"></script>
         <script>
+            $('.tumbler_wrapper').on('click', function () {
+                toggleTheme($('body').hasClass("night"));
+            });
+
+            function toggleTheme(theme) {
+                $.ajax({
+                    url: '<?= Url::to(["theme"]) ?>',
+                    type: 'post',
+                    data: {theme: !theme}
+                }).done(function (response) {
+                    $('body').toggleClass('night');
+                }).fail(function (response) {
+//            console.log(response);
+                });
+            }
+            
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);

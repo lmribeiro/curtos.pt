@@ -36,12 +36,12 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'about', 'api-v1', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short'],
+                        'actions' => ['index', 'about', 'api-v1', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short', 'theme'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'about', 'api-v1', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms', 'short', 'renew-api-key'],
+                        'actions' => ['index', 'about', 'api-v1', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms', 'short', 'renew-api-key', 'theme'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -71,6 +71,14 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function beforeAction($action)
+    {
+        if ($action->id === "theme") {
+            $this->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
     }
 
     /**
@@ -195,7 +203,10 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
+        $theme = Yii::$app->session->get('theme') ? 'night' : '';
         Yii::$app->user->logout();
+        
+        Yii::$app->session->set('theme', $theme);
         return $this->goHome();
     }
 
@@ -347,6 +358,18 @@ class SiteController extends Controller
     public function actionTerms()
     {
         return $this->render('terms');
+    }
+
+    /**
+     * Set/remove night mode
+     * 
+     * @return boolean true
+     */
+    public function actionTheme()
+    {
+        $theme = Yii::$app->request->post('theme', false) == 'true' ? true : false;
+        Yii::$app->session->set('theme', $theme);
+        return true;
     }
 
     /**

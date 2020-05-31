@@ -9,6 +9,11 @@ use app\assets\AppAsset;
 
 AppAsset::register($this);
 
+$night = false;
+if (Yii::$app->session->get('theme')) {
+    $night = true;
+}
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -20,6 +25,14 @@ AppAsset::register($this);
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Chrome, Firefox OS and Opera -->
+        <meta name="theme-color" content="<?= $night ? '#0f161e' : '#f4f5f7' ?>" />
+        <!-- Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="<?= $night ? '#0f161e' : '#f4f5f7' ?>" />
+        <!-- iOS Safari -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="<?= $night ? '#0f161e' : '#f4f5f7' ?>" />
+
 
         <link rel="apple-touch-icon" sizes="57x57" href="<?= Url::to('@web/img/favicon/apple-icon-57x57.png', true) ?>">
         <link rel="apple-touch-icon" sizes="60x60" href="<?= Url::to('@web/img/favicon/apple-icon-60x60.png', true) ?>">
@@ -37,7 +50,6 @@ AppAsset::register($this);
         <link rel="manifest" href="<?= Url::to('@web/img/favicon/manifest.json', true) ?>">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="<?= Url::to('@web/img/favicon/ms-icon-144x144.png', true) ?>">
-        <meta name="theme-color" content="#ffffff">
 
         <?php $this->registerCsrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
@@ -48,7 +60,7 @@ AppAsset::register($this);
 
     </head>
 
-    <body class="<?= Yii::$app->session->get('theme') ? 'night' : '' ?>">
+    <body class="<?= $night ? 'night' : '' ?>">
 
         <?php $this->beginBody() ?>
 
@@ -79,7 +91,7 @@ AppAsset::register($this);
 //            console.log(response);
                 });
             }
-            
+
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);

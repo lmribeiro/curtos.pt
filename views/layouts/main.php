@@ -6,7 +6,6 @@
 use app\widgets\Modals;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\assets\AppAsset;
 use yii\web\View;
 
 AppAsset::register($this);
@@ -104,21 +103,11 @@ if (Yii::$app->session->get('theme')) {
     }
 
     gtag('js', new Date());
-
     gtag('config', 'UA-57195491-7');
 </script>
 
 <script>
     $(function () {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            toggleTheme(true);
-        }
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            const newColorScheme = e.matches ? "dark" : "light";
-            toggleTheme(newColorScheme == "dark" ? true : false);
-        });
-
         <?php if (Yii::$app->session->hasFlash('success')) { ?>
         app.notify("<?= Yii::$app->session->getFlash('success') ?>", "success", 1000);
         <?php } else if (Yii::$app->session->hasFlash('error')) { ?>

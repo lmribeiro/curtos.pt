@@ -163,7 +163,7 @@ and open the template in the editor.
     width: 50px;
     height: 28px;
     background-color: transparent;
-    border: transparent;
+    border: 1.5px solid
     border-radius: 30px;
     justify-content: space-between;
     align-items: center;

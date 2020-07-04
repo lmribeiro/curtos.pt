@@ -1,0 +1,13 @@
+/* TEAM */
+
+	Design & Development: Luís Ribeiro
+	Twitter: @_l_ribeiro
+
+/* SITE */
+
+	Last update: --in-development--
+	Standards: HTML5, CSS3
+	Languages: PHP, HTML, CSS, Javascript, TAL, twig
+	Components: Yii 2, jQuery, Bootstrap, MySql, Gulp.js
+	Doctype: HTML5
+	Software: linux, osx, php, mysql and more, mostly opensource

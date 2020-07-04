@@ -105,7 +105,7 @@ and open the template in the editor.
     hyphens: none;
     color: #5e6687;
     border-radius: .25rem;
-    background: #f5f7ff;
+    background: #ddd;
     direction: ltr;
     -ms-hyphens: none;
 }

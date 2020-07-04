@@ -35,7 +35,26 @@ if (Yii::$app->session->get('theme')) {
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="<?= $night ? '#0f161e' : '#f4f5f7' ?>"/>
 
+    <!-- Primary Meta Tags -->
+    <title>Curtos.pt</title>
+    <meta name="title" content="Curtos.pt">
+    <meta name="description" content="Url shortner gratuito, moderno e de código aberto gratuito feito em php. Os teus links... curtos!">
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://curtos.pt/">
+    <meta property="og:title" content="Curtos.pt">
+    <meta property="og:description" content="Url shortner gratuito, moderno e de código aberto gratuito feito em php. Os teus links... curtos!">
+    <meta property="og:image" content="<?= Url::to('@web/img/curtos.png', true) ?>">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://curtos.pt/">
+    <meta property="twitter:title" content="Curtos.pt">
+    <meta property="twitter:description" content="Url shortner gratuito, moderno e de código aberto gratuito feito em php. Os teus links... curtos!">
+    <meta property="twitter:image" content="<?= Url::to('@web/img/curtos.png', true) ?>">
+
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="<?= Url::to('@web/img/favicon/apple-icon-57x57.png', true) ?>">
     <link rel="apple-touch-icon" sizes="60x60" href="<?= Url::to('@web/img/favicon/apple-icon-60x60.png', true) ?>">
     <link rel="apple-touch-icon" sizes="72x72" href="<?= Url::to('@web/img/favicon/apple-icon-72x72.png', true) ?>">
@@ -45,8 +64,7 @@ if (Yii::$app->session->get('theme')) {
     <link rel="apple-touch-icon" sizes="144x144" href="<?= Url::to('@web/img/favicon/apple-icon-144x144.png', true) ?>">
     <link rel="apple-touch-icon" sizes="152x152" href="<?= Url::to('@web/img/favicon/apple-icon-152x152.png', true) ?>">
     <link rel="apple-touch-icon" sizes="180x180" href="<?= Url::to('@web/img/favicon/apple-icon-180x180.png', true) ?>">
-    <link rel="icon" type="image/png" sizes="192x192"
-          href="<?= Url::to('@web/img/favicon/android-icon-192x192.png', true) ?>">
+    <link rel="icon" type="image/png" sizes="192x192" href="<?= Url::to('@web/img/favicon/android-icon-192x192.png', true) ?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= Url::to('@web/img/favicon/favicon-32x32.png', true) ?>">
     <link rel="icon" type="image/png" sizes="96x96" href="<?= Url::to('@web/img/favicon/favicon-96x96.png', true) ?>">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= Url::to('@web/img/favicon/favicon-16x16.png', true) ?>">
@@ -59,8 +77,7 @@ if (Yii::$app->session->get('theme')) {
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 </head>
 

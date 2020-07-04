@@ -6,7 +6,7 @@ use yii\helpers\Url;
 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand mr-lg-5" href="<?= Yii::$app->homeUrl ?>">
-            <img src="<?= Url::to('@web/img/name.svg', true) ?>" style="height: 19px; margin-top: -6px;">
+            <img src="<?= Url::to('@web/img/name.svg', true) ?>" alt="Logo">
         </a>
         <button class="navbar-toggler" style="margin-right: -10px;" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fas fa-bars fa-lg"></span>
@@ -16,7 +16,7 @@ use yii\helpers\Url;
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="<?= Yii::$app->homeUrl ?>">
-                            <img src="<?= Url::to('@web/img/name.svg', true) ?>" style="height: 18px;">
+                            <img src="<?= Url::to('@web/img/name.svg', true) ?>" alt="logo">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -29,7 +29,7 @@ use yii\helpers\Url;
             </div>
             <ul class="navbar-nav align-items-lg-center">
                 <li class="nav-item text-uppercase">
-                    <a href="<?= Yii::$app->homeUrl ?>" class="nav-link <?= Yii::$app->controller->action->id == "index" ? 'active' : '' ?>" role="button">
+                    <a href="<?= Yii::$app->homeUrl ?>" class="nav-link <?= Yii::$app->controller->action->id == "index" ? 'active' : '' ?>" role="button" alt>
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'Início') ?></span>
                     </a>
                 </li>

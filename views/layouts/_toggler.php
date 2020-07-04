@@ -1,6 +1,6 @@
 <div class="tumbler_wrapper" data-toggle="tooltip" data-placement="bottom" title="<?= Yii::t('app', 'Alterar modo noturno') ?>">
     <div class="tumbler"  ></div>
-    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <svg version="1.1" id="1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
         <g>
             <path style="fill:#F0C419;" d="M30,0c-0.552,0-1,0.448-1,1v6c0,0.552,0.448,1,1,1s1-0.448,1-1V1C31,0.448,30.552,0,30,0z"/>
@@ -41,7 +41,7 @@
         <circle style="fill:#F0C419;" cx="30" cy="30" r="20"/>
         <circle style="fill:#EDE21B;" cx="30" cy="30" r="15"/>
     </svg>
-    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <svg version="1.1" id="2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 499.712 499.712" style="enable-background:new 0 0 499.712 499.712;" xml:space="preserve">
         <path style="fill:#0F161E;" d="M146.88,375.528c126.272,0,228.624-102.368,228.624-228.64c0-55.952-20.16-107.136-53.52-146.88
               C425.056,33.096,499.696,129.64,499.696,243.704c0,141.392-114.608,256-256,256c-114.064,0-210.608-74.64-243.696-177.712

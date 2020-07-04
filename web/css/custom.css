@@ -7,7 +7,13 @@ and open the template in the editor.
     Created on : May 17, 2020, 7:00:23 PM
     Author     : lribeiro
 */
-
+.navbar-brand img {
+    height: 19px;
+    margin-top: -6px;
+}
+.navbar-collapse img {
+    margin-top: -8px;
+}
 .page-item .page-link {
     display: flex;
     align-items: center;

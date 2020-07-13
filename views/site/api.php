@@ -9,8 +9,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'API');
                 <div class="col-md-8 mx-auto text-center mb-2">
                     <h3 class="display-3"><?= Yii::t('app', 'API') ?>
                     </h3>
-                    <p class="lead"><?= Yii::t('app', 'Documentação da API Curtos.pt') ?>
-                        .</p>
+                    <p class="lead"><?= Yii::t('app', 'Documentação da API Curtos.pt') ?>.</p>
                 </div>
             </div>
         </div>

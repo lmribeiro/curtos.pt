@@ -36,12 +36,12 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'about', 'api-v1', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short', 'theme'],
+                        'actions' => ['index', 'about', 'api-v1', 'cli', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short', 'theme'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'about', 'api-v1', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms', 'short', 'renew-api-key', 'theme'],
+                        'actions' => ['index', 'about', 'api-v1', 'cli', 'signup', 'login', 'logout', 'links', 'error', 'account', 'delete-account', 'terms', 'short', 'renew-api-key', 'theme'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -142,9 +142,24 @@ class SiteController extends Controller
         return $this->actionLogout();
     }
 
+    /**
+     * API
+     *
+     * @return yii\web\View
+     */
     public function actionApiV1()
     {
         return $this->render('api');
+    }
+
+    /**
+     * CLI
+     *
+     * @return yii\web\View
+     */
+    public function actionCli()
+    {
+        return $this->render('cli');
     }
 
     /**

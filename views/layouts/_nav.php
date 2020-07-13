@@ -43,6 +43,11 @@ use yii\helpers\Url;
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'API') ?></span>
                     </a>
                 </li>
+                <li class="nav-item text-uppercase">
+                    <a href="<?= Url::to(['cli']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "cli" ? 'active' : '' ?>" role="button">
+                        <span class="nav-link-inner--text"><?= Yii::t('app', 'CLI') ?></span>
+                    </a>
+                </li>
                 <?php if (!Yii::$app->user->isGuest) { ?>
                     <li class="nav-item text-uppercase">
                         <a href="<?= Url::to(['links']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "links" ? 'active' : '' ?>" role="button">

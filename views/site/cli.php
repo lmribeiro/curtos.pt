@@ -22,7 +22,7 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
                     <div>
                         <h5 class="bd-title" id="intro"><?= Yii::t('app', 'Visão Geral') ?></h5>
                         <p class="bd-lead">
-                            <?= Yii::t('app', 'Pensada para developers, a curtos-cli é uma cli simples e prática que permite usar a API curtos.pt atravez da linha de comandos.') ?>
+                            <?= Yii::t('app', 'Pensada para developers, a curtos-cli é uma cli simples e prática que permite usar a API curtos.pt através da linha de comandos.') ?>
                         </p>
 
                         <h6 class="bd-title mt-2" id="repos"><?= Yii::t('app', 'Repositórios') ?></h6>

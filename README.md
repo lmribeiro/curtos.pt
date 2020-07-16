@@ -5,6 +5,8 @@ A modern free open source PHP (Yii) URL shortener.
 Your links... short!
 
 
+<img src="https://github.com/lmribeiro/curtos.pt/blob/master/web/img/curtos.gif?raw=true" width="100%" />
+
 
 DIRECTORY STRUCTURE
 -------------------

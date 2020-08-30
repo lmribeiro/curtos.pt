@@ -11,9 +11,6 @@ REQUIREMENTS
 
 The minimum requirement by this project that your Web server supports PHP 7.0.0 and to have a MySQL database.
 
-<img src="https://github.com/lmribeiro/curtos.pt/blob/master/web/img/curtos.gif?raw=true" width="100%" />
-
-
 DIRECTORY STRUCTURE
 -------------------
 

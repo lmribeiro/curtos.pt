@@ -6,7 +6,8 @@ use Yii;
 use yii\base\Model;
 
 /**
- * Signup form
+ * Class AccountForm
+ * @package app\models
  */
 class AccountForm extends Model
 {

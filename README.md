@@ -1,9 +1,15 @@
-# Curtos
+# Curtos.pt
 
 A modern free open source PHP (Yii) URL shortener.
 
-Your links... short!
+Your links... short! [Try it.](https://curtos.pt)
 
+<img src='https://github.com/lmribeiro/curtos.pt/blob/master/web/img/curtos.gif?raw=true' width="100%" />
+
+REQUIREMENTS
+------------
+
+The minimum requirement by this project that your Web server supports PHP 7.0.0 and to have a MySQL database.
 
 <img src="https://github.com/lmribeiro/curtos.pt/blob/master/web/img/curtos.gif?raw=true" width="100%" />
 
@@ -16,6 +22,7 @@ DIRECTORY STRUCTURE
       config/             contains application configurations
       controllers/        contains Web controller classes
       mail/               contains view files for e-mails
+      migrations/         contains database migrations
       models/             contains model classes
       runtime/            contains files generated during runtime
       tests/              contains various tests for the basic application
@@ -24,25 +31,67 @@ DIRECTORY STRUCTURE
       web/                contains the entry script and Web resources
 
 
-
-REQUIREMENTS
-------------
-
-The minimum requirement by this project template that your Web server supports PHP 5.6.0.
-
-
 INSTALLATION
 ------------
 
+Clone this repository and run Composer as follows:
 
+```
+git clone git@github.com:lmribeiro/curtos.pt.git
 
-~~~
-http://localhost/curtos.pt/web/
-~~~
+cd curtos.pt
 
+composer install
+```
+
+The command above will install the dependencies.
 
 CONFIGURATION
 -------------
+
+### Database
+
+Edit the file `config/db.php` with real data, for example:
+
+```php
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=localhost;dbname=curtospt',
+    'username' => 'root',
+    'password' => 'root',
+    'charset' => 'utf8',
+];
+```
+
+#### Create Database
+
+Login to MySQL client:
+
+```
+mysql -u '<your_user'> -p
+```
+
+Create database:
+
+```
+CREATE DATABASE curtospt;
+GRANT ALL PRIVILEGES ON curtospt.* TO '<your_user>'@localhost identified by '<your_password>';
+quit
+```
+
+
+The run migrations
+
+```
+php yii migrate
+```
+
+**NOTES:**
+- Yii won't create the database for you, this has to be done manually before you can access it.
+- Check and edit the other files in the `config/` directory to customize your application as required.
+- Refer to the README in the `tests` directory for information specific to basic application tests.
+
+### Cookie Validation
 
 Set cookie validation key in `config/web.php` file to some random secret string:
 
@@ -53,28 +102,24 @@ Set cookie validation key in `config/web.php` file to some random secret string:
 ],
 ```
 
-You can then access the application through the following URL:
+RUN
+------------
 
+You can start the server with PHP.
 
-## Database
-
-Edit the file `config/db.php` with real data, for example:
-
-```php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=curtos',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
-];
+```
+php yii serve
+```
+By default, the serve will run a port 8080, but you can use the `-p flag to change it.
+```
+php yii serve -p=8181
 ```
 
-**NOTES:**
-- This won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
+Now you should be able to access the application through the following URL.
 
+```
+http://localhost:8080
+```
 
 TESTING
 -------

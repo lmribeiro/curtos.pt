@@ -8,7 +8,7 @@ use yii\base\Model;
 /**
  * Login form
  *
- * @property \app\models\User|null $user
+ * @property User|null $user
  */
 class LoginForm extends Model
 {

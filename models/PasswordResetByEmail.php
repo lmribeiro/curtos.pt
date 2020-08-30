@@ -5,6 +5,10 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 
+/**
+ * Class PasswordResetByEmail
+ * @package app\models
+ */
 class PasswordResetByEmail extends Model
 {
 

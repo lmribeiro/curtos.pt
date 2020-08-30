@@ -2,27 +2,25 @@
 
 namespace app\controllers;
 
-use Yii;
-use yii\web\{
-    Controller
-};
-use yii\filters\{
-    VerbFilter,
-    AccessControl
-};
-use app\models\{
-    User,
+use app\models\{AccountForm,
     Link,
     LinkSearch,
     LoginForm,
-    SignupForm,
-    AccountForm,
     PasswordReset,
-    SetPasswordForm,
     PasswordResetByEmail,
-    PasswordResetByUsername
+    PasswordResetByUsername,
+    SetPasswordForm,
+    SignupForm,
+    User
 };
+use Yii;
+use yii\filters\{AccessControl, VerbFilter};
+use yii\web\{Controller, Response};
 
+/**
+ * Class SiteController
+ * @package app\controllers
+ */
 class SiteController extends Controller
 {
 
@@ -73,6 +71,9 @@ class SiteController extends Controller
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function beforeAction($action)
     {
         if ($action->id === "theme") {
@@ -84,7 +85,7 @@ class SiteController extends Controller
     /**
      * About
      *
-     * @return yii\web\View
+     * @return Response|string
      */
     public function actionAbout()
     {
@@ -93,8 +94,8 @@ class SiteController extends Controller
 
     /**
      * User account
-     * 
-     * @return yii\web\View
+     *
+     * @return Response|string
      */
     public function actionAccount()
     {
@@ -110,7 +111,7 @@ class SiteController extends Controller
             $account->attributes = $post['AccountForm'];
             $account->save();
             Yii::$app->getSession()->setFlash(
-                    'success', Yii::t('app', 'Dados pessoais atualizados com sucesso.')
+                'success', Yii::t('app', 'Dados pessoais atualizados com sucesso.')
             );
             return $this->redirect(['account']);
         }
@@ -118,34 +119,48 @@ class SiteController extends Controller
             $password->attributes = $post['SetPasswordForm'];
             $password->resetPassword();
             Yii::$app->getSession()->setFlash(
-                    'success', Yii::t('app', 'Password alterada com sucesso.')
+                'success', Yii::t('app', 'Password alterada com sucesso.')
             );
             return $this->redirect(['account']);
         }
 
         return $this->render('account', [
-                    'account' => $account,
-                    'password' => $password
+            'account' => $account,
+            'password' => $password
         ]);
     }
 
     /**
      * Delete user account
-     * 
-     * @return redirect
+     *
+     * @return Response|string
      */
     public function actionAccountDelete()
     {
         Yii::$app->user->identity->delete();
         Yii::$app->getSession()
-                ->setFlash('success', Yii::t('app', 'Conta apagada com sucesso.'));
+            ->setFlash('success', Yii::t('app', 'Conta apagada com sucesso.'));
         return $this->actionLogout();
+    }
+
+    /**
+     * Logout
+     *
+     * @return Response|string
+     */
+    public function actionLogout()
+    {
+        $theme = Yii::$app->session->get('theme') ? 'night' : '';
+        Yii::$app->user->logout();
+
+        Yii::$app->session->set('theme', $theme);
+        return $this->goHome();
     }
 
     /**
      * API
      *
-     * @return yii\web\View
+     * @return Response|string
      */
     public function actionApiV1()
     {
@@ -155,7 +170,7 @@ class SiteController extends Controller
     /**
      * CLI
      *
-     * @return yii\web\View
+     * @return Response|string
      */
     public function actionCli()
     {
@@ -164,7 +179,7 @@ class SiteController extends Controller
 
     /**
      * Site index
-     * 
+     *
      * @return yii\web\View
      */
     public function actionIndex()
@@ -174,8 +189,8 @@ class SiteController extends Controller
 
     /**
      * Get user's links
-     * 
-     * @return yii\web\View
+     *
+     * @return Response|string
      */
     public function actionLinks()
     {
@@ -184,15 +199,15 @@ class SiteController extends Controller
         $dataProvider->pagination->pageSize = 10;
 
         return $this->render('links', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
      * Login action.
      *
-     * @return yii\web\View
+     * @return Response|string
      */
     public function actionLogin()
     {
@@ -207,28 +222,14 @@ class SiteController extends Controller
 
         $model->password = '';
         return $this->render('login', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
-     * Logout
-     * 
-     * @return redirect
-     */
-    public function actionLogout()
-    {
-        $theme = Yii::$app->session->get('theme') ? 'night' : '';
-        Yii::$app->user->logout();
-        
-        Yii::$app->session->set('theme', $theme);
-        return $this->goHome();
-    }
-
-    /**
      * renew API access key
-     * 
-     * @return redirect
+     *
+     * @return Response|string
      */
     public function actionRenewApiKey()
     {
@@ -236,14 +237,14 @@ class SiteController extends Controller
         $user->generateAuthKey();
         $user->save();
         Yii::$app->getSession()
-                ->setFlash('success', Yii::t('app', 'Chave regenerada com sucesso.'));
+            ->setFlash('success', Yii::t('app', 'Chave regenerada com sucesso.'));
         return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**
      * Reset Password
-     * 
-     * @return yii\web\View
+     *
+     * @return Response|string
      */
     public function actionResetPassword()
     {
@@ -260,7 +261,7 @@ class SiteController extends Controller
 
                 if ($byEmail->validate() && $byEmail->sendEmail()) {
                     Yii::$app->session
-                            ->setFlash('success', Yii::t('app', 'Verifique o seu email para concluir o processo.'));
+                        ->setFlash('success', Yii::t('app', 'Verifique o seu email para concluir o processo.'));
 
                     return $this->redirect(['login']);
                 }
@@ -271,7 +272,7 @@ class SiteController extends Controller
 
                 if ($byUsername->validate() && $byUsername->sendEmail()) {
                     Yii::$app->session
-                            ->setFlash('success', Yii::t('app', 'Verifique o seu email para concluir o processo.'));
+                        ->setFlash('success', Yii::t('app', 'Verifique o seu email para concluir o processo.'));
 
                     return $this->redirect(['login']);
                 }
@@ -280,17 +281,17 @@ class SiteController extends Controller
         }
 
         return $this->render('reset-password', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
      * Set Password
-     * 
+     *
      * @param string $token reset token
-     * @return yii\web\View
+     * @return Response|string
      */
-    public function actionSetPassword($token = false)
+    public function actionSetPassword($token = null)
     {
         $model = new SetPasswordForm();
 
@@ -307,27 +308,27 @@ class SiteController extends Controller
         $model->setUser($user);
 
         if (
-                $model->load(Yii::$app->request->post()) &&
-                $model->validate() &&
-                $model->resetPassword()
+            $model->load(Yii::$app->request->post()) &&
+            $model->validate() &&
+            $model->resetPassword()
         ) {
             Yii::$app->session->setFlash(
-                    'success', Yii::t('app', 'Password alterada com sucesso')
+                'success', Yii::t('app', 'Password alterada com sucesso')
             );
 
             return $this->redirect(['login']);
         }
 
         return $this->render('set-password', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
      * Redirect user to target link
-     * 
+     *
      * @param string $id the short link code
-     * @return redirect
+     * @return Response|string
      */
     public function actionShort($id)
     {
@@ -340,8 +341,8 @@ class SiteController extends Controller
 
     /**
      * Signup
-     * 
-     * @return yii\web\View
+     *
+     * @return Response|string
      */
     public function actionSignup()
     {
@@ -354,21 +355,21 @@ class SiteController extends Controller
             if ($model->signup()) {
 
                 Yii::$app->getSession()
-                        ->setFlash('success', Yii::t('app', 'Verifique o seu email para concluir o processo.'));
+                    ->setFlash('success', Yii::t('app', 'Verifique o seu email para concluir o processo.'));
 
                 return $this->goHome();
             }
         }
 
         return $this->render('signup', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
      * Site terms of use
-     * 
-     * @return yii\web\View
+     *
+     * @return Response|string
      */
     public function actionTerms()
     {
@@ -377,7 +378,7 @@ class SiteController extends Controller
 
     /**
      * Set/remove night mode
-     * 
+     *
      * @return boolean true
      */
     public function actionTheme()
@@ -389,9 +390,9 @@ class SiteController extends Controller
 
     /**
      * Verify Account
-     * 
+     *
      * @param string $key user auth key
-     * @return yii\web\View
+     * @return Response|string
      */
     public function actionVerifyAccount($key)
     {

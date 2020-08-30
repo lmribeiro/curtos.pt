@@ -6,7 +6,8 @@ use Yii;
 use yii\base\Model;
 
 /**
- * Password reset form
+ * Class SetPasswordForm
+ * @package app\models
  */
 class SetPasswordForm extends Model
 {

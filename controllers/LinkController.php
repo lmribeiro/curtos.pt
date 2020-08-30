@@ -2,28 +2,23 @@
 
 namespace app\controllers;
 
-use Yii;
-use yii\helpers\Url;
-use yii\web\{
-    Controller,
-    NotFoundHttpException
-};
-use yii\filters\{
-    VerbFilter,
-    AccessControl
-};
-use app\models\{
-    Link,
-    LinkSearch
-};
 use app\components\Shorter;
+use app\models\{Link, LinkSearch};
+use Yii;
+use yii\filters\{AccessControl, VerbFilter};
+use yii\base\Action;
+use yii\helpers\Url;
+use yii\web\{BadRequestHttpException, Controller, NotFoundHttpException, Response};
 
 /**
- * LinkController implements the CRUD actions for Link model.
+ * Class LinkController
+ * @package app\controllers
  */
 class LinkController extends Controller
 {
-
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [
@@ -55,12 +50,25 @@ class LinkController extends Controller
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function beforeAction($action)
     {
         $this->enableCsrfValidation = false;
-        return parent::beforeAction($action);
+        try {
+            return parent::beforeAction($action);
+        } catch (BadRequestHttpException $e) {
+            Yii::error($e->getMessage());
+        }
     }
 
+    /**
+     * Short
+     * Entering point for the short link
+     *
+     * @return string
+     */
     public function actionShort()
     {
         $user = false;
@@ -72,11 +80,12 @@ class LinkController extends Controller
         }
 
         $link = $shorter->getShortLink($request->post('target'), $user);
-        return Url::base(true)."/".$link->short;
+        return Url::base(true) . "/" . $link->short;
     }
 
     /**
-     * Lists all Link models.
+     * Lists all Link models
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -85,13 +94,14 @@ class LinkController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
      * Displays a single Link model.
+     *
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -99,13 +109,31 @@ class LinkController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+            'model' => $this->findModel($id),
         ]);
+    }
+
+    /**
+     * Finds the Link model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     *
+     * @param integer $id
+     * @return Link the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Link::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 
     /**
      * Creates a new Link model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -117,13 +145,14 @@ class LinkController extends Controller
         }
 
         return $this->render('create', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
      * Updates an existing Link model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -137,13 +166,14 @@ class LinkController extends Controller
         }
 
         return $this->render('update', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
      * Deletes an existing Link model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -152,42 +182,27 @@ class LinkController extends Controller
     {
         $this->findModel($id)->delete();
         Yii::$app->getSession()->setFlash(
-                'success', Yii::t('app', 'Apagado com sucesso.')
+            'success', Yii::t('app', 'Apagado com sucesso.')
         );
         return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**
      * Renew Link's expiration date
-     * 
+     *
      * @param int $id Link's ID
-     * @return type
+     * @return Response|string
+     * @throws NotFoundHttpException
      */
     public function actionRenew($id)
     {
         $model = $this->findModel($id);
-        $model->expires_after = date('Y-m-d H:i:s', strtotime($model->expires_after." + 30 days"));
+        $model->expires_after = date('Y-m-d H:i:s', strtotime($model->expires_after . " + 30 days"));
         $model->save();
         Yii::$app->getSession()->setFlash(
-                'success', Yii::t('app', 'Data de expiração renovada com sucesso.')
+            'success', Yii::t('app', 'Data de expiração renovada com sucesso.')
         );
         return $this->redirect(Yii::$app->request->referrer);
-    }
-
-    /**
-     * Finds the Link model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Link the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Link::findOne($id)) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 
 }

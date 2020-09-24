@@ -12,12 +12,12 @@
                 <div class="text-lg-right text-center">
                     <p>
                         <?= Yii::t('app', 'Url shortener gratuito e ') ?> 
-                        <a class="text-info" href="https://github.com/lmribeiro/curtos.pt" class="nav-link" target="_blank">
+                        <a class="text-info" href="https://github.com/lmribeiro/curtos.pt" rel="noreferrer" class="nav-link" target="_blank">
                             <?= Yii::t('app', 'Open Source') ?>.
                         </a> 
                         <span class="d-none d-lg-inline"> | </span>
                         <br class="d-lg-none" />
-                        <a class="text-info" href="<?= \yii\helpers\Url::to(['terms']) ?>" class="nav-link">
+                        <a class="text-info" href="<?= \yii\helpers\Url::to(['terms']) ?>" rel="noreferrer" class="nav-link">
                             <?= Yii::t('app', 'Termos de Uso') ?>.
                         </a>
                     </p>

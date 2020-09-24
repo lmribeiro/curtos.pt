@@ -8,6 +8,6 @@
     </p>
 <?php } else { ?>
     <p class="bd-lead">
-        <?= Yii::t('app', 'Como já fizeste esse passo, podes passar para a documentação dos') ?> <a href="#endpoints" class="">Endpoints</a>.
+        <?= Yii::t('app', 'Como já fizeste esse passo, podes passar para a documentação dos') ?> <a href="#endpoints" rel="noreferrer" class="">Endpoints</a>.
     </p>
 <?php } ?>

@@ -68,4 +68,4 @@ $this->params['modals'][] = "renew";
             </div>
         </div>
     </div>
-</section>
+</div>

@@ -29,37 +29,37 @@ use yii\helpers\Url;
             </div>
             <ul class="navbar-nav align-items-lg-center">
                 <li class="nav-item text-uppercase">
-                    <a href="<?= Yii::$app->homeUrl ?>" class="nav-link <?= Yii::$app->controller->action->id == "index" ? 'active' : '' ?>" role="button" alt>
+                    <a href="<?= Yii::$app->homeUrl ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "index" ? 'active' : '' ?>">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'Início') ?></span>
                     </a>
                 </li>
                 <li class="nav-item text-uppercase">
-                    <a href="<?= Url::to(['about']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "about" ? 'active' : '' ?>" role="button">
+                    <a href="<?= Url::to(['about']) ?>"rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "about" ? 'active' : '' ?>">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'Sobre') ?></span>
                     </a>
                 </li>
                 <li class="nav-item text-uppercase">
-                    <a href="<?= Url::to(['api-v1']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "api-v1" ? 'active' : '' ?>" role="button">
+                    <a href="<?= Url::to(['api-v1']) ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "api-v1" ? 'active' : '' ?>">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'API') ?></span>
                     </a>
                 </li>
                 <li class="nav-item text-uppercase">
-                    <a href="<?= Url::to(['cli']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "cli" ? 'active' : '' ?>" role="button">
+                    <a href="<?= Url::to(['cli']) ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "cli" ? 'active' : '' ?>">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'CLI') ?></span>
                     </a>
                 </li>
                 <?php if (!Yii::$app->user->isGuest) { ?>
                     <li class="nav-item text-uppercase">
-                        <a href="<?= Url::to(['links']) ?>" class="nav-link <?= Yii::$app->controller->action->id == "links" ? 'active' : '' ?>" role="button">
+                        <a href="<?= Url::to(['links']) ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "links" ? 'active' : '' ?>">
                             <span class="nav-link-inner--text"><?= Yii::t('app', 'Links') ?></span>
                         </a>
                     </li>
                 <?php } ?>
                 <?php if (Yii::$app->user->isGuest) { ?>
-                    <a href="<?= Url::to(['login']) ?>" class="btn btn-neutral px-4 mb-3 mt-5 d-sm-none">
+                    <a href="<?= Url::to(['login']) ?>" rel="noreferrer" class="btn btn-neutral px-4 mb-3 mt-5 d-sm-none">
                         <?= Yii::t('app', 'Entar') ?>
                     </a>
-                    <a href="<?= Url::to(['signup']) ?>" class="btn btn-primary d-sm-none">
+                    <a href="<?= Url::to(['signup']) ?>" rel="noreferrer" class="btn btn-primary d-sm-none">
                         <?= Yii::t('app', 'Registar') ?>
                     </a> 
                 <?php } else { ?>
@@ -98,21 +98,21 @@ use yii\helpers\Url;
                         </a>
                     </li>
                     <li class="nav-item d-lg-block ml-lg-4">
-                        <a href="<?= Url::to(['signup']) ?>" class="btn btn-primary px-4">
+                        <a href="<?= Url::to(['signup']) ?>" rel="noreferrer" class="btn btn-primary px-4">
                             <?= Yii::t('app', 'Registar') ?>
                         </a>
                     </li>
                 <?php } else { ?>
                     <li class="nav-item dropdown">
-                        <a href="#" class="btn btn-md btn-neutral px-4 mb-1" style="min-width: 190px;" data-toggle="dropdown" href="#" role="button">
+                        <a href="#" rel="noreferrer" class="btn btn-md btn-neutral px-4 mb-1" style="min-width: 190px;" data-toggle="dropdown" href="#" role="button">
                             <span class="fas fa-user-circle fa-lg"></span>
                             <?= Yii::$app->user->identity->name ?? Yii::$app->user->identity->username ?>
                         </a>
                         <div class="dropdown-menu">
-                            <a href="<?= Url::to(['account']) ?>" class="dropdown-item">
+                            <a href="<?= Url::to(['account']) ?>" rel="noreferrer" class="dropdown-item">
                                 <?= Yii::t('app', 'Conta') ?>
                             </a>
-                            <a href="<?= Url::to(['logout']) ?>" class="dropdown-item">
+                            <a href="<?= Url::to(['logout']) ?>" rel="noreferrer" class="dropdown-item">
                                 <span class="nav-link-inner--text text-danger"><?= Yii::t('app', 'Sair') ?></span>
                                 <span class="float-right text-danger"><i class="fas fa-sign-out-alt"></i></span>
                             </a>

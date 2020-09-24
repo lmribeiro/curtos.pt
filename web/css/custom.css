@@ -208,6 +208,10 @@ and open the template in the editor.
     left: 37%;
 }
 
+.text-info {
+    color: #016ed8!important;
+}
+
 @media (max-width: 991.98px) {
     .navbar-collapse .navbar-toggler span {
         display: block;

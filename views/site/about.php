@@ -25,7 +25,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Sobre');
         <div class="row mt-5 mb-2">
             <div class="col">
                 <div class="description">
-                    <h5 class="title"><?= Yii::t('app', 'FAQS') ?></h5>
+                    <h2 class="title"><?= Yii::t('app', 'FAQS') ?></h2>
                 </div>
             </div>
         </div>
@@ -33,33 +33,33 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Sobre');
         <div class="row text-justify">
             <div class="col-md-4 mb-3">
                 <div class="info">
-                    <h6><?= Yii::t('app', 'Como funciona?') ?></h6>
-                    <p class="description opacity-8"><?= Yii::t('app', 'Basta inserir um url, a página inical, e selecionar o botão "Curto" para obter um link curto para o url inserido. Quando os utilizadores sseguem o link curto, são reencaminhados para o url origial.') ?></p>
+                    <h3><?= Yii::t('app', 'Como funciona?') ?></h3>
+                    <p class="description"><?= Yii::t('app', 'Basta inserir um url, a página inical, e selecionar o botão "Curto" para obter um link curto para o url inserido. Quando os utilizadores sseguem o link curto, são reencaminhados para o url origial.') ?></p>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="info">
-                    <h6><?= Yii::t('app', 'Preciso criar conta?') ?></h6>
-                    <p class="description opacity-8"><?= Yii::t('app', 'Não é necessário criar conta para poder usar o Curtos.pt, no entanto utilizadores registados têm acesso a mais funcionalidades.') ?></p>
+                    <h3><?= Yii::t('app', 'Preciso criar conta?') ?></h3>
+                    <p class="description"><?= Yii::t('app', 'Não é necessário criar conta para poder usar o Curtos.pt, no entanto utilizadores registados têm acesso a mais funcionalidades.') ?></p>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="info">
-                    <h6><?= Yii::t('app', 'O link curto expira?') ?></h6>
-                    <p class="description opacity-8"><?= Yii::t('app', 'Normalmente um link curto expira em 30 dias. Uma vez expirado, o link é automáticamente apagado. Utilizadores registados podem prelongar a data de expiração.') ?></p>
+                    <h3><?= Yii::t('app', 'O link curto expira?') ?></h3>
+                    <p class="description"><?= Yii::t('app', 'Normalmente um link curto expira em 30 dias. Uma vez expirado, o link é automáticamente apagado. Utilizadores registados podem prelongar a data de expiração.') ?></p>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="info">
-                    <h6><?= Yii::t('app', 'Que tecnologias usa?') ?></h6>
-                    <p class="description opacity-8"><?= Yii::t('app', 'O Curtos.pt é desenvolvido em PHP e usa a framework Yii como base. Alem disso, também usar JQuery, Bootstrap e base de dados MySQL.') ?></p>
+                    <h3><?= Yii::t('app', 'Que tecnologias usa?') ?></h3>
+                    <p class="description"><?= Yii::t('app', 'O Curtos.pt é desenvolvido em PHP e usa a framework Yii como base. Alem disso, também usar JQuery, Bootstrap e base de dados MySQL.') ?></p>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="info">
-                    <h6><?= Yii::t('app', 'Tem uma API?') ?></h6>
-                    <p class="description opacity-8"><?= Yii::t('app', 'Sim, o Curtos.pt está disponivel tanto para utilizadores registados como utilizadores sem registo.') ?>
-                        <a class="text-info" href="<?= \yii\helpers\Url::to(['api-v1']) ?>" class="nav-link">
+                    <h3><?= Yii::t('app', 'Tem uma API?') ?></h3>
+                    <p class="description"><?= Yii::t('app', 'Sim, o Curtos.pt está disponivel tanto para utilizadores registados como utilizadores sem registo.') ?>
+                        <a class="text-info" href="<?= \yii\helpers\Url::to(['api-v1']) ?>" rel="noreferrer" class="nav-link">
                             <?= Yii::t('app', 'Ver Documentação') ?>.
                         </a>
                     </p>

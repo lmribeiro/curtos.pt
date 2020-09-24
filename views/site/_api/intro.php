@@ -22,5 +22,5 @@
     <b>1.0.0 (Draft)</b><br/>
     <?= Yii::t('app', 'Data criação') ?>: 2020/05/03<br/>
     <?= Yii::t('app', 'Última atualização') ?>: 2020/05/04<br/>
-    <?= Yii::t('app', 'Root URL') ?>: <a href="https://curtos.pt/">https://curtos.pt/</a><br/>
+    <?= Yii::t('app', 'Root URL') ?>: <a href="https://curtos.pt/" rel="noreferrer">https://curtos.pt/</a><br/>
 </p>

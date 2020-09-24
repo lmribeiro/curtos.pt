@@ -20,9 +20,9 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=7.0",
-        "yiisoft/yii2": "~2.0.34",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+        "yiisoft/yii2": "~2.0.38",
+        "yiisoft/yii2-bootstrap": "~2.0.10",
+        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.2",
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-grid": "@dev"
     },

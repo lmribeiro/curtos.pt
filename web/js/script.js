@@ -1,8 +1,8 @@
-var app = (function () {
+const app = (function () {
 
-    var url;
+    let url;
 
-    var init = function () {
+    const init = function () {
         console.log(`
  #####                                                     
 #       #    # #####  #####  ####   ####      #####  ##### 
@@ -16,19 +16,19 @@ var app = (function () {
         $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
     };
 
-    var validateUrl = function (str) {
-        var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
-                '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-                '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-                '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-                '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    const validateUrl = function (str) {
+        const pattern = new RegExp('^((https|http):\\/\\/)' + // protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+            '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
         return !!pattern.test(str);
     };
 
     // Link shorter
-    var short = function () {
-        var target = $("#target").val();
+    const short = function () {
+        const target = $("#target").val();
 
         if (app.validateUrl(target)) {
             $.ajax({
@@ -55,8 +55,8 @@ var app = (function () {
     };
 
     // copy
-    var copy = function () {
-        var copyText = $("#target");
+    const copy = function () {
+        const copyText = $("#target");
         copyText.select();
 //        copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
@@ -69,16 +69,16 @@ var app = (function () {
     };
 
     // copy key
-    var copyKey = function () {
-        var copyText = $("#api-key");
+    const copyKey = function () {
+        const copyText = $("#api-key");
         copyText.select();
         document.execCommand("copy");
-        
+
         app.notify("Copiada com sucesso!", "success", 100);
     };
 
     // Notify Actions
-    var notify = function (message, type, time) {
+    const notify = function (message, type, time) {
         $.notify({
             icon: 'fa fa-bell',
             message: message
@@ -89,7 +89,7 @@ var app = (function () {
     };
 
     // Notify error
-    var notifyError = function () {
+    const notifyError = function () {
         $("#target-div").toggleClass('has-error');
         $(".help-block").toggleClass('visible-off');
         setTimeout(function () {
@@ -99,7 +99,7 @@ var app = (function () {
     };
 
     // Return the public facing methods for the App
-    return  {
+    return {
         init: init,
         short: short,
         copy: copy,

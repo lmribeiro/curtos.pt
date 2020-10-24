@@ -1,4 +1,4 @@
-# Curtos.pt
+<img src="https://curtos.pt/img/name.svg" />
 
 A modern free open source PHP (Yii) URL shortener.
 

@@ -7,6 +7,12 @@ and open the template in the editor.
     Created on : May 17, 2020, 7:00:23 PM
     Author     : lribeiro
 */
+.h2, h2 {
+    font-size: 1.8rem;
+}
+.h3, h3 {
+    font-size: 1.4rem;
+}
 .navbar-brand img {
     height: 19px;
     margin-top: -6px;
@@ -55,8 +61,15 @@ and open the template in the editor.
     vertical-align: middle;
     border-top: none;
 }
-.table td:first-child {
-    padding-left: 10px;
+.table-responsive-sm {
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+thead td:first-child {
+    padding-left: 0px;
+}
+tbody td {
+    padding-left: 10px !important;
 }
 .table td:last-child {
     text-align: center;
@@ -157,8 +170,9 @@ and open the template in the editor.
 }
 .display-3 {
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.5;
+    text-transform: uppercase;
 }
 .side-link.active {
     color: red!important;

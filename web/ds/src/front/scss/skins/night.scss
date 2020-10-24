@@ -2,110 +2,131 @@
 @import "../_mixin";*/
 
 $colors: (
-
-curtos:         #1176a2,
-primary:        #0F161E,
-secondary:      #061F2F,
-hover:          #090c11,
-dark:           #222222,
-white:          #d3d4d4,
-whitesmoke:     #f9f9f9,
-
+        curtos: #1176a2,
+        primary: #0F161E,
+        secondary: #061F2F,
+        hover: #090c11,
+        dark: #222222,
+        white: #d3d4d4,
+        whitesmoke: #f9f9f9,
+        gray: #cccccc,
 );
 
 body.night {
 
-    background-color: color(primary);
+  h2, h2, .h3, h3 {
     color: color(white);
-    .display-3, h5, h6 {
-        color: color(white);
-    }
-    .form-control {
-        background-color: color(secondary);
-        border: .0625rem solid color(secondary);
-    }
-    .btn-neutral {
-        background-color: color(secondary);
-        border-color: color(secondary);
-        box-shadow: 0 0.125rem 0.25rem rgba(244,244,244,0.2);
-    }
-    .btn-neutral:hover {
-        background-color: color(hover);
-        border-color: color(hover);
-    }
-    .btn-neutral:focus, .btn-neutral.focus {
-        box-shadow: 0 0.125rem 0.25rem rgba(255,255,255,0.2);
-    }
+  }
 
-    .navbar .navbar-nav .dropdown .dropdown-menu {
-        top: calc(100% + 6px);
-        border: 1px solid color(secondary);
-        box-shadow: 0 0.125rem 0.25rem rgba(255,255,255,0.2);
-    }
+  background-color: color(primary);
+  color: color(gray);
 
-    .btn-neutral:not(:disabled):not(.disabled):active, .show>.btn-neutral.dropdown-toggle {
-        color: color(white);
-        background-color: color(primary);
-        border-color: color(primary);
-    }
-    .navbar-toggler {
-        color: color(white);
-    }
-    .dropdown-menu {
-        color: color(white);
-        background-color: color(primary);
-    }
-    .show .dropdown-menu {
-        animation: none;
-    }
-    .dropdown-item:focus, .dropdown-item:hover {
-        color: color(curtos);
-        text-decoration: none;
-        background-color: transparent;
-    }
-    .modal-content {
-        background-color: color(primary);
-    }
-    .modal-footer, .modal-header {
-        border: none;
-    }
-    .modal-header .close {
-        color: color(white);
-    }
-    .highlight pre {
-        background: color(dark)!important;
-    }
-    .highlight pre code {
-        color: color(whitesmoke)!important;
-    }
-    .page-link {
-        color: color(whitesmoke);
-        background-color: color(secondary);
-        border: .0625rem solid color(secondary);
-    }
-    .page-item.disabled {
-        border-color:color(secondary);
-        background-color: color(secondary);
-    }
-    .table  {
-        color: color(white);
-    }
-    .tumbler {
-        position: absolute;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        background-color: color(white);
-        transition: margin-left 0.5s, background-color 0.5s;
-        margin-left: calc(100% - 30px);
-    }
+  .display-3, h5, h6 {
+    color: color(white);
+  }
 
-    @media (max-width: 991.98px) {
-        .navbar-collapse.collapsing, .navbar-collapse.show {
-            background: color(primary);
-        }
-        .navbar-collapse .navbar-toggler span {
-            background: color(white)!important;
-        }
+  .form-control {
+    background-color: color(secondary);
+    border: .0625rem solid color(secondary);
+  }
+
+  .btn-neutral {
+    background-color: color(secondary);
+    border-color: color(secondary);
+    box-shadow: 0 0.125rem 0.25rem rgba(244, 244, 244, 0.2);
+  }
+
+  .btn-neutral:hover {
+    background-color: color(hover);
+    border-color: color(hover);
+  }
+
+  .btn-neutral:focus, .btn-neutral.focus {
+    box-shadow: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.2);
+  }
+
+  .navbar .navbar-nav .dropdown .dropdown-menu {
+    top: calc(100% + 6px);
+    border: 1px solid color(secondary);
+    box-shadow: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-neutral:not(:disabled):not(.disabled):active, .show > .btn-neutral.dropdown-toggle {
+    color: color(white);
+    background-color: color(primary);
+    border-color: color(primary);
+  }
+
+  .navbar-toggler {
+    color: color(white);
+  }
+
+  .dropdown-menu {
+    color: color(white);
+    background-color: color(primary);
+  }
+
+  .show .dropdown-menu {
+    animation: none;
+  }
+
+  .dropdown-item:focus, .dropdown-item:hover {
+    color: color(curtos);
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+  .modal-content {
+    background-color: color(primary);
+  }
+
+  .modal-footer, .modal-header {
+    border: none;
+  }
+
+  .modal-header .close {
+    color: color(white);
+  }
+
+  .highlight pre {
+    background: color(dark) !important;
+  }
+
+  .highlight pre code {
+    color: color(whitesmoke) !important;
+  }
+
+  .page-link {
+    color: color(whitesmoke);
+    background-color: color(secondary);
+    border: .0625rem solid color(secondary);
+  }
+
+  .page-item.disabled {
+    border-color: color(secondary);
+    background-color: color(secondary);
+  }
+
+  .table {
+    color: color(white);
+  }
+
+  .tumbler {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: color(white);
+    transition: margin-left 0.5s, background-color 0.5s;
+    margin-left: calc(100% - 30px);
+  }
+
+  @media (max-width: 991.98px) {
+    .navbar-collapse.collapsing, .navbar-collapse.show {
+      background: color(primary);
     }
+    .navbar-collapse .navbar-toggler span {
+      background: color(white) !important;
+    }
+  }
 }

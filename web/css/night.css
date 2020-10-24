@@ -10,11 +10,13 @@ and open the template in the editor.
 body.night {
     background-color: #061F2F;
 }
+
 body.night .form-control {
     background-color: #0A121B;
     background-clip: padding-box;
     border: 1px solid #0A121B;
 }
+
 body.night .form-control:focus {
     color: #8898AA;
     background-color: #0A121B;
@@ -28,4 +30,8 @@ body.night .footer {
 body.night .btn-neutral {
     background-color: #0A121B;
     border-color: #0A121B;
+}
+
+body.night h3 {
+    color: #fff !important;
 }

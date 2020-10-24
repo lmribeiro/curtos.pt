@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\Stats;
 use app\models\{AccountForm,
     Link,
     LinkSearch,
@@ -330,11 +331,15 @@ class SiteController extends Controller
      * @param string $id the short link code
      * @return Response|string
      */
-    public function actionShort($id)
+    public function actionShort(string $id)
     {
         $link = Link::find()->where(['short' => $id])->one();
         $link->visit_count++;
         $link->save();
+
+        // Add stats
+        $stats = new Stats();
+        $stats->create($link);
 
         return $this->redirect($link->target);
     }

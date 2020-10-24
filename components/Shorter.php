@@ -2,8 +2,9 @@
 
 namespace app\components;
 
-use Yii;
 use app\models\Link;
+use app\models\User;
+use Yii;
 
 class Shorter
 {
@@ -20,12 +21,13 @@ class Shorter
 
     /**
      * Get short link for the given target
-     * 
+     *
      * @param string $target Target link
-     * @param int $time Time to the link expire (in days)
+     * @param $user
+     * @param bool $time Time to the link expire (in days)
      * @return string The short link
      */
-    public function getShortLink($target, $user, $time = false)
+    public function getShortLink(string $target, User $user, $time = false)
     {
         if (!$time) {
             $time = $this->expiresAfter;
@@ -34,7 +36,7 @@ class Shorter
         $model = new Link();
         $model->short = $this->getSlug();
         $model->target = $target;
-        $model->expires_after = date('Y-m-d H:i:s', strtotime("+ ".$time." day"));
+        $model->expires_after = date('Y-m-d H:i:s', strtotime("+ " . $time . " day"));
 
         if ($user) {
             $model->user_id = $user->id;
@@ -47,7 +49,7 @@ class Shorter
 
     /**
      * Generate an unique slug
-     * 
+     *
      * @return string An unique short slug
      */
     private function getSlug()

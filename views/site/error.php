@@ -2,11 +2,12 @@
 /* @var $this yii\web\View */
 /* @var $name string */
 /* @var $message string */
+
 /* @var $exception Exception */
 
 use yii\helpers\Html;
 
-$this->title = Yii::$app->name." | ".$name;
+$this->title = Yii::$app->name . " | " . $name;
 
 ?>
 <div class="section mt-5">
@@ -21,18 +22,16 @@ $this->title = Yii::$app->name." | ".$name;
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="">
-
+            <div class="text-center">
 
                 <div class="alert alert-danger">
-                    <?= nl2br(Html::encode($message)) ?>
+                    <p><?= nl2br(Html::encode($message)) ?></p>
                 </div>
+                <p>
+                    <?= Yii::t('app', 'Este ocorreu enquanto o servidor processava o teu pedido.') ?>
+                    <br/>
+                    <?= Yii::t('app', 'Por favor contacta-nos se achares que isso é um erro do servidor. Obrigado.') ?>
 
-                <p>
-                    The above error occurred while the Web server was processing your request.
-                </p>
-                <p>
-                    Please contact us if you think this is a server error. Thank you.
                 </p>
 
             </div>

@@ -17,6 +17,7 @@ use Yii;
  * @property string|null $updated_at
  *
  * @property User $user
+ * @property LinkStats[] $linkStats
  */
 class Link extends \yii\db\ActiveRecord
 {
@@ -76,5 +77,15 @@ class Link extends \yii\db\ActiveRecord
     public static function find()
     {
         return new LinkQuery(get_called_class());
+    }
+
+    /**
+     * Gets query for [[LinkStats]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLinkStats()
+    {
+        return $this->hasMany(LinkStats::className(), ['link_id' => 'id']);
     }
 }

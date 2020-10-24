@@ -3,7 +3,6 @@
 namespace app\components;
 
 use app\models\Link;
-use app\models\User;
 use Yii;
 
 class Shorter
@@ -27,7 +26,7 @@ class Shorter
      * @param bool $time Time to the link expire (in days)
      * @return string The short link
      */
-    public function getShortLink(string $target, User $user, $time = false)
+    public function getShortLink(string $target, $user, $time = false)
     {
         if (!$time) {
             $time = $this->expiresAfter;

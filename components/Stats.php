@@ -25,7 +25,7 @@ class Stats
         $stats->browser = Yii::$app->userAgent->browser;
         $stats->browserVersion = Yii::$app->userAgent->browserVersion;
 
-        if ($geo = $this->getGeo('188.250.135.203')) {
+        if ($geo = $this->getGeo($stats->ip)) {
             $stats->city = isset($geo["geoplugin_city"]) ? $geo["geoplugin_city"] : '';
             $stats->region = isset($geo['geoplugin_region']) ? $geo['geoplugin_region'] : '';
             $stats->country_code = isset($geo['geoplugin_countryCode']) ? $geo['geoplugin_countryCode'] : '';

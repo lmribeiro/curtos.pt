@@ -1,8 +1,10 @@
 <img src="https://curtos.pt/img/name.svg" />
 
-A modern free open source PHP (Yii) URL shortener.
+A modern free open source PHP URL shortener.
 
 Your links... short! [Try it.](https://curtos.pt)
+
+[![Yii](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=flat)](http://www.yiiframework.com/)
 
 <img src='https://github.com/lmribeiro/curtos.pt/blob/master/web/img/curtos.gif?raw=true' width="100%" />
 

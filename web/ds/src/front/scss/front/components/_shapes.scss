@@ -7,7 +7,6 @@
      position: absolute;
      bottom: 0;
      width: 100%;
-     background-image: url('../assets/img/patterns/wave.svg');
      background-repeat: repeat-x;
      background-position: bottom;
      background-size: 1450px 160px;
@@ -28,11 +27,6 @@
          top: -10px
      }
  }
- 
- .pattern-soft {
-     background-image: url('../assets/img/patterns/wave-soft.svg');
- }
-
 
 .organic-shape {
 	&:not(.position-relative) {

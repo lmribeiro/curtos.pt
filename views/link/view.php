@@ -35,7 +35,7 @@ $this->params['modals'][] = "renew";
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="card bg-light shadow">
+                <div class="card bg-light">
                     <div class="card-header border-light">
                         <div class="row">
                             <div class="col-8">

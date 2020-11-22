@@ -1,3 +1,6 @@
+<?php
+/** @var string $data */
+?>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
 <script src="https://cdn.amcharts.com/lib/4/geodata/continentsLow.js"></script>
@@ -6,7 +9,7 @@
 <!-- HTML -->
 <div class="row mt-5 mb-2">
     <div class="col-12">
-        <div class="card bg-light shadow mb-3" >
+        <div class="card bg-light mb-3">
             <div class="card-header border-light p-4">
                 <h4 class="mb-3 text-black"><?= Yii::t('app', 'Por país') ?></h4>
                 <p class="font-weight-normal mb-0">
@@ -22,7 +25,7 @@
 
 <!-- Chart code -->
 <script>
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         const data = <?= $data ?>
         // Themes begin
@@ -35,21 +38,20 @@
 
         try {
             chart.geodata = am4geodata_worldLow;
-        }
-        catch (e) {
+        } catch (e) {
             chart.raiseCriticalError(new Error("Map geodata could not be loaded. Please download the latest <a href=\"https://www.amcharts.com/download/download-v4/\">amcharts geodata</a> and extract its contents into the same directory as your amCharts files."));
         }
 
         // Set projection
         chart.projection = new am4maps.projections.Orthographic();
         chart.panBehavior = "rotateLongLat";
-        chart.padding(20,20,20,20);
+        chart.padding(20, 20, 20, 20);
 
         // Add zoom control
         chart.zoomControl = new am4maps.ZoomControl();
 
         const homeButton = new am4core.Button();
-        homeButton.events.on("hit", function(){
+        homeButton.events.on("hit", function () {
             chart.goHome();
         });
 
@@ -67,7 +69,7 @@
         chart.deltaLatitude = -20;
 
         // limits vertical rotation
-        chart.adapter.add("deltaLatitude", function(delatLatitude){
+        chart.adapter.add("deltaLatitude", function (delatLatitude) {
             return am4core.math.fitToRange(delatLatitude, -90, 90);
         })
 
@@ -77,8 +79,7 @@
 
         try {
             shadowPolygonSeries.geodata = am4geodata_continentsLow;
-        }
-        catch (e) {
+        } catch (e) {
             shadowPolygonSeries.raiseCriticalError(new Error("Map geodata could not be loaded. Please download the latest <a href=\"https://www.amcharts.com/download/download-v4/\">amcharts geodata</a> and extract its contents into the same directory as your amCharts files."));
         }
 
@@ -164,8 +165,7 @@
                     polygon.events.on("out", function () {
                         mapPolygon.isHover = false;
                     })
-                }
-                else {
+                } else {
                     mapPolygon.tooltipText = mapPolygon.dataItem.dataContext.name + ": no data";
                     mapPolygon.fillOpacity = 0.9;
                 }

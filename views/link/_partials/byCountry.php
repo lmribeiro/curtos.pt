@@ -23,7 +23,7 @@
 
         // Create map instance
         const chart = am4core.create("countries-chart", am4maps.MapChart);
-
+        chart.logo.height = -15000;
         const mapData = [<?= $data ?>];
 
         // Set map definition

@@ -26,6 +26,7 @@
 
         chart.paddingBottom = 30;
         chart.data = [<?= $data ?>];
+        chart.logo.height = -15000;
 
         const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
         categoryAxis.dataFields.category = "name";

@@ -187,7 +187,7 @@ class LinkController extends Controller
         Yii::$app->getSession()->setFlash(
             'success', Yii::t('app', 'Apagado com sucesso.')
         );
-        return $this->redirect(Yii::$app->request->referrer);
+        return $this->redirect(['/links']);
     }
 
     /**

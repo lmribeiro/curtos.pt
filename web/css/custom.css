@@ -51,7 +51,7 @@ and open the template in the editor.
     background-color: #eee;
 }
 .table thead th:last-child {
-    min-width: 97px;
+    min-width: 118px;
 }
 .table thead th:nth-child(4) {
     min-width: 168px;
@@ -254,4 +254,10 @@ body.night #countrys-chart {
 
 body.night .text-black {
     color: #fff !important;
+}
+body.night .card-title {
+    color: #fff !important;
+}
+.border-light {
+    border-color: #ddd!important;
 }

@@ -32,7 +32,7 @@ $form = ActiveForm::begin([
 <?php ActiveForm::end(); ?>
 <script>
     $('.btn-renew').on('click', function () {
-        url = "link/renew?id=" + $(this).data('id');
+        url = "/link/renew?id=" + $(this).data('id');
         $('#form-renew').attr('action', url);
     });
 

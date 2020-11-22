@@ -109,10 +109,10 @@ use yii\helpers\Url;
                             <?= Yii::$app->user->identity->name ?? Yii::$app->user->identity->username ?>
                         </a>
                         <div class="dropdown-menu">
-                            <a href="<?= Url::to(['account']) ?>" rel="noreferrer" class="dropdown-item">
+                            <a href="<?= Url::to(['/account']) ?>" rel="noreferrer" class="dropdown-item">
                                 <?= Yii::t('app', 'Conta') ?>
                             </a>
-                            <a href="<?= Url::to(['logout']) ?>" rel="noreferrer" class="dropdown-item">
+                            <a href="<?= Url::to(['/logout']) ?>" rel="noreferrer" class="dropdown-item">
                                 <span class="nav-link-inner--text text-danger"><?= Yii::t('app', 'Sair') ?></span>
                                 <span class="float-right text-danger"><i class="fas fa-sign-out-alt"></i></span>
                             </a>

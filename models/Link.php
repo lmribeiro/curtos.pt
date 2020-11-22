@@ -55,7 +55,7 @@ class Link extends \yii\db\ActiveRecord
             'short' => Yii::t('app', 'Curto'),
             'visit_count' => Yii::t('app', 'Visitas'),
             'expires_after' => Yii::t('app', 'Expira em'),
-            'created_at' => Yii::t('app', 'Criado erm'),
+            'created_at' => Yii::t('app', 'Criado em'),
             'updated_at' => Yii::t('app', 'Atualizado em'),
         ];
     }

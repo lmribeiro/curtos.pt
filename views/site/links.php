@@ -59,7 +59,7 @@ $this->params['modals'][] = "renew";
                             //'updated_at',
                             $actionCol = Yii::$app->params['actions'](
                                 [
-                                    'template' => '{view}&nbsp;{delete}'
+                                    'template' => '{view}&nbsp;{renew}&nbsp;{delete}'
                                 ]),
                         ],
                     ]);

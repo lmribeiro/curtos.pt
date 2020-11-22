@@ -32,7 +32,7 @@ $form = ActiveForm::begin([
 <?php ActiveForm::end(); ?>
 <script>
     $('.btn-delete').on('click', function () {
-        url = "link/delete?id=" + $(this).data('id');
+        url = "/link/delete?id=" + $(this).data('id');
         $('#form-delete').attr('action', url);
     });
 

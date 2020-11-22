@@ -21,7 +21,7 @@ return [
     'actionCol' => [
         'class' => 'yii\grid\ActionColumn',
         'headerOptions' => ['class' => 'text-center'],
-        'template' => '{view}&nbsp;{update}&nbsp;{expiration}&nbsp;{delete}',
+        'template' => '{view}&nbsp;{update}&nbsp;{renew}&nbsp;{delete}',
         'buttons' => [
             'view' => function ($url) {
                 return Html::tag('span', Html::a('<i class="fa fa-eye"></i>', $url, ['class' => 'btn btn-primary btn-sm btn-fab btn-icon btn-round']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Ver')]);
@@ -29,7 +29,7 @@ return [
             'update' => function ($url) {
                 return Html::tag('span', Html::a('<i class="fas fa-pencil-alt"></i>', $url, ['class' => ' text-warning']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Editar')]);
             },
-            'expiration' => function ($url, $model) {
+            'renew' => function ($url, $model) {
                 return Html::tag('span', Html::a('<i class="fas fa-calendar-plus"></i>', '#', ['class' => 'btn btn-success btn-sm btn-fab btn-icon btn-round btn-renew', 'data-id' => $model->id, 'data-toggle' => 'modal', 'data-target' => '#renew_modal']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Renovar data de expiração')]);
             },
             'delete' => function ($url, $model) {

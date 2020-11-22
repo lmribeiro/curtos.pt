@@ -107,8 +107,10 @@ class LinkController extends Controller
      */
     public function actionView($id)
     {
-        $model = Link::findOne(['short' => $id]);
-
+        if (!$model = Link::findOne(['short' => $id])) {
+            return $this->redirect(['/links']);
+        }
+        
         return $this->render('view', [
             'model' => $model,
             'browsers' => $this->getBrowsers($model),
@@ -187,7 +189,8 @@ class LinkController extends Controller
         Yii::$app->getSession()->setFlash(
             'success', Yii::t('app', 'Apagado com sucesso.')
         );
-        return $this->redirect(['/links']);
+
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**

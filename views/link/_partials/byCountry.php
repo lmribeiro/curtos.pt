@@ -28,9 +28,8 @@
     am4core.ready(function () {
 
         const data = <?= $data ?>
-        // Themes begin
+
         am4core.useTheme(am4themes_animated);
-        // Themes end
 
         // Create map instance
         const chart = am4core.create("countrys-chart", am4maps.MapChart);
@@ -125,7 +124,6 @@
         hs.properties.fillOpacity = 1;
         hs.properties.fill = am4core.color("#4a5073");
 
-
         const graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
         graticuleSeries.mapLines.template.stroke = am4core.color("#fff");
         graticuleSeries.fitExtent = false;
@@ -172,7 +170,5 @@
 
             })
         })
-
-
-    }); // end am4core.ready()
+    });
 </script>

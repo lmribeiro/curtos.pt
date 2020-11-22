@@ -30,7 +30,7 @@ class LinkController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'create', 'delete', 'update', 'renew', 'short', 'view', 'browser'],
+                        'actions' => ['index', 'create', 'delete', 'update', 'renew', 'short', 'view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -110,11 +110,11 @@ class LinkController extends Controller
         if (!$model = Link::findOne(['short' => $id])) {
             return $this->redirect(['/links']);
         }
-        
+
         return $this->render('view', [
             'model' => $model,
-            'browsers' => $this->getBrowsers($model),
-            'countrys' => $this->getCountrys($model)
+            'byBrowser' => $this->getDataByBrowser($model),
+            'byCountry' => $this->getDataByCountry($model)
         ]);
     }
 
@@ -217,7 +217,7 @@ class LinkController extends Controller
      * @return array
      * @throws NotFoundHttpException
      */
-    private function getBrowsers($model)
+    private function getDataByBrowser($model)
     {
         $browsers = [];
         $browsers['Boots'] = 0;
@@ -249,26 +249,26 @@ class LinkController extends Controller
     }
 
     /**
-     * Get countrys data
-     * @param $model
+     * Get data by country
+     * @param $model Short link
      * @return string
      */
-    private function getCountrys($model)
+    private function getDataByCountry($model)
     {
-        $countrys = [];
+        $countries = [];
         $data = "{";
 
         foreach ($model->linkStats as $stat) {
             if ($stat->country_code !== "") {
-                if (!isset($countrys[$stat->country_code])) {
-                    $countrys[$stat->country_code] = 0;
+                if (!isset($countries[$stat->country_code])) {
+                    $countries[$stat->country_code] = 0;
                 }
-                $countrys[$stat->country_code]++;
+                $countries[$stat->country_code]++;
             }
         }
-        arsort($countrys);
+        arsort($countries);
 
-        foreach ($countrys as $key => $val) {
+        foreach ($countries as $key => $val) {
             if ($val > 0) {
                 $data = $data . "$key: $val,";
             }

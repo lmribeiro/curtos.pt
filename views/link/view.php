@@ -8,8 +8,8 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Link */
-/* @var array $browsers */
-/* @var array $countrys */
+/* @var array $byBrowser */
+/* @var array $byCountry */
 
 
 $this->title = Yii::t('app', 'Curto') . " " . $model->short;
@@ -90,14 +90,13 @@ $this->params['modals'][] = "renew";
             </div>
         </div>
 
-        <?= $this->render('_partials/browsers', [
-            'data' => $browsers,
+        <?= $this->render('_partials/byBrowser', [
+            'data' => $byBrowser,
         ]) ?>
 
-        <?= $this->render('_partials/countrys', [
-            'data' => $countrys,
+        <?= $this->render('_partials/byCountry', [
+            'data' => $byCountry,
         ]) ?>
-
 
     </div>
 </div>

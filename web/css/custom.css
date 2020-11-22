@@ -247,6 +247,10 @@ tbody td {
     max-width: 100%;
     height: 600px;
 }
+#browsers-chart {
+    width: 100%;
+    height: 500px;
+}
 body.night #countrys-chart {
     background-color:#222;
 }

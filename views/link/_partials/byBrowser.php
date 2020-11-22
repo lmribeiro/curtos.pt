@@ -7,18 +7,12 @@
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 
 <div class="row mt-5 mb-2">
-    <div class="col-12">
-        <div class="mb-3" >
-            <div class="">
-                <h4 class="mb-3 text-black"><?= Yii::t('app', 'Por navegador') ?></h4>
-                <p class="font-weight-normal mb-0">
-                    <?= Yii::t('app', 'Número de visitas por navegador') ?>
-                </p>
-            </div>
-            <div class="card-body text-center p-0">
-                <div id="browsers-chart" style="width: 100%; height: 500px;"></div>
-            </div>
-        </div>
+    <div class="col-12 mb-3">
+        <h4 class="mb-3 text-black"><?= Yii::t('app', 'Por navegador') ?></h4>
+        <p class="font-weight-normal mb-0">
+            <?= Yii::t('app', 'Número de visitas por navegador') ?>
+        </p>
+        <div id="browsers-chart"></div>
     </div>
 </div>
 
@@ -27,14 +21,10 @@
 
         am4core.useTheme(am4themes_animated);
 
-        /**
-         * Chart design taken from Samsung health app
-         */
         const chart = am4core.create("browsers-chart", am4charts.XYChart);
         chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
         chart.paddingBottom = 30;
-
         chart.data = [<?= $data ?>];
 
         const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());

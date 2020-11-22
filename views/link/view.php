@@ -36,14 +36,12 @@ $this->params['modals'][] = "renew";
         <div class="row">
             <div class="col-12">
                 <div class="">
-
                     <div class="row">
-                        <div class="col-8">
-                            <h4 class="text-black"><?= Html::a($link, $link, ['target' => 'new']); ?></h4>
-
-                        </div>
                         <div class="col-4">
-                            <div class="float-lg-right">
+                            <h4 class="text-black"><?= Html::a($link, $link, ['target' => 'new']); ?></h4>
+                        </div>
+                        <div class="col-8">
+                            <div class="float-right">
                                 <?= Html::tag('span', Html::a('<i class="fas fa-calendar-plus"></i> ' . Yii::t('app', 'Renovar  expiração'), '#', ['class' => 'btn btn-success btn-sm  btn-renew', 'data-id' => $model->id, 'data-toggle' => 'modal', 'data-target' => '#renew_modal'])); ?>
                                 <?= Html::tag('span', Html::a('<i class="fas fa-trash"></i> ' . Yii::t('app', 'Apagar'), '#', ['class' => 'btn btn-danger btn-sm btn-delete', 'data-id' => $model->id, 'data-toggle' => 'modal', 'data-target' => '#delete_modal'])); ?>
                             </div>

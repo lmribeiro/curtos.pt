@@ -7,23 +7,17 @@
 <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
 
 <div class="row mt-5 mb-2">
-    <div class="col-12">
-        <div class=" mb-3">
-            <div class="">
-                <h4 class="mb-3 text-black"><?= Yii::t('app', 'Por país') ?></h4>
-                <p class="font-weight-normal mb-0">
-                    <?= Yii::t('app', 'Número de visitas por país') ?>
-                </p>
-            </div>
-            <div class="card-body text-center p-0">
-                <div id="countries-chart"></div>
-            </div>
-        </div>
+    <div class="col-12 mb-3">
+        <h4 class="mb-3 text-black"><?= Yii::t('app', 'Por país') ?></h4>
+        <p class="font-weight-normal mb-0">
+            <?= Yii::t('app', 'Número de visitas por país') ?>
+        </p>
+        <div id="countries-chart"></div>
     </div>
 </div>
 <!-- Chart code -->
 <script>
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         am4core.useTheme(am4themes_animated);
 
@@ -66,17 +60,17 @@
             "dataField": "value"
         })
 
-        imageTemplate.adapter.add("latitude", function(latitude, target) {
+        imageTemplate.adapter.add("latitude", function (latitude, target) {
             const polygon = polygonSeries.getPolygonById(target.dataItem.dataContext.id);
-            if(polygon){
+            if (polygon) {
                 return polygon.visualLatitude;
             }
             return latitude;
         })
 
-        imageTemplate.adapter.add("longitude", function(longitude, target) {
+        imageTemplate.adapter.add("longitude", function (longitude, target) {
             const polygon = polygonSeries.getPolygonById(target.dataItem.dataContext.id);
-            if(polygon){
+            if (polygon) {
                 return polygon.visualLongitude;
             }
             return longitude;

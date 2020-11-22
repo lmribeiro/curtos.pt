@@ -74,6 +74,9 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'API');
                                     <li class="toc-entry toc-h3">
                                         <a class="side-link" href="#delete"><?= Yii::t('app', 'Apagar') ?></a>
                                     </li>
+                                    <li class="toc-entry toc-h3">
+                                        <a class="side-link" href="#stats"><?= Yii::t('app', 'Estatísticas') ?></a>
+                                    </li>
                                 </ul>
                             </li>
 

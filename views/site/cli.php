@@ -18,12 +18,12 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
                 <main class="col-12  bd-content" role="main">
 
                     <div>
-                        <h5 class="bd-title" id="intro"><?= Yii::t('app', 'Visão Geral') ?></h5>
+                        <h2 class="bd-title" id="intro"><?= Yii::t('app', 'Visão Geral') ?></h2>
                         <p class="bd-lead">
                             <?= Yii::t('app', 'Pensada para developers, a curtos-cli é uma cli simples e prática que permite usar a API curtos.pt através da linha de comandos.') ?>
                         </p>
 
-                        <h6 class="bd-title mt-2" id="repos"><?= Yii::t('app', 'Repositórios') ?></h6>
+                        <h2 class="bd-title mt-2" id="repos"><?= Yii::t('app', 'Repositórios') ?></h2>
                         <p class="bd-lead">
                             GitHub: <a target="new"
                                        href="https://github.com/curtos-pt/cli">https://github.com/curtos-pt/cli</a><br/>
@@ -31,7 +31,7 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
                         </p>
 
 
-                        <h6 class="bd-title mt-2" id="version"><?= Yii::t('app', 'Versão') ?></h6>
+                        <h2 class="bd-title mt-2" id="version"><?= Yii::t('app', 'Versão') ?></h2>
                         <p class="bd-lead">
                             <b>1.0.0</b><br/>
                             <?= Yii::t('app', 'Data criação') ?>: 2020/07/11<br/>
@@ -40,7 +40,7 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
                     </div>
 
                     <div class="mt-5">
-                        <h5 class="bd-title mt-5" id="install"><?= Yii::t('app', 'Instalar') ?></h5>
+                        <h2 class="bd-title mt-5" id="install"><?= Yii::t('app', 'Instalar') ?></h2>
 
                         <p class="bd-lead">
                             <?= Yii::t('app', 'Para instalar curtos-cli podes usar o npm.') ?>
@@ -53,9 +53,9 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
                     </div>
 
                     <div class="mt-5">
-                        <h5 class="bd-title mt-5" id="commands"><?= Yii::t('app', 'Comandos') ?></h5>
+                        <h2 class="bd-title mt-5" id="commands"><?= Yii::t('app', 'Comandos') ?></h2>
 
-                        <h6 class="bd-title mt-4" id="create">curtos create</h6>
+                        <h3 class="bd-title mt-4" id="create">curtos create</h3>
                         <p class="bd-lead">
                             <?= Yii::t('app', 'Devolve um link curto para o determinado target longo.') ?>
                         </p>
@@ -69,7 +69,7 @@ OPTIONS
   -t, --target=target              target url</code></pre>
                         </figure>
 
-                        <h6 class="bd-title mt-5" id="delete">curtos delete</h6>
+                        <h3 class="bd-title mt-5" id="delete">curtos delete</h3>
                         <p class="bd-lead">
                             <?= Yii::t('app', 'Apagar um link curto com determinado código.') ?>
                         </p>
@@ -86,8 +86,8 @@ OPTIONS
                     </div>
 
                     <div class="mt-5">
-                        <h5 class="bd-title mt-5" id="changelog"><?= Yii::t('app', 'Changelog') ?></h5>
-                        <h6 class="mb-4 mt-3"><?= Yii::t('app', 'Versão 1.0.0') ?></h6>
+                        <h2 class="bd-title mt-5" id="changelog"><?= Yii::t('app', 'Changelog') ?></h2>
+                        <h3 class="mb-4 mt-3"><?= Yii::t('app', 'Versão 1.0.0') ?></h3>
                         <p class="bd-lead">2020/07/11</p>
                         <ul>
                             <li><?= Yii::t('app', 'Lançamento') ?></li>

@@ -1,4 +1,4 @@
-<h5 class="bd-title mt-5" id="codes"><?= Yii::t('app', 'Códigos de Resposta') ?></h5>
+<h2 class="bd-title mt-5" id="codes"><?= Yii::t('app', 'Códigos de Resposta') ?></h2>
 <p class="bd-lead mb-4">
     <?= Yii::t('app', 'Os códigos de resposta são baseados no formato HTTP.') ?>
 </p>

@@ -242,15 +242,21 @@ class LinkController extends Controller
     private function getDataByCountry(Link $model)
     {
         $countries = $model->getDataByCountry();
-        $data = "{";
+        $data = "";
 
         foreach ($countries as $key => $val) {
-            if ($val > 0) {
-                $data = $data . "$key: $val,";
+            if ($val['count'] > 0) {
+                $count = $val['count'];
+                $name = $val['name'];
+                $data = $data . "{
+                    'id': '$key', 
+                    'name': '$name', 
+                    'value': $count,
+                    'color': '#3fb7eb' 
+                },";
             }
         }
 
-        $data = $data . "}";
         return $data;
     }
 }

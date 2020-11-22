@@ -8,8 +8,8 @@
 
 <div class="row mt-5 mb-2">
     <div class="col-12">
-        <div class="card bg-light mb-3" >
-            <div class="card-header border-light p-4">
+        <div class="mb-3" >
+            <div class="">
                 <h4 class="mb-3 text-black"><?= Yii::t('app', 'Por navegador') ?></h4>
                 <p class="font-weight-normal mb-0">
                     <?= Yii::t('app', 'Número de visitas por navegador') ?>

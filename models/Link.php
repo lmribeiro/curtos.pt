@@ -119,9 +119,10 @@ class Link extends \yii\db\ActiveRecord
         foreach ($this->linkStats as $stat) {
             if ($stat->country_code !== "") {
                 if (!isset($countries[$stat->country_code])) {
-                    $countries[$stat->country_code] = 0;
+                    $countries[$stat->country_code]['name'] = $stat->country_name;
+                    $countries[$stat->country_code]['count'] = 0;
                 }
-                $countries[$stat->country_code]++;
+                $countries[$stat->country_code]['count']++;
             }
         }
         arsort($countries);

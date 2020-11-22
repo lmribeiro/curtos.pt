@@ -243,10 +243,9 @@ tbody td {
         transform: rotate(-135deg);
     }
 }
-#countrys-chart {
+#countries-chart {
     max-width: 100%;
     height: 600px;
-    background-color:#eaedf2;
 }
 body.night #countrys-chart {
     background-color:#222;

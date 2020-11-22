@@ -25,9 +25,9 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'Termos de Uso');
                 </div>
                 <div class="row mt-5 text-justify">
                     <div class="col-12">
-                        <h5 class="title">
+                        <h2 class="title">
                             <?= Yii::t('app', 'Condições de utilização') ?>
-                        </h5>
+                        </h2>
                     </div>
                     <div class="col-12">
                         <p>
@@ -129,9 +129,9 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'Termos de Uso');
             <div class="row mt-5 text-justify">
                 <div class="col-12">
                     <div class="col-12">
-                        <h5 class="title">
+                        <h2 class="title">
                             <?= Yii::t('app', 'Política de Privacidade') ?>
-                        </h5>
+                        </h2>
                     </div>
 
                     <div class="col-12">

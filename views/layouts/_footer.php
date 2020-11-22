@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <footer class="footer">
     <div class="container">
         <div class="row ">
@@ -17,7 +22,7 @@
                         </a> 
                         <span class="d-none d-lg-inline"> | </span>
                         <br class="d-lg-none" />
-                        <a class="text-info" href="<?= \yii\helpers\Url::to(['terms']) ?>" rel="noreferrer" class="nav-link">
+                        <a class="text-info" href="<?= Url::to(['/terms']) ?>" rel="noreferrer" class="nav-link">
                             <?= Yii::t('app', 'Termos de Uso') ?>.
                         </a>
                     </p>

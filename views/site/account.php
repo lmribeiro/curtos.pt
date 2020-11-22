@@ -1,5 +1,7 @@
 <?php
 /* @var $this yii\web\View */
+/** @var array $account */
+/** @var string $password */
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
@@ -25,7 +27,7 @@ $this->params['modals'][] = "apiKey";
             <div class="">
                 <div class="row">
                     <div class="col-xs-12 col-lg-5 mb-5">
-                        <h5 class="mb-5"><?= Yii::t('app', 'Dados pesssoais') ?></h5>
+                        <h2 class="mb-5"><?= Yii::t('app', 'Dados pesssoais') ?></h2>
                         <?php
                         $form = ActiveForm::begin([
                             'id' => 'account-form',
@@ -61,7 +63,7 @@ $this->params['modals'][] = "apiKey";
 
                     <?php ActiveForm::end(); ?>
                     <div class="col-xs-12 col-lg-5 offset-lg-2 mb-5">
-                        <h5 class="mb-5"><?= Yii::t('app', 'Alterar Password') ?></h5>
+                        <h2 class="mb-5"><?= Yii::t('app', 'Alterar Password') ?></h2>
                         <?php
                         $form2 = ActiveForm::begin([
                             'id' => 'password-form',
@@ -91,11 +93,10 @@ $this->params['modals'][] = "apiKey";
             <div class="">
                 <div class="row ">
                     <div class="col-xs-12 col-lg-12 mb-5 mt-5">
-                        <h5 class="mb-5"><?= Yii::t('app', 'API') ?></h5>
+                        <h2 class="mb-3"><?= Yii::t('app', 'API') ?></h2>
                         <p>
                             <?= Yii::t('app', 'Além deste site, também podes usar a API para criar e apagar links curtos. Se não sabes como funciona uma API, não a uses nem partilhes esta chave com ninguem.') ?>
-                            <?= Yii::t('app', 'Tens duvidas?') ?> <?= Html::tag('span', Html::a(Yii::t('app', 'Vê a documentação'), 'api-v1')); ?>
-                            .
+                            <?= Yii::t('app', 'Tens duvidas?') ?> <?= Html::tag('span', Html::a(Yii::t('app', 'Vê a documentação'), 'api-v1')); ?>.
                         </p>
 
                         <p class="mt-4">
@@ -119,7 +120,7 @@ $this->params['modals'][] = "apiKey";
             <div class="">
                 <div class="row ">
                     <div class="col-xs-12 col-lg-12 mb-5 mt-5">
-                        <h5 class="mb-5 text-danger"><?= Yii::t('app', 'Apagar Conta') ?></h5>
+                        <h2 class="mb-3 text-danger"><?= Yii::t('app', 'Apagar Conta') ?></h2>
                         <p class="text-danger">
                             <?= Yii::t('app', 'Esta ação vai apagar todos os teus dados e links registados.') ?>
                             <?= Yii::t('app', 'Depois de ativar esta opção a mesma não pode ser revertida nem os teus dados podem ser recuperados.') ?>

@@ -94,7 +94,7 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'API');
 <script>
     $(document).ready(function () {
         $(window).bind('scroll', function () {
-            var navHeight = $(window).height() - 652;
+            const navHeight = $(window).height() - 652;
             if ($(window).scrollTop() > navHeight) {
                 $('#nav').addClass('fixed');
             } else {

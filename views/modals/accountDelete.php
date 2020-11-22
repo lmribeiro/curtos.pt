@@ -20,7 +20,7 @@ $form = ActiveForm::begin([
                 <button class="close" data-dismiss="modal">×</button>
             </div>
             <div class="modal-body">
-                <?= Yii::t('app', 'Tens mesmo a certeza que queres apagar a sua conta?') ?>
+                <?= Yii::t('app', 'Tens a certeza que queres apagar a tua conta?') ?>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-danger" type="submit">

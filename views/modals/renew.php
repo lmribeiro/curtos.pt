@@ -14,7 +14,7 @@ $form = ActiveForm::begin([
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><?= Yii::t('app', 'Renovar data Expiração?') ?></h5>
+                <h5 class="modal-title"><?= Yii::t('app', 'Renovar data Expiração') ?></h5>
                 <button class="close" data-dismiss="modal">×</button>
             </div>
             <div class="modal-body">

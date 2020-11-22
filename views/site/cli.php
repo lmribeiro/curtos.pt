@@ -87,7 +87,6 @@ OPTIONS
 
                     <div class="mt-5">
                         <h2 class="bd-title mt-5" id="changelog"><?= Yii::t('app', 'Changelog') ?></h2>
-                        <h3 class="mb-4 mt-3"><?= Yii::t('app', 'Versão 1.0.0') ?></h3>
                         <p class="bd-lead">2020/07/11</p>
                         <ul>
                             <li><?= Yii::t('app', 'Lançamento') ?></li>
@@ -141,7 +140,7 @@ OPTIONS
 <script>
     $(document).ready(function () {
         $(window).bind('scroll', function () {
-            var navHeight = $(window).height() - 652;
+            const navHeight = $(window).height() - 652;
             if ($(window).scrollTop() > navHeight) {
                 $('#nav').addClass('fixed');
             } else {

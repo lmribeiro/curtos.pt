@@ -1,14 +1,14 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
-use \yii\helpers\Url;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\LinkSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::$app->name." | ".Yii::t('app', 'Links');
+$this->title = Yii::$app->name . " | " . Yii::t('app', 'Links');
 $this->params['modals'][] = "delete";
 $this->params['modals'][] = "renew";
 
@@ -18,7 +18,9 @@ $this->params['modals'][] = "renew";
         <div class="page-header">
             <div class="row">
                 <div class="col-md-8 mx-auto text-center">
-                    <h3 class="display-3"><?= Yii::t('app', 'Os teus Links') ?></h3>
+                    <h3 class="display-3"><?= Yii::t('app', 'Curtos') ?></h3>
+                    <p class="lead"><?= Yii::t('app', 'Os teus links curtos') ?>.</p>
+
                 </div>
             </div>
         </div>
@@ -48,7 +50,7 @@ $this->params['modals'][] = "renew";
                                 'label' => Yii::t('app', 'Curto'),
                                 'format' => 'html',
                                 'value' => function ($model) {
-                                    return Html::a($model->short, Url::base(true)."/".$model->short, ['target' => 'new']);
+                                    return Html::a($model->short, Url::base(true) . "/" . $model->short, ['target' => 'new']);
                                 }
                             ],
                             'visit_count',
@@ -56,9 +58,9 @@ $this->params['modals'][] = "renew";
                             //'created_at',
                             //'updated_at',
                             $actionCol = Yii::$app->params['actions'](
-                            [
-                                'template' => '{expiration}&nbsp;{delete}'
-                            ]),
+                                [
+                                    'template' => '{view}&nbsp;{delete}'
+                                ]),
                         ],
                     ]);
 

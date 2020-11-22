@@ -104,7 +104,7 @@ if (Yii::$app->session->get('theme')) {
 
     function toggleTheme(theme) {
         $.ajax({
-            url: '<?= Url::to(["theme"]) ?>',
+            url: '<?= Url::to(["/theme"]) ?>',
             type: 'post',
             data: {theme: !theme}
         }).done(function (response) {

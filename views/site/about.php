@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = Yii::$app->name." | ".Yii::t('app', 'Sobre');
+$this->title = Yii::$app->name . " | " . Yii::t('app', 'Sobre');
 
 ?>
 <div class="section  mt-5">
@@ -10,7 +10,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Sobre');
             <div class="row">
                 <div class="col-md-8 mx-auto text-center mb-2">
                     <!--<span class="badge badge-primary badge-pill mb-3">&nbsp;</span>-->
-                    <h3 class="display-3"><?= Yii::t('app', 'Sobre o Curtos.pt') ?></h3>
+                    <h1 class="display-3"><?= Yii::t('app', 'Sobre o Curtos.pt') ?></h1>
                     <p class="lead"><?= Yii::t('app', 'Url shortener gratuito e Open Source.') ?></p>
                 </div>
             </div>
@@ -59,7 +59,8 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Sobre');
                 <div class="info">
                     <h3><?= Yii::t('app', 'Tem uma API?') ?></h3>
                     <p class="description"><?= Yii::t('app', 'Sim, o Curtos.pt tem uma API e está disponivel tanto para utilizadores registados como para utilizadores sem registo.') ?>
-                        <a class="text-info" href="<?= \yii\helpers\Url::to(['api-v1']) ?>" rel="noreferrer" class="nav-link">
+                        <a class="text-info" href="<?= \yii\helpers\Url::to(['api-v1']) ?>" rel="noreferrer"
+                           class="nav-link">
                             <?= Yii::t('app', 'Ver Documentação') ?>.
                         </a>
                     </p>

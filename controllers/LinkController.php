@@ -6,7 +6,6 @@ use app\components\Shorter;
 use app\models\{Link, LinkSearch};
 use Yii;
 use yii\filters\{AccessControl, VerbFilter};
-use yii\base\Action;
 use yii\helpers\Url;
 use yii\web\{BadRequestHttpException, Controller, NotFoundHttpException, Response};
 
@@ -26,12 +25,12 @@ class LinkController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['short'],
+                        'actions' => ['short', 'view'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index', 'create', 'delete', 'update', 'renew', 'short'],
+                        'actions' => ['index', 'create', 'delete', 'update', 'renew', 'short', 'view', 'browser'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -102,14 +101,18 @@ class LinkController extends Controller
     /**
      * Displays a single Link model.
      *
-     * @param integer $id
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
+        $model = Link::findOne(['short' => $id]);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'browsers' => $this->getBrowsers($model),
+            'countrys' => $this->getCountrys($model)
         ]);
     }
 
@@ -205,4 +208,70 @@ class LinkController extends Controller
         return $this->redirect(Yii::$app->request->referrer);
     }
 
+    /**
+     * Get browser stats
+     * @param $id short link id
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    private function getBrowsers($model)
+    {
+        $browsers = [];
+        $browsers['Boots'] = 0;
+        $data = "";
+
+        foreach ($model->linkStats as $stat) {
+            if (in_array($stat->browser, ['Chrome', 'Edge', 'Firefox', 'Internet Explorer', 'Opera', 'Safari'])) {
+                if (!isset($browsers[$stat->browser])) {
+                    $browsers[$stat->browser] = 0;
+                }
+                $browsers[$stat->browser]++;
+            } else {
+                $browsers['Boots']++;
+            }
+        }
+        arsort($browsers);
+
+        foreach ($browsers as $key => $val) {
+            if ($val > 0) {
+                $data = $data . "{
+                    'name': '$key',
+                    'steps': $val,
+                    'href':  '" . Url::to("@web/img/$key.svg", true) . "'
+                },";
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * Get countrys data
+     * @param $model
+     * @return string
+     */
+    private function getCountrys($model)
+    {
+        $countrys = [];
+        $data = "{";
+
+        foreach ($model->linkStats as $stat) {
+            if ($stat->country_code !== "") {
+                if (!isset($countrys[$stat->country_code])) {
+                    $countrys[$stat->country_code] = 0;
+                }
+                $countrys[$stat->country_code]++;
+            }
+        }
+        arsort($countrys);
+
+        foreach ($countrys as $key => $val) {
+            if ($val > 0) {
+                $data = $data . "$key: $val,";
+            }
+        }
+
+        $data = $data . "}";
+        return $data;
+    }
 }

@@ -21,6 +21,11 @@ body.night {
   background-color: color(primary);
   color: color(gray);
 
+  .bg-light {
+    background-color: color(dark)!important;
+    color: color(white);
+  }
+
   .display-3, h5, h6 {
     color: color(white);
   }
@@ -109,6 +114,10 @@ body.night {
 
   .table {
     color: color(white);
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: color(dark);
   }
 
   .tumbler {

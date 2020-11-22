@@ -1,10 +1,10 @@
 <?php
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
-$this->title = Yii::$app->name." | ".Yii::t('app', 'Conta');
+$this->title = Yii::$app->name . " | " . Yii::t('app', 'Conta');
 $this->params['modals'][] = "accountDelete";
 $this->params['modals'][] = "apiKey";
 
@@ -15,7 +15,7 @@ $this->params['modals'][] = "apiKey";
             <div class="row">
                 <div class="col-md-8 mx-auto text-center">
                     <!--<span class="badge badge-primary badge-pill mb-3">&nbsp;</span>-->
-                    <h3 class="display-3"><?= Yii::t('app', 'A tua conta') ?></h3>
+                    <h1 class="display-3"><?= Yii::t('app', 'A tua conta') ?></h1>
                 </div>
             </div>
         </div>
@@ -28,28 +28,28 @@ $this->params['modals'][] = "apiKey";
                         <h5 class="mb-5"><?= Yii::t('app', 'Dados pesssoais') ?></h5>
                         <?php
                         $form = ActiveForm::begin([
-                                    'id' => 'account-form',
-                                    'layout' => 'horizontal',
-                                    'fieldConfig' => [
-                                        'template' => "<div class=\"row\">{label}\n<div class=\"col-lg-12\">{input}</div></div>\n<div class=\"row\"><div class=\"col-lg-12 text-danger\">{error}</div></div>",
-                                        'labelOptions' => ['class' => 'col-lg-12 control-label'],
-                                    ],
+                            'id' => 'account-form',
+                            'layout' => 'horizontal',
+                            'fieldConfig' => [
+                                'template' => "<div class=\"row\">{label}\n<div class=\"col-lg-12\">{input}</div></div>\n<div class=\"row\"><div class=\"col-lg-12 text-danger\">{error}</div></div>",
+                                'labelOptions' => ['class' => 'col-lg-12 control-label'],
+                            ],
                         ]);
 
                         ?>
                         <?=
-                                $form->field($account, 'name')
-                                ->textInput(['placeholder' => $account->getAttributeLabel('name'), 'class' => 'form-control shadow border-0'])
+                        $form->field($account, 'name')
+                            ->textInput(['placeholder' => $account->getAttributeLabel('name'), 'class' => 'form-control shadow border-0'])
 
                         ?>
                         <?=
-                                $form->field($account, 'username')
-                                ->textInput(['placeholder' => $account->getAttributeLabel('username'), 'class' => 'form-control shadow border-0'])
+                        $form->field($account, 'username')
+                            ->textInput(['placeholder' => $account->getAttributeLabel('username'), 'class' => 'form-control shadow border-0'])
 
                         ?>
                         <?=
-                                $form->field($account, 'email')
-                                ->textInput(['placeholder' => $account->getAttributeLabel('email'), 'class' => 'form-control shadow border-0'])
+                        $form->field($account, 'email')
+                            ->textInput(['placeholder' => $account->getAttributeLabel('email'), 'class' => 'form-control shadow border-0'])
 
                         ?>
                         <div class="row mt-4">
@@ -64,18 +64,18 @@ $this->params['modals'][] = "apiKey";
                         <h5 class="mb-5"><?= Yii::t('app', 'Alterar Password') ?></h5>
                         <?php
                         $form2 = ActiveForm::begin([
-                                    'id' => 'password-form',
-                                    'layout' => 'horizontal',
-                                    'fieldConfig' => [
-                                        'template' => "<div class=\"row\">{label}\n<div class=\"col-lg-12\">{input}</div></div>\n<div class=\"row\"><div class=\"col-lg-12 text-danger\">{error}</div></div>",
-                                        'labelOptions' => ['class' => 'col-lg-12 control-label'],
-                                    ],
+                            'id' => 'password-form',
+                            'layout' => 'horizontal',
+                            'fieldConfig' => [
+                                'template' => "<div class=\"row\">{label}\n<div class=\"col-lg-12\">{input}</div></div>\n<div class=\"row\"><div class=\"col-lg-12 text-danger\">{error}</div></div>",
+                                'labelOptions' => ['class' => 'col-lg-12 control-label'],
+                            ],
                         ]);
 
                         ?>
                         <?=
-                                $form2->field($password, 'password')
-                                ->passwordInput(['placeholder' => $password->getAttributeLabel('password'), 'class' => 'form-control shadow border-0'])
+                        $form2->field($password, 'password')
+                            ->passwordInput(['placeholder' => $password->getAttributeLabel('password'), 'class' => 'form-control shadow border-0'])
 
                         ?>
                         <div class="row mt-4">
@@ -94,38 +94,43 @@ $this->params['modals'][] = "apiKey";
                         <h5 class="mb-5"><?= Yii::t('app', 'API') ?></h5>
                         <p>
                             <?= Yii::t('app', 'Além deste site, também podes usar a API para criar e apagar links curtos. Se não sabes como funciona uma API, não a uses nem partilhes esta chave com ninguem.') ?>
-                            <?= Yii::t('app', 'Tens duvidas?') ?> <?= Html::tag('span', Html::a(Yii::t('app', 'Vê a documentação'), 'api-v1')); ?>.
+                            <?= Yii::t('app', 'Tens duvidas?') ?> <?= Html::tag('span', Html::a(Yii::t('app', 'Vê a documentação'), 'api-v1')); ?>
+                            .
                         </p>
 
                         <p class="mt-4">
-                            <b><?= Yii::t('app', 'Chave') ?>:</b> 
-                            <input id="api-key" class="text-success text-underline border-0 bg-transparent" value="<?= Yii::$app->user->identity->auth_key ?>" />&nbsp;
-                            <button  type="button" onclick="javascript:app.copyKey()" data-toggle="tooltip" data-placement="top" title="<?= Yii::t('app', 'Copiar') ?>"  class="btn btn-sm btn-link" >
+                            <b><?= Yii::t('app', 'Chave') ?>:</b>
+                            <input id="api-key" class="text-success text-underline border-0 bg-transparent"
+                                   value="<?= Yii::$app->user->identity->auth_key ?>"/>&nbsp;
+                            <button type="button" onclick="javascript:app.copyKey()" data-toggle="tooltip"
+                                    data-placement="top" title="<?= Yii::t('app', 'Copiar') ?>"
+                                    class="btn btn-sm btn-link">
                                 <i class="far fa-copy fa-lg"></i>
                             </button>
                         </p>
-                        <a href="#"  class="btn btn-primary btn-sm shadow border-0" data-toggle='modal' data-target='#apiKey_modal' >
+                        <a href="#" class="btn btn-primary btn-sm shadow border-0" data-toggle='modal'
+                           data-target='#apiKey_modal'>
                             <i class="fas fa-bolt"></i> <?= Yii::t('app', 'Regenerar Chave') ?>
-                        </a>    
+                        </a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="">
                 <div class="row ">
                     <div class="col-xs-12 col-lg-12 mb-5 mt-5">
                         <h5 class="mb-5 text-danger"><?= Yii::t('app', 'Apagar Conta') ?></h5>
-                        <p class="text-danger"> 
+                        <p class="text-danger">
                             <?= Yii::t('app', 'Esta ação vai apagar todos os teus dados e links registados.') ?>
                             <?= Yii::t('app', 'Depois de ativar esta opção a mesma não pode ser revertida nem os teus dados podem ser recuperados.') ?>
                             <?= Yii::t('app', 'Continua apenas se tiveres a certeza que é isso que queres fazer.') ?>
                         </p>
                         <p class="mt-5">
-                            <?= Html::tag('span', Html::a('<i class="fas fa-trash"></i> '.Yii::t('app', 'Apagar'), '#', ['class' => 'btn btn-danger shadow border-0', 'data-toggle' => 'modal', 'data-target' => '#delete_modal'])); ?>
+                            <?= Html::tag('span', Html::a('<i class="fas fa-trash"></i> ' . Yii::t('app', 'Apagar'), '#', ['class' => 'btn btn-danger shadow border-0', 'data-toggle' => 'modal', 'data-target' => '#delete_modal'])); ?>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>

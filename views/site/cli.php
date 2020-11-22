@@ -1,7 +1,5 @@
 <?php
 
-use yii\helpers\Url;
-
 $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
 
 ?>
@@ -10,7 +8,7 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
         <div class="page-header">
             <div class="row">
                 <div class="col-md-8 mx-auto text-center mb-2">
-                    <h3 class="display-3"><?= Yii::t('app', 'Command Line Interface') ?></h3>
+                    <h1 class="display-3"><?= Yii::t('app', 'Command Line Interface') ?></h1>
                     <p class="lead"><?= Yii::t('app', 'Documentação da Command Line Interface para Curtos.pt') ?>.</p>
                 </div>
             </div>

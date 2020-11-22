@@ -34,32 +34,32 @@ use yii\helpers\Url;
                     </a>
                 </li>
                 <li class="nav-item text-uppercase">
-                    <a href="<?= Url::to(['about']) ?>"rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "about" ? 'active' : '' ?>">
+                    <a href="<?= Url::to(['/about']) ?>"rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "about" ? 'active' : '' ?>">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'Sobre') ?></span>
                     </a>
                 </li>
                 <li class="nav-item text-uppercase">
-                    <a href="<?= Url::to(['api-v1']) ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "api-v1" ? 'active' : '' ?>">
+                    <a href="<?= Url::to(['/api-v1']) ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "api-v1" ? 'active' : '' ?>">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'API') ?></span>
                     </a>
                 </li>
                 <li class="nav-item text-uppercase">
-                    <a href="<?= Url::to(['cli']) ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "cli" ? 'active' : '' ?>">
+                    <a href="<?= Url::to(['/cli']) ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "cli" ? 'active' : '' ?>">
                         <span class="nav-link-inner--text"><?= Yii::t('app', 'CLI') ?></span>
                     </a>
                 </li>
                 <?php if (!Yii::$app->user->isGuest) { ?>
                     <li class="nav-item text-uppercase">
-                        <a href="<?= Url::to(['links']) ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "links" ? 'active' : '' ?>">
+                        <a href="<?= Url::to(['/links']) ?>" rel="noreferrer" class="nav-link <?= Yii::$app->controller->action->id == "links" ? 'active' : '' ?>">
                             <span class="nav-link-inner--text"><?= Yii::t('app', 'Links') ?></span>
                         </a>
                     </li>
                 <?php } ?>
                 <?php if (Yii::$app->user->isGuest) { ?>
-                    <a href="<?= Url::to(['login']) ?>" rel="noreferrer" class="btn btn-neutral px-4 mb-3 mt-5 d-sm-none">
+                    <a href="<?= Url::to(['/login']) ?>" rel="noreferrer" class="btn btn-neutral px-4 mb-3 mt-5 d-sm-none">
                         <?= Yii::t('app', 'Entar') ?>
                     </a>
-                    <a href="<?= Url::to(['signup']) ?>" rel="noreferrer" class="btn btn-primary d-sm-none">
+                    <a href="<?= Url::to(['/signup']) ?>" rel="noreferrer" class="btn btn-primary d-sm-none">
                         <?= Yii::t('app', 'Registar') ?>
                     </a> 
                 <?php } else { ?>
@@ -69,12 +69,12 @@ use yii\helpers\Url;
                             <?= Yii::$app->user->identity->name ?? Yii::$app->user->identity->username ?>
                         </p>
                         <p>
-                            <a href="<?= Url::to(['account']) ?>" class="mt-2">
+                            <a href="<?= Url::to(['/account']) ?>" class="mt-2">
                                 <?= Yii::t('app', 'Conta') ?>
                             </a>
                         </p>
                         <p>
-                            <a href="<?= Url::to(['logout']) ?>" class="mt-2">
+                            <a href="<?= Url::to(['/logout']) ?>" class="mt-2">
                                 <span class="nav-link-inner--text text-danger"><?= Yii::t('app', 'Sair') ?></span>
                                 <span class="float-right text-danger"><i class="fas fa-sign-out-alt"></i></span>
                             </a>

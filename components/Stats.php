@@ -16,13 +16,14 @@ class Stats
      */
     public function create(Link $link)
     {
+        $browser = new Browser();
         $stats = new LinkStats();
 
         $stats->link_id = $link->id;
         $stats->ip = Yii::$app->request->userIP;
         $stats->os = Yii::$app->userAgent->os;
         $stats->platform = Yii::$app->userAgent->platform;
-        $stats->browser = Yii::$app->userAgent->browser;
+        $stats->browser = $browser->getBrowserName(Yii::$app->getRequest()->getUserAgent());
         $stats->browserVersion = Yii::$app->userAgent->browserVersion;
 
         if ($geo = $this->getGeo($stats->ip)) {

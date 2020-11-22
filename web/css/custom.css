@@ -71,7 +71,7 @@ thead td:first-child {
 tbody td {
     padding-left: 10px !important;
 }
-.table td:last-child {
+.table-responsive-sm .table td:last-child {
     text-align: center;
 }
 
@@ -242,4 +242,16 @@ tbody td {
     .navbar-collapse .navbar-toggler span:nth-child(2) {
         transform: rotate(-135deg);
     }
+}
+#countrys-chart {
+    max-width: 100%;
+    height: 600px;
+    background-color:#eaedf2;
+}
+body.night #countrys-chart {
+    background-color:#222;
+}
+
+body.night .text-black {
+    color: #fff !important;
 }

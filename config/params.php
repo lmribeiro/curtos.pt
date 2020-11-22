@@ -37,7 +37,7 @@ return [
             },
         ],
         'urlCreator' => function ($action, $data) {
-            return Url::to(["link/$action", 'id' => $data->id]);
+            return Url::to(["curto/$data->short"]);
         },
     ],
 ];

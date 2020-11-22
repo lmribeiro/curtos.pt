@@ -50,13 +50,13 @@ class Link extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'user_id' => Yii::t('app', 'User ID'),
+            'user_id' => Yii::t('app', 'Utilizador'),
             'target' => Yii::t('app', 'Target'),
             'short' => Yii::t('app', 'Curto'),
             'visit_count' => Yii::t('app', 'Visitas'),
             'expires_after' => Yii::t('app', 'Expira em'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
+            'created_at' => Yii::t('app', 'Criado erm'),
+            'updated_at' => Yii::t('app', 'Atualizado em'),
         ];
     }
 

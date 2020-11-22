@@ -64,6 +64,8 @@ $config = [
             'rules' => [
                 '<alias:about|login|logout|signup|forgot|resend|account|delete-account|links|terms|theme|set-password|reset-password|renew-api-key|api-v1|cli>' => 'site/<alias>',
                 '/<id:\w+>' => 'site/short',
+                '/<id:\w+>/' => 'site/short/<id:\w+>',
+                'curto/<id:\w+>' => 'link/view'
             ],
         ],
     ],

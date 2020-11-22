@@ -1,5 +1,5 @@
 <?php
-$this->title = Yii::$app->name." | ".Yii::t('app', 'API');
+$this->title = Yii::$app->name . " | " . Yii::t('app', 'API');
 
 ?>
 <div class="section  mt-5">
@@ -7,8 +7,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'API');
         <div class="page-header">
             <div class="row">
                 <div class="col-md-8 mx-auto text-center mb-2">
-                    <h3 class="display-3"><?= Yii::t('app', 'API') ?>
-                    </h3>
+                    <h1 class="display-3"><?= Yii::t('app', 'API') ?></h1>
                     <p class="lead"><?= Yii::t('app', 'Documentação da API Curtos.pt') ?>.</p>
                 </div>
             </div>
@@ -18,30 +17,30 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'API');
                 <div class="col-9">
                     <main class="col-12  bd-content" role="main">
 
-                        <div >
-                            <?php include __DIR__.'/_api/intro.php'; ?>
+                        <div>
+                            <?php include __DIR__ . '/_api/intro.php'; ?>
                         </div>
 
                         <div class="mt-5">
-                            <?php include __DIR__.'/_api/tests.php'; ?>
+                            <?php include __DIR__ . '/_api/tests.php'; ?>
                         </div>
 
                         <div class="mt-5">
-                            <?php include __DIR__.'/_api/codes.php'; ?>
+                            <?php include __DIR__ . '/_api/codes.php'; ?>
                         </div>
 
                         <div class="mt-5">
-                            <?php include __DIR__.'/_api/endpoints.php'; ?>
+                            <?php include __DIR__ . '/_api/endpoints.php'; ?>
                         </div>
 
                         <div class="mt-5">
-                            <?php include __DIR__.'/_api/changelog.php'; ?>
+                            <?php include __DIR__ . '/_api/changelog.php'; ?>
                         </div>
 
                     </main>
                 </div>
                 <div class="col-3 mt-4">
-                    <nav id="nav" aria-label="Secondary navigation" class="d-none d-xl-block col-12 bd-toc" >
+                    <nav id="nav" aria-label="Secondary navigation" class="d-none d-xl-block col-12 bd-toc">
                         <ul class="section-nav">
                             <li class="toc-entry toc-h2">
                                 <a href="#intro"><?= Yii::t('app', 'Visão Geral') ?></a>

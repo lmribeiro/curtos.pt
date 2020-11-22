@@ -10,7 +10,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Os teus links... curtos!');
             <div class="col">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-8 mx-auto text-center">
-                        <h3 class="display-3"><?= Yii::t('app', 'Os teus links... curtos!') ?></h3>
+                        <h1 class="display-3"><?= Yii::t('app', 'Os teus links... curtos!') ?></h1>
                     </div>
                     <div class="col-lg-6 mt-lg-4">
                         <div id="target-div">

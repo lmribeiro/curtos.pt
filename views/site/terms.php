@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = Yii::$app->name." | ".Yii::t('app', 'Termos de Uso');
+$this->title = Yii::$app->name . " | " . Yii::t('app', 'Termos de Uso');
 
 ?>
 <div class="section mt-5">
@@ -9,8 +9,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Termos de Uso');
         <div class="page-header">
             <div class="row">
                 <div class="col-md-8 mx-auto text-center mb-2">
-                    <!--<span class="badge badge-primary badge-pill mb-3">&nbsp;</span>-->
-                    <h3 class="display-3"><?= Yii::t('app', 'Termos de Uso') ?></h3>
+                    <h1 class="display-3"><?= Yii::t('app', 'Termos de Uso') ?></h1>
                     <p class="lead"><?= Yii::t('app', 'Condições de utilização & Política de Privacidade') ?>.</p>
                 </div>
             </div>
@@ -119,7 +118,7 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Termos de Uso');
                             <strong><?= Yii::t('app', 'Alteração às Condições de Utilização') ?></strong>
                         </p>
                         <p>
-                            <?= Yii::t('app', 'O Curtos.pt poderá rever as Condições de utilização a qualquer momento através da alteração desta página.') ?> 
+                            <?= Yii::t('app', 'O Curtos.pt poderá rever as Condições de utilização a qualquer momento através da alteração desta página.') ?>
                         </p>
 
                     </div>
@@ -144,8 +143,10 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Termos de Uso');
                             <strong><?= Yii::t('app', 'Que dados pessoais são recolhidos?') ?></strong>
                         </p>
                         <p>
-                            <?= Yii::t('app', 'A recolha de dados de identificação dos Utilizadores será efectuada através de um formulário de registo.') ?><br>
-                            <?= Yii::t('app', 'No formulário de registo, o Utilizador fornece um username, um email e password. Após o registo, o Utilizador também pode adicionar o nome.') ?><br>
+                            <?= Yii::t('app', 'A recolha de dados de identificação dos Utilizadores será efectuada através de um formulário de registo.') ?>
+                            <br>
+                            <?= Yii::t('app', 'No formulário de registo, o Utilizador fornece um username, um email e password. Após o registo, o Utilizador também pode adicionar o nome.') ?>
+                            <br>
                         </p>
 
                         <p><br/>
@@ -200,7 +201,9 @@ $this->title = Yii::$app->name." | ".Yii::t('app', 'Termos de Uso');
                         </p>
 
                         <ol style="font-weight: 300;">
-                            <li><?= Yii::t('app', 'Envio do pedido por e-mail para') ?> <a href="mailto:hello@curtos.pt">hello@curtos.pt</a>.</li>
+                            <li><?= Yii::t('app', 'Envio do pedido por e-mail para') ?> <a
+                                        href="mailto:hello@curtos.pt">hello@curtos.pt</a>.
+                            </li>
                             <li><?= Yii::t('app', 'Directamente no site.') ?></li>
                         </ol>
 

@@ -2,10 +2,10 @@
 
 namespace app\modules\api\controllers;
 
-use Yii;
 use app\models\User;
-use yii\rest\Controller;
+use Yii;
 use yii\filters\Cors;
+use yii\rest\Controller;
 use yii\web\Response;
 
 class ApiController extends Controller
@@ -51,6 +51,12 @@ class ApiController extends Controller
         return $behaviors;
     }
 
+    /**
+     * Get required fields
+     * @param array $fields
+     * @return array
+     * @throws \yii\base\ExitException
+     */
     public function getRequiredFields($fields = [])
     {
         $post = $this->getParams();
@@ -65,13 +71,11 @@ class ApiController extends Controller
 
     /**
      * Get pagination.
-     *
-     * @param int $count Elemets number
-     * @param int $page  Page number
-     *
-     * @return array Pagination info
+     * @param int $count
+     * @param int $page
+     * @return array
      */
-    public function pagination($count, $page)
+    public function pagination(int $count, int $page)
     {
         $pageCount = ceil($count / $this->limit);
         $nextPage = false;
@@ -89,11 +93,12 @@ class ApiController extends Controller
 
     /**
      * Sends API success responses
-     *
-     * @param type $msg
-     * @param type $obj
+     * @param int $code
+     * @param string $msg
+     * @param array $obj
+     * @throws \yii\base\ExitException
      */
-    public function sendOk($code, $msg, $obj = [])
+    public function sendOk(int $code, string $msg, $obj = [])
     {
         $returnArray = [
             'name' => $this->getStatusCodeMessage($code),
@@ -106,7 +111,14 @@ class ApiController extends Controller
         self::sendResponse(200, json_encode($returnArray));
     }
 
-    public function sendError($code, $msg, $obj = [])
+    /**
+     * Sends API error responses
+     * @param int $code
+     * @param string $msg
+     * @param array $obj
+     * @throws \yii\base\ExitException
+     */
+    public function sendError(int $code, string $msg, $obj = [])
     {
         $returnArray = [
             'name' => $this->getStatusCodeMessage($code),
@@ -121,14 +133,16 @@ class ApiController extends Controller
 
     /**
      * Sends final response
+     * @param int $status
+     * @param string $body
+     * @throws \yii\base\ExitException
      */
-    public function sendResponse($status, $body = '')
+    public function sendResponse(int $status, string $body = '')
     {
         $response = Yii::$app->response;
         $response->setStatusCode($status);
         $response->format = Response::FORMAT_JSON;
         $response->headers->set('X-Powered-By', 'Curtos.pt');
-
 
         if (empty($body)) {
             $response->format = Response::FORMAT_HTML;
@@ -138,7 +152,7 @@ class ApiController extends Controller
                     $message = 'You must be authorized to performe this request.';
                     break;
                 case 404:
-                    $message = 'The requested URL '.$_SERVER['REQUEST_URI'].' was not found.';
+                    $message = 'The requested URL ' . $_SERVER['REQUEST_URI'] . ' was not found.';
                     break;
                 case 500:
                     $message = 'The server encountered an error processing your request.';
@@ -150,10 +164,10 @@ class ApiController extends Controller
 
             // servers don't always have a signature turned on (this is an apache directive "ServerSignature On")
             $signature = ($_SERVER['SERVER_SIGNATURE'] == '') ?
-                    $_SERVER['SERVER_SOFTWARE'].' Server at '.$_SERVER['SERVER_NAME'].' Port '.$_SERVER['SERVER_PORT'] : $_SERVER['SERVER_SIGNATURE'];
+                $_SERVER['SERVER_SOFTWARE'] . ' Server at ' . $_SERVER['SERVER_NAME'] . ' Port ' . $_SERVER['SERVER_PORT'] : $_SERVER['SERVER_SIGNATURE'];
 
             // this should be templatized in a real-world solution
-            $body = '<h1>'.$this->getStatusCodeMessage($status).'</h1><p>'.$message.'</p><hr /><address>'.$signature.'</address>';
+            $body = '<h1>' . $this->getStatusCodeMessage($status) . '</h1><p>' . $message . '</p><hr /><address>' . $signature . '</address>';
         }
 
         $response->content = $body;
@@ -162,12 +176,10 @@ class ApiController extends Controller
 
     /**
      * Gets the message for a status code
-     *
-     * @param mixed $status
-     * @access private
+     * @param int $status
      * @return string
      */
-    private function getStatusCodeMessage($status)
+    private function getStatusCodeMessage(int $status)
     {
         $codes = array(
             200 => 'OK',
@@ -193,8 +205,7 @@ class ApiController extends Controller
     public function getParams()
     {
         $post = file_get_contents("php://input");
-        $params = json_decode($post, true);
-        return $params;
+        return json_decode($post, true);
     }
 
 }

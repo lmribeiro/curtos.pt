@@ -30,9 +30,9 @@ Host: https://curtos.pt</code></pre>
     "code": 201,
     "status": "OK",
     "data": {
-        "code": "3825d5",
-        "target": "https://www.curtos.pt/",
-        "short": "https://www.curtos.pt/3825d5",
+        "code": "183adb",
+        "target": "https://curtos.pt/",
+        "short": "https://www.curtos.pt/183adb",
         "expires_after": "2020-07-02 23:53:46"
     }
 }</code></pre>
@@ -53,7 +53,7 @@ Host: https://curtos.pt</code></pre>
 <p class="mt-3"><b><?= Yii::t('app', 'Payload') ?></b></p>
 <figure class="highlight">
     <pre><code><span class="badge badge-secondary float-right">JSON</span>{
-	"code": "18acbf"
+	"code": "183adb"
 }</code></pre>
 
 </figure>
@@ -90,9 +90,9 @@ Host: https://curtos.pt</code></pre>
     "code": 200,
     "status": "OK",
     "data": {
-        "code": "f3c16f",
+        "code": "183adb",
         "target": "https://curtos.pt",
-        "short": "https://curtos.pt/f3c16f",
+        "short": "https://curtos.pt/183adb",
         "expires_after": "2021-02-21 23:05:12",
         "visits": 37,
         "byBrowser": {

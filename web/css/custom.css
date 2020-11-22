@@ -226,23 +226,6 @@ tbody td {
     color: #016ed8!important;
 }
 
-@media (max-width: 991.98px) {
-    .navbar-collapse .navbar-toggler span {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        border-radius: 2px;
-        opacity: 1;
-        background: #283448;
-    }
-    .navbar-collapse .navbar-toggler span:nth-child(1) {
-        transform: rotate(135deg);
-    }
-    .navbar-collapse .navbar-toggler span:nth-child(2) {
-        transform: rotate(-135deg);
-    }
-}
 #countries-chart {
     max-width: 100%;
     height: 600px;
@@ -263,4 +246,26 @@ body.night .card-title {
 }
 .border-light {
     border-color: #ddd!important;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse .navbar-toggler span {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        opacity: 1;
+        background: #283448;
+    }
+    .navbar-collapse .navbar-toggler span:nth-child(1) {
+        transform: rotate(135deg);
+    }
+    .navbar-collapse .navbar-toggler span:nth-child(2) {
+        transform: rotate(-135deg);
+    }
+
+    #countries-chart {
+        height: 400px;
+    }
 }

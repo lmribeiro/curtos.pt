@@ -8,7 +8,7 @@
 
 <div class="row mt-5 mb-2">
     <div class="col-12">
-        <div class="card bg-light mb-3">
+        <div class="card bg-light mb-3" >
             <div class="card-header border-light p-4">
                 <h4 class="mb-3 text-black"><?= Yii::t('app', 'Por navegador') ?></h4>
                 <p class="font-weight-normal mb-0">
@@ -90,6 +90,7 @@
         bullet.verticalCenter = "bottom";
         bullet.interactionsEnabled = false;
 
+        const hoverState = bullet.states.create("hover");
         const outlineCircle = bullet.createChild(am4core.Circle);
         outlineCircle.adapter.add("radius", function (radius, target) {
             const circleBullet = target.parent;
@@ -120,13 +121,16 @@
                 }
 
                 if (previousBullet != bullet) {
+
                     const hs = bullet.states.getKey("hover");
                     hs.properties.dy = -bullet.parent.pixelHeight + 30;
                     bullet.isHover = true;
+
                     previousBullet = bullet;
                 }
             }
         })
+
     });
 </script>
 

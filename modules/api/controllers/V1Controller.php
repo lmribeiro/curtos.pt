@@ -2,24 +2,25 @@
 
 namespace app\modules\api\controllers;
 
-use yii\helpers\Url;
-use app\models\Link;
 use app\components\Shorter;
+use app\models\Link;
+use Yii;
+use yii\db\StaleObjectException;
+use yii\helpers\Url;
 
 class V1Controller extends ApiController
 {
-
     protected function verbs()
     {
         return [
             'create' => ['POST', 'OPTIONS'],
             'delete' => ['DELETE', 'OPTIONS'],
+            'stats' => ['GET', 'OPTIONS'],
         ];
     }
 
     /**
      * Creates a short link for the given target
-     *  
      */
     public function actionCreate()
     {
@@ -29,10 +30,9 @@ class V1Controller extends ApiController
         $link = $shorter->getShortLink($post['target'], $this->user, $post['expires_after'] ?? false);
 
         $data = [
-            'id' => $link->id,
             'code' => $link->short,
             'target' => $link->target,
-            'short' => Url::base(true)."/".$link->short,
+            'short' => Url::base(true) . "/" . $link->short,
             'expires_after' => date('Y-m-d H:i:s', strtotime($link->expires_after)),
         ];
 
@@ -50,9 +50,35 @@ class V1Controller extends ApiController
             $this->sendError(404, 'Link not found');
         }
 
-        $link->delete();
+        try {
+            $link->delete();
+        } catch (StaleObjectException $e) {
+        } catch (\Throwable $e) {
+            $this->sendError(400, 'Unknown error deleting link');
+        }
 
         $this->sendOk(200, 'Short link deleted with success');
+    }
+
+    public function actionStats()
+    {
+        $code = Yii::$app->request->get('code', null);
+
+        if (!$link = Link::findOne(['short' => $code])) {
+            $this->sendError(404, 'Link not found');
+        }
+
+        $data = [
+            'code' => $link->short,
+            'target' => $link->target,
+            'short' => Url::base(true) . "/" . $link->short,
+            'expires_after' => date('Y-m-d H:i:s', strtotime($link->expires_after)),
+            'visits' => $link->visit_count,
+            'byBrowser' => $link->getDataByBrowser(),
+            'byCountry' => $link->getDataByCountry()
+        ];
+
+        $this->sendOk(200, 'Data retrieved with success', $data);
     }
 
 }

@@ -212,28 +212,14 @@ class LinkController extends Controller
     }
 
     /**
-     * Get browser stats
-     * @param $id short link id
-     * @return array
-     * @throws NotFoundHttpException
+     * Get data by browser
+     * @param Link $model
+     * @return string
      */
-    private function getDataByBrowser($model)
+    private function getDataByBrowser(Link $model)
     {
-        $browsers = [];
-        $browsers['Boots'] = 0;
+        $browsers = $model->getDataByBrowser();
         $data = "";
-
-        foreach ($model->linkStats as $stat) {
-            if (in_array($stat->browser, ['Chrome', 'Edge', 'Firefox', 'Internet Explorer', 'Opera', 'Safari'])) {
-                if (!isset($browsers[$stat->browser])) {
-                    $browsers[$stat->browser] = 0;
-                }
-                $browsers[$stat->browser]++;
-            } else {
-                $browsers['Boots']++;
-            }
-        }
-        arsort($browsers);
 
         foreach ($browsers as $key => $val) {
             if ($val > 0) {
@@ -250,23 +236,13 @@ class LinkController extends Controller
 
     /**
      * Get data by country
-     * @param $model Short link
+     * @param Link $model
      * @return string
      */
-    private function getDataByCountry($model)
+    private function getDataByCountry(Link $model)
     {
-        $countries = [];
+        $countries = $model->getDataByCountry();
         $data = "{";
-
-        foreach ($model->linkStats as $stat) {
-            if ($stat->country_code !== "") {
-                if (!isset($countries[$stat->country_code])) {
-                    $countries[$stat->country_code] = 0;
-                }
-                $countries[$stat->country_code]++;
-            }
-        }
-        arsort($countries);
 
         foreach ($countries as $key => $val) {
             if ($val > 0) {

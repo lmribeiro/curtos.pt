@@ -88,4 +88,43 @@ class Link extends \yii\db\ActiveRecord
     {
         return $this->hasMany(LinkStats::className(), ['link_id' => 'id']);
     }
+
+    public function getDataByBrowser()
+    {
+        $browsers = [];
+        $browsers['Boots'] = 0;
+
+        foreach ($this->linkStats as $stat) {
+            if (in_array($stat->browser, ['Chrome', 'Edge', 'Firefox', 'Internet Explorer', 'Opera', 'Safari'])) {
+                if (!isset($browsers[$stat->browser])) {
+                    $browsers[$stat->browser] = 0;
+                }
+                $browsers[$stat->browser]++;
+            } else {
+                $browsers['Boots']++;
+            }
+        }
+        arsort($browsers);
+        return $browsers;
+    }
+
+    /**
+     * Get data by country
+     * @return array
+     */
+    public function getDataByCountry()
+    {
+        $countries = [];
+
+        foreach ($this->linkStats as $stat) {
+            if ($stat->country_code !== "") {
+                if (!isset($countries[$stat->country_code])) {
+                    $countries[$stat->country_code] = 0;
+                }
+                $countries[$stat->country_code]++;
+            }
+        }
+        arsort($countries);
+        return $countries;
+    }
 }

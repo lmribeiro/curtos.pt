@@ -13,7 +13,7 @@ use yii\widgets\DetailView;
 
 
 $this->title = Yii::t('app', 'Curto') . " " . $model->short;
-$link = Url::base() . "/" . $model->short;
+$link ="https://curtos.pt/" . $model->short;
 YiiAsset::register($this);
 $this->params['modals'][] = "delete";
 $this->params['modals'][] = "renew";
@@ -38,7 +38,7 @@ $this->params['modals'][] = "renew";
                 <div class="">
                     <div class="row">
                         <div class="col-4">
-                            <h4 class="text-black"><?= Html::a($link, $link, ['target' => 'new']); ?></h4>
+                            <h4 class="text-black">#<?= $model->short ?></h4>
                         </div>
                         <div class="col-8">
                             <div class="float-right">

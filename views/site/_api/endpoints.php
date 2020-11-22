@@ -105,10 +105,26 @@ Host: https://curtos.pt</code></pre>
             "Boots": 0
         },
         "byCountry": {
-            "PT": 16,
-            "ES": 2,
-            "IT": 2,
-            "FR": 1
+            "ES": {
+                "name": "España",
+                "count": 2
+            },
+            "FR": {
+                "name": "France",
+                "count": 1
+            },
+            "IT": {
+                "name": "Italia",
+                "count": 2
+            },
+            "PT": {
+                "name": "Portugal",
+                "count": 17
+            },
+            "US": {
+                "name": "United States",
+                "count": 1
+            }
         }
     }
 }</code></pre>

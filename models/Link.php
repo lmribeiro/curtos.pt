@@ -125,7 +125,7 @@ class Link extends \yii\db\ActiveRecord
                 $countries[$stat->country_code]['count']++;
             }
         }
-        arsort($countries);
+        ksort($countries);
         return $countries;
     }
 }

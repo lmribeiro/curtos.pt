@@ -27,6 +27,10 @@ class V1Controller extends ApiController
         $post = $this->getRequiredFields(['target']);
         $shorter = new Shorter();
 
+        if (strpos($post['target'], 'https://') === false) {
+            $this->sendError(400, 'Please provide a secure target with https');
+        }
+
         $link = $shorter->getShortLink($post['target'], $this->user, $post['expires_after'] ?? false);
 
         $data = [

@@ -27,7 +27,7 @@ $this->params['modals'][] = "apiKey";
             <div class="">
                 <div class="row">
                     <div class="col-xs-12 col-lg-5 mb-5">
-                        <h2 class="mb-5"><?= Yii::t('app', 'Dados pesssoais') ?></h2>
+                        <h2 class="mb-3"><?= Yii::t('app', 'Dados pesssoais') ?></h2>
                         <?php
                         $form = ActiveForm::begin([
                             'id' => 'account-form',
@@ -63,7 +63,7 @@ $this->params['modals'][] = "apiKey";
 
                     <?php ActiveForm::end(); ?>
                     <div class="col-xs-12 col-lg-5 offset-lg-2 mb-5">
-                        <h2 class="mb-5"><?= Yii::t('app', 'Alterar Password') ?></h2>
+                        <h2 class="mb-3"><?= Yii::t('app', 'Alterar Password') ?></h2>
                         <?php
                         $form2 = ActiveForm::begin([
                             'id' => 'password-form',

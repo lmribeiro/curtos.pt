@@ -96,7 +96,7 @@ class UserAgent extends Component
     {
         return (bool) strpos(
             Yii::$app->getRequest()->hostInfo,
-            '://m.'.Yii::$app->getRequest()->serverName
+            '://'.Yii::$app->getRequest()->serverName
         );
     }
     public function getMobileLink()

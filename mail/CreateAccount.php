@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $admin app\models\User */
+/* @var $email String */
 
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -10,23 +10,23 @@ $shorter = new Shorter();
 
 $link = $shorter->getShortLink(
         Yii::$app->urlManager->createAbsoluteUrl([
-            'site/verify-account',
-            'key' => $user->auth_key
+            'site/create-account',
+            'email' => $email
         ]), false, 1);
 
 $resetLink = Url::base(true)."/".$link->short;
 
 ?>
 
-<?= Yii::t('app', 'Olá'); ?> <?= Html::encode($user->username) ?>!
+<?= Yii::t('app', 'Olá'); ?>!
 <br/>
 <br/>
-<?= Yii::t('app', 'Bem-vindo e obrigado por te registares!'); ?>
+<?= Yii::t('app', 'Bem-vindo e obrigado pelo interesse no curtos.pt!'); ?>
 <br/>
-<?= Yii::t('app', 'Usa o botão abaixo para validar a tua conta.'); ?>
+<?= Yii::t('app', 'Usa o botão abaixo para criares a tua conta.'); ?>
 <br/>
 <br/>
-<?= Html::a(Yii::t('app', 'Validar Conta'), $resetLink, ['class' => 'button']) ?>
+<?= Html::a(Yii::t('app', 'Criar Conta'), $resetLink, ['class' => 'button']) ?>
 <br/>
 <br/>
 <?= Yii::t('app', 'Se o botão não funcionar, usa o link abaixo.') ?>

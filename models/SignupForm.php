@@ -11,10 +11,7 @@ use yii\base\Model;
  */
 class SignupForm extends Model
 {
-
-    public $username;
     public $email;
-    public $password;
 
     /**
      * @inheritdoc
@@ -22,25 +19,17 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => User::class, 'message' => Yii::t('app', 'Username indisponível.')],
-            ['username', 'string', 'min' => 2, 'max' => 255],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'unique', 'targetClass' => User::class, 'message' => Yii::t('app', 'Email indisponível.')],
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
         ];
     }
 
     public function attributeLabels()
     {
         return [
-            'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'Email'),
-            'password' => Yii::t('app', 'Password'),
         ];
     }
 
@@ -49,34 +38,23 @@ class SignupForm extends Model
      *
      * @return User|null the saved model or null if saving fails
      */
-    public function signup()
+    public function signup(): User|bool|null
     {
-        if ($this->validate()) {
-            $user = new User();
-            $user->loadDefaultValues();
-
-            $user->attributes = $this->attributes;
-            $user->setPassword($this->password);
-            $user->generatePasswordResetToken();
-            $user->generateAuthKey();
-            $user->save();
-
-            return $this->sendEmail($user);
+        if(User::findByEmail($this->email)) {
+            $this->addError('email', Yii::t('app', 'Email indisponível.'));
+            return false;
         }
-
-        return null;
+        return $this->sendEmail();
     }
 
-    public function sendEmail($user)
+    public function sendEmail(): bool
     {
         return \Yii::$app->mailer
-                        ->compose('VerifyAccount', ['user' => $user])
-                        ->setTo($user->email)
-                        ->setFrom([
-                            \Yii::$app->params['adminEmail'] => \Yii::$app->name,
-                        ])
-                        ->setSubject(Yii::$app->name." | ".Yii::t('app', 'Validação de Conta'))
-                        ->send();
+            ->compose('CreateAccount', ['email' => $this->email])
+            ->setTo($this->email)
+            ->setFrom([\Yii::$app->params['adminEmail'] => \Yii::$app->name])
+            ->setSubject(Yii::$app->name . " | " . Yii::t('app', 'Criar conta'))
+            ->send();
     }
 
 }

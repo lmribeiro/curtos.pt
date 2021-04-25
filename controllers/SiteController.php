@@ -12,6 +12,7 @@ use app\models\{AccountForm,
     PasswordResetByUsername,
     SetPasswordForm,
     SignupForm,
+    SignupCompleteForm,
     User
 };
 use Yii;
@@ -35,7 +36,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'about', 'api-v1', 'cli', 'login', 'signup', 'reset-password', 'set-password', 'verify-account', 'error', 'terms', 'short', 'theme'],
+                        'actions' => ['index', 'about', 'api-v1', 'cli', 'login', 'signup', 'reset-password', 'set-password', 'create-account', 'error', 'terms', 'short', 'theme'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -358,7 +359,6 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($model->signup()) {
-
                 Yii::$app->getSession()
                     ->setFlash('success', Yii::t('app', 'Verifique o seu email para concluir o processo.'));
 
@@ -399,22 +399,25 @@ class SiteController extends Controller
      * @param string $key user auth key
      * @return Response|string
      */
-    public function actionVerifyAccount($key)
+    public function actionCreateAccount($email)
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
-        if (!$user = User::find()->where(['auth_key' => $key])->one()) {
-            Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Conta não encontrada.'));
-            return $this->goHome();
+        $model = new SignupCompleteForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->signup()) {
+                Yii::$app->getSession()
+                    ->setFlash('success', Yii::t('app', 'Registo criado com sucesso.'));
+                return $this->goHome();
+            }
         }
 
-        $user->status = 1;
-        $user->save();
-
-        Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Conta validada com sucesso.'));
-        return $this->redirect(['login']);
+        return $this->render('create-account', [
+            'model' => $model,
+            'email' => $email
+        ]);
     }
 
 }

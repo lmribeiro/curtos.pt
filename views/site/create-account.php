@@ -7,8 +7,9 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\Admin */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $email String */
 
-$this->title = Yii::$app->name . ' | ' . Yii::t('app', 'Registar');
+$this->title = Yii::$app->name . ' | ' . Yii::t('app', 'Criar conta');
 
 ?>
 
@@ -18,7 +19,7 @@ $this->title = Yii::$app->name . ' | ' . Yii::t('app', 'Registar');
             <div class="col-lg-5">
                 <div class="">
                     <div class="text-center">
-                        <h1 class="display-3"><?= Yii::t('app', 'Registar') ?></h1>
+                        <h1 class="display-3"><?= Yii::t('app', 'Criar conta') ?></h1>
                     </div>
                     <div class="card-body px-lg-5 py-lg-5">
                         <?php
@@ -32,10 +33,25 @@ $this->title = Yii::$app->name . ' | ' . Yii::t('app', 'Registar');
                         ]);
 
                         ?>
-
                         <?= $form->field($model, 'email')
                             ->textInput([
-                                'placeholder' => $model->getAttributeLabel('email'),
+                                'value' => $email,
+                                'readonly' => true,
+                                'class' => 'form-control shadow border-0'
+                            ])
+                        ?>
+
+                        <?= $form->field($model, 'username')
+                            ->textInput([
+                                'placeholder' => $model->getAttributeLabel('username'),
+                                'autofocus' => true,
+                                'class' => 'form-control shadow border-0'
+                            ])
+                        ?>
+
+                        <?= $form->field($model, 'password')
+                            ->passwordInput([
+                                'placeholder' => $model->getAttributeLabel('password'),
                                 'class' => 'form-control shadow border-0'
                             ])
                         ?>
@@ -56,7 +72,7 @@ $this->title = Yii::$app->name . ' | ' . Yii::t('app', 'Registar');
                                     'class' => 'btn btn-primary btn-block shadow border-0',
                                     'type' => 'submit',
                                     'id' => 'register-btn',
-                                    'disabled' => true
+                                    'disabled' => true,
                                 ]); ?>
                             </div>
                         </div>

@@ -46,10 +46,10 @@ class SignupCompleteForm extends Model
 
     /**
      * Signs user up.
-     *
-     * @return User|null the saved model or null if saving fails
+     * @return bool
+     * @throws \yii\base\Exception
      */
-    public function signup()
+    public function signup(): bool
     {
         if ($this->validate()) {
             $user = new User();

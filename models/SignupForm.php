@@ -34,11 +34,10 @@ class SignupForm extends Model
     }
 
     /**
-     * Signs user up.
-     *
-     * @return User|null the saved model or null if saving fails
+     * Signs user up
+     * @return bool
      */
-    public function signup(): User|bool|null
+    public function signup(): bool
     {
         if(User::findByEmail($this->email)) {
             $this->addError('email', Yii::t('app', 'Email indisponível.'));

@@ -37,11 +37,11 @@
         "merge-stream": "2.0.0"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "5.15.2",
+        "@fortawesome/fontawesome-free": "5.15.3",
         "bootstrap": "4.6.0",
         "headroom.js": "0.12.0",
         "jarallax": "1.12.5",
-        "jquery": "3.5.1",
+        "jquery": "3.6.0",
         "npm": "^7.0.0",
         "onscreen": "1.4.0",
         "popper.js": "1.16.1",

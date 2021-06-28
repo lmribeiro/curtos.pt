@@ -9,7 +9,7 @@ use yii\helpers\Url;
             <div class="col-sm-12 col-md-6">
                 <div class="text-lg-left text-center">
                     <p>
-                        &copy; 2020 Curtos.pt 
+                        &copy; 2020 - <?= date('Y') ?> Curtos.pt
                     </p>
                 </div>
             </div>

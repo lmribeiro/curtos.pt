@@ -33,7 +33,7 @@ class ApiController extends Controller
                 }
             }
 
-            return true;
+            return $this->sendError(401, 'You must be authorized to performe this request.');;
         }
 
         return false;

@@ -248,6 +248,17 @@ body.night .card-title {
     border-color: #ddd!important;
 }
 
+.carousel {
+    border: 1px solid rgb(13 20 49 / 7%);
+    padding: 2px;
+    border-radius: 2px;
+    box-shadow: 0 0.125rem 0.25rem rgb(13 20 49 / 7%);
+}
+
+body.night .carousel img {
+    filter: invert(1) hue-rotate(180deg);
+}
+
 @media (max-width: 991.98px) {
     .navbar-collapse .navbar-toggler span {
         display: block;

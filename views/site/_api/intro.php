@@ -9,7 +9,7 @@
     <?= Yii::t('app', 'A chave da API pode ser configurada na tua conta depois de te registares.') ?>
 </p>
 <p class="bd-lead">
-    <?= Yii::t('app', 'Para alguns endpoints a autenticação não é necessária.') ?>
+    <?= Yii::t('app', 'A autenticação é necessária em todos os pedidos.') ?>
 </p>
 
 <h3 class="bd-title mt-2" id="encode"><?= Yii::t('app', 'Encoding') ?></h3>
@@ -21,6 +21,6 @@
 <p class="bd-lead">    
     <b>1.0.0 (Draft)</b><br/>
     <?= Yii::t('app', 'Data criação') ?>: 2020/05/03<br/>
-    <?= Yii::t('app', 'Última atualização') ?>: 2020/11/22<br/>
+    <?= Yii::t('app', 'Última atualização') ?>: 2021/06/28<br/>
     <?= Yii::t('app', 'Root URL') ?>: <a href="https://curtos.pt/" rel="noreferrer">https://curtos.pt/</a><br/>
 </p>

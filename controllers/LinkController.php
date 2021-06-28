@@ -25,7 +25,7 @@ class LinkController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['short', 'view'],
+                        'actions' => ['view'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -70,13 +70,9 @@ class LinkController extends Controller
      */
     public function actionShort()
     {
-        $user = false;
+        $user = Yii::$app->user->identity;
         $request = Yii::$app->request;
         $shorter = new Shorter();
-
-        if (!Yii::$app->user->isGuest) {
-            $user = Yii::$app->user->identity;
-        }
 
         $link = $shorter->getShortLink($request->post('target'), $user);
         return Url::base(true) . "/" . $link->short;

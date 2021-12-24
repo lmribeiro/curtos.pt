@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\components\VerifyEmail;
+use app\components\VerifyEmailDomain;
 use Yii;
 use yii\base\Model;
 
@@ -39,6 +41,17 @@ class SignupForm extends Model
      */
     public function signup(): bool
     {
+        if (strpos($this->email, '@gmail')) {
+            $verifyEmail = new VerifyEmail();
+        } else {
+            $verifyEmail = new VerifyEmailDomain();
+        }
+
+        if (!$verifyEmail->check($this->email)) {
+            $this->addError('email', Yii::t('app', 'Email inválido.'));
+            return false;
+        }
+
         if(User::findByEmail($this->email)) {
             $this->addError('email', Yii::t('app', 'Email indisponível.'));
             return false;

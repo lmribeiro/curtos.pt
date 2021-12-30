@@ -62,46 +62,7 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'Os teus links... curtos!
                         </div>
                     </div>
                     <div class="col-md-12 mx-auto text-center mt-5">
-                        <div id="carousel" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel" data-slide-to="1"></li>
-                                <li data-target="#carousel" data-slide-to="2"></li>
-                                <li data-target="#carousel" data-slide-to="3"></li>
-                                <li data-target="#carousel" data-slide-to="4"></li>
-                                <li data-target="#carousel" data-slide-to="5"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="<?= Url::to('@web/img/slide1.png', true) ?>" class="d-block w-100" alt="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="<?= Url::to('@web/img/slide5.png', true) ?>" class="d-block w-100" alt="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="<?= Url::to('@web/img/slide6.png', true) ?>" class="d-block w-100" alt="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="<?= Url::to('@web/img/slide2.png', true) ?>" class="d-block w-100" alt="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="<?= Url::to('@web/img/slide3.png', true) ?>" class="d-block w-100" alt="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="<?= Url::to('@web/img/slide4.png', true) ?>" class="d-block w-100" alt="">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carousel" role="button"
-                               data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carousel" role="button"
-                               data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
+                        <img src="<?= Url::to('@web/img/curtos.gif', true) ?>" class="d-block w-100" alt="">
                     </div>
                 </div>
             <?php } ?>

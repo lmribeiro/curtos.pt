@@ -59,6 +59,7 @@ class SignupCompleteForm extends Model
             $user->setPassword($this->password);
             $user->generatePasswordResetToken();
             $user->generateAuthKey();
+            $user->status = 1;
             $user->save();
 
             return $this->sendEmail($user);

@@ -352,6 +352,8 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
+        return $this->redirect(['/']);
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }

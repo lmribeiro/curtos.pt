@@ -59,9 +59,6 @@ use yii\helpers\Url;
                     <a href="<?= Url::to(['/login']) ?>" rel="noreferrer" class="btn btn-neutral px-4 mb-3 mt-5 d-sm-none">
                         <?= Yii::t('app', 'Entar') ?>
                     </a>
-                    <a href="<?= Url::to(['/signup']) ?>" rel="noreferrer" class="btn btn-primary d-sm-none">
-                        <?= Yii::t('app', 'Registar') ?>
-                    </a> 
                 <?php } else { ?>
                     <div class="d-sm-none">
                         <p class="mt-5">
@@ -95,11 +92,6 @@ use yii\helpers\Url;
                     <li class="nav-item d-lg-block ml-lg-4">
                         <a href="<?= Url::to(['login']) ?>" class="btn btn-neutral px-4">
                             <?= Yii::t('app', 'Entrar') ?>
-                        </a>
-                    </li>
-                    <li class="nav-item d-lg-block ml-lg-4">
-                        <a href="<?= Url::to(['signup']) ?>" rel="noreferrer" class="btn btn-primary px-4">
-                            <?= Yii::t('app', 'Registar') ?>
                         </a>
                     </li>
                 <?php } else { ?>

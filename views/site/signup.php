@@ -17,9 +17,9 @@ $this->title = Yii::$app->name . ' | ' . Yii::t('app', 'Registar');
         <div class="row justify-content-center">
             <div class="col-lg-5">
                 <div class="">
-                    <div class="text-center">
-                        <h1 class="display-3"><?= Yii::t('app', 'Registar') ?></h1>
-                    </div>
+<!--                    <div class="text-center">-->
+<!--                        <h1 class="display-3">--><?//= Yii::t('app', 'Registar') ?><!--</h1>-->
+<!--                    </div>-->
                     <div class="card-body px-lg-5 py-lg-5">
                         <?php
                         $form = ActiveForm::begin([

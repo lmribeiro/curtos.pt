@@ -1,20 +1,18 @@
 <?php
-/** @var string $data */
-?>
-<!-- Resources -->
-<script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/geodata/continentsLow.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+use yii\helpers\Json;
 
+/** @var array $data */
+?>
 <div class="row mt-5 mb-2">
     <div class="col-12 mb-3">
         <h4 class="mb-3 text-black"><?= Yii::t('app', 'Por país') ?></h4>
         <p class="font-weight-normal mb-0">
             <?= Yii::t('app', 'Número de visitas por país') ?>
         </p>
+        <?php if (!$data): ?>
+            <p class="text-muted"><?= Yii::t('app', 'Sem dados neste período.') ?></p>
+        <?php else: ?>
         <div id="countries-chart"></div>
-    </div>
-</div>
 <!-- Chart code -->
 <script>
     am4core.ready(function () {
@@ -24,7 +22,7 @@
         // Create map instance
         const chart = am4core.create("countries-chart", am4maps.MapChart);
         chart.logo.height = -15000;
-        const mapData = [<?= $data ?>];
+        const mapData = <?= Json::htmlEncode($data) ?>;
 
         // Set map definition
         chart.geodata = am4geodata_worldLow;
@@ -77,3 +75,6 @@
         })
     });
 </script>
+        <?php endif; ?>
+    </div>
+</div>

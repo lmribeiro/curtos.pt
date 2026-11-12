@@ -120,6 +120,19 @@ Now you should be able to access the application through the following URL.
 http://localhost:8080
 ```
 
+### Link analytics
+
+Run `php yii migrate` before deploying the updated link analytics code. The link details page supports
+the full history by default, plus 7, 30 and 90-day periods, daily/hourly/weekday visits, distinct IP counts, device
+and operating system distributions, location rankings and referral domains.
+Charts cover recorded detailed visits only; the historical counter can be higher.
+Distinct IPs are an estimate of unique visitors, not a count of people.
+
+New visits store only the HTTP Referer hostname, without credentials, paths or
+query strings. A null referrer means it was not collected for that historical
+visit; an empty string means direct access or an unavailable/invalid header.
+Tablet detection applies to new visits and depends on the browser's user agent.
+
 TESTING
 -------
 

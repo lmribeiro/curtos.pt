@@ -4,17 +4,24 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\YiiAsset;
 use yii\widgets\DetailView;
+use app\assets\StatisticsAsset;
 
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Link */
 /* @var array $byBrowser */
 /* @var array $byCountry */
+/* @var array $statistics */
 
 
 $this->title = Yii::t('app', 'Curto') . " " . $model->short;
 $link ="https://curtos.pt/" . $model->short;
 YiiAsset::register($this);
+if ($statistics['visits'] > 0) {
+    StatisticsAsset::register($this);
+}
+$expiration = $model->expires_after ? strtotime($model->expires_after) : false;
+$expired = $expiration !== false && $expiration <= time();
 $this->params['modals'][] = "delete";
 $this->params['modals'][] = "renew";
 ?>
@@ -58,13 +65,21 @@ $this->params['modals'][] = "renew";
                                         [
                                             'attribute' => 'user_id',
                                             'format' => 'raw',
-                                            'visible' => Yii::$app->user->identity->role == 'ADMIN',
+                                            'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->role == 'ADMIN',
                                             'value' => $model->user ? $model->user->username : null,
                                         ],
                                         [
                                             'attribute' => 'target',
                                             'format' => 'raw',
-                                            'value' => Html::a($model->target, $model->target, ['target' => 'new']),
+                                            'value' => Html::a(Html::encode($model->target), $model->target, ['target' => 'new']),
+                                        ],
+                                        [
+                                            'label' => Yii::t('app', 'Estado'),
+                                            'value' => $expired ? Yii::t('app', 'Expirado') : Yii::t('app', 'Ativo'),
+                                        ],
+                                        [
+                                            'label' => Yii::t('app', 'Tempo até expirar'),
+                                            'value' => $expiration === false ? Yii::t('app', 'Sem limite') : ($expired ? Yii::t('app', 'Já expirou') : Yii::$app->formatter->asRelativeTime($expiration)),
                                         ],
                                         'expires_after',
                                         'created_at',
@@ -77,7 +92,7 @@ $this->params['modals'][] = "renew";
                                     <div class="card-body text-center" style="padding: 1.1rem;">
                                         <i class="fas fa-users fa-5x"></i>
                                         <h4 class="card-title "><?= $model->visit_count ?></h4>
-                                        <p class="card-text text-uppercase"><?= Yii::t('app', 'Visitas'); ?></p>
+                                        <p class="card-text text-uppercase"><?= Yii::t('app', 'Visitas históricas'); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -86,6 +101,8 @@ $this->params['modals'][] = "renew";
                 </div>
             </div>
         </div>
+
+        <?= $this->render('_partials/analytics', ['statistics' => $statistics, 'model' => $model]) ?>
 
         <?= $this->render('_partials/byBrowser', [
             'data' => $byBrowser,

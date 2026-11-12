@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\components\Shorter;
+use app\components\LinkStatistics;
 use app\models\{Link, LinkSearch};
 use Yii;
 use yii\filters\{AccessControl, VerbFilter};
@@ -107,10 +108,15 @@ class LinkController extends Controller
             return $this->redirect(['/links']);
         }
 
+        $period = Yii::$app->request->get('days', 'all');
+        $days = in_array($period, ['7', '30', '90'], true) ? (int) $period : 'all';
+        $statistics = (new LinkStatistics())->summarize($model, $days);
+
         return $this->render('view', [
             'model' => $model,
-            'byBrowser' => $this->getDataByBrowser($model),
-            'byCountry' => $this->getDataByCountry($model)
+            'statistics' => $statistics,
+            'byBrowser' => $this->getDataByBrowser($statistics['browsers']),
+            'byCountry' => $statistics['countries'],
         ]);
     }
 
@@ -207,52 +213,18 @@ class LinkController extends Controller
         return $this->redirect(Yii::$app->request->referrer);
     }
 
-    /**
-     * Get data by browser
-     * @param Link $model
-     * @return string
-     */
-    private function getDataByBrowser(Link $model)
+    private function getDataByBrowser(array $browsers)
     {
-        $browsers = $model->getDataByBrowser();
-        $data = "";
-
-        foreach ($browsers as $key => $val) {
-            if ($val > 0) {
-                $data = $data . "{
-                    'name': '$key',
-                    'steps': $val,
-                    'href':  '" . Url::to("@web/img/$key.svg", true) . "'
-                },";
-            }
+        $data = [];
+        foreach ($browsers as $browser) {
+            $name = $browser['name'];
+            $icon = in_array($name, ['Chrome', 'Edge', 'Firefox', 'Internet Explorer', 'Opera', 'Safari'], true) ? $name : 'Boots';
+            $data[] = [
+                'name' => $name,
+                'steps' => $browser['count'],
+                'href' => Url::to('@web/img/' . rawurlencode($icon) . '.svg'),
+            ];
         }
-
-        return $data;
-    }
-
-    /**
-     * Get data by country
-     * @param Link $model
-     * @return string
-     */
-    private function getDataByCountry(Link $model)
-    {
-        $countries = $model->getDataByCountry();
-        $data = "";
-
-        foreach ($countries as $key => $val) {
-            if ($val['count'] > 0) {
-                $count = $val['count'];
-                $name = $val['name'];
-                $data = $data . "{
-                    'id': '$key', 
-                    'name': '$name', 
-                    'value': $count,
-                    'color': '#3fb7eb' 
-                },";
-            }
-        }
-
         return $data;
     }
 }

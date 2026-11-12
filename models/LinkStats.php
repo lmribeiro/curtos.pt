@@ -20,6 +20,7 @@ use Yii;
  * @property string|null $country_name
  * @property string|null $lat
  * @property string|null $lng
+ * @property string|null $referrer
  * @property string $created_at
  *
  * @property Link $link
@@ -45,6 +46,7 @@ class LinkStats extends \yii\db\ActiveRecord
             [['ip', 'os', 'platform', 'browser', 'browserVersion', 'lat', 'lng'], 'string', 'max' => 32],
             [['city', 'region', 'country_name'], 'string', 'max' => 255],
             [['country_code'], 'string', 'max' => 2],
+            [['referrer'], 'string', 'max' => 253],
             [['link_id'], 'exist', 'skipOnError' => true, 'targetClass' => Link::className(), 'targetAttribute' => ['link_id' => 'id']],
         ];
     }

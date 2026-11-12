@@ -1,20 +1,18 @@
 <?php
-/** @var string $data */
-?>
-<!-- Resources -->
-<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+use yii\helpers\Json;
 
+/** @var array $data */
+?>
 <div class="row mt-5 mb-2">
     <div class="col-12 mb-3">
         <h4 class="mb-3 text-black"><?= Yii::t('app', 'Por navegador') ?></h4>
         <p class="font-weight-normal mb-0">
             <?= Yii::t('app', 'Número de visitas por navegador') ?>
         </p>
+        <?php if (!$data): ?>
+            <p class="text-muted"><?= Yii::t('app', 'Sem dados neste período.') ?></p>
+        <?php else: ?>
         <div id="browsers-chart"></div>
-    </div>
-</div>
 
 <script>
     am4core.ready(function () {
@@ -25,7 +23,7 @@
         chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
         chart.paddingBottom = 30;
-        chart.data = [<?= $data ?>];
+        chart.data = <?= Json::htmlEncode($data) ?>;
         chart.logo.height = -15000;
 
         const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -104,7 +102,7 @@
         chart.cursor.events.on("cursorpositionchanged", function (event) {
             const dataItem = series.tooltipDataItem;
 
-            if (dataItem.column) {
+            if (dataItem && dataItem.column) {
                 const bullet = dataItem.column.children.getIndex(1);
 
                 if (previousBullet && previousBullet != bullet) {
@@ -124,5 +122,6 @@
 
     });
 </script>
-
-
+        <?php endif; ?>
+    </div>
+</div>

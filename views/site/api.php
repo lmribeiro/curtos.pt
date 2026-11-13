@@ -1,8 +1,12 @@
 <?php
+
+use app\assets\AppAsset;
+
+$this->registerJsFile('@web/js/docs-navigation.js', ['depends' => [AppAsset::class]]);
 $this->title = Yii::$app->name . " | " . Yii::t('app', 'API');
 
 ?>
-<div class="section  mt-5">
+<div class="section mt-5 documentation-page">
     <div class="container">
         <div class="page-header">
             <div class="row">
@@ -12,98 +16,63 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'API');
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="row">
-                <div class="col-9">
-                    <main class="col-12  bd-content" role="main">
+        <div class="row mt-5 docs-layout">
+            <div class="col-12 col-lg-9 order-2 order-lg-1 docs-content">
+                <main class="bd-content" role="main">
 
-                        <div>
-                            <?php include __DIR__ . '/_api/intro.php'; ?>
-                        </div>
+                    <div>
+                        <?php include __DIR__ . '/_api/intro.php'; ?>
+                    </div>
 
-                        <div class="mt-5">
-                            <?php include __DIR__ . '/_api/tests.php'; ?>
-                        </div>
+                    <div class="mt-5">
+                        <?php include __DIR__ . '/_api/tests.php'; ?>
+                    </div>
 
-                        <div class="mt-5">
-                            <?php include __DIR__ . '/_api/codes.php'; ?>
-                        </div>
+                    <div class="mt-5">
+                        <?php include __DIR__ . '/_api/codes.php'; ?>
+                    </div>
 
-                        <div class="mt-5">
-                            <?php include __DIR__ . '/_api/endpoints.php'; ?>
-                        </div>
+                    <div class="mt-5">
+                        <?php include __DIR__ . '/_api/endpoints.php'; ?>
+                    </div>
 
-                        <div class="mt-5">
-                            <?php include __DIR__ . '/_api/analytics.php'; ?>
-                        </div>
+                    <div class="mt-5">
+                        <?php include __DIR__ . '/_api/analytics.php'; ?>
+                    </div>
 
-                        <div class="mt-5">
-                            <?php include __DIR__ . '/_api/changelog.php'; ?>
-                        </div>
+                    <div class="mt-5">
+                        <?php include __DIR__ . '/_api/changelog.php'; ?>
+                    </div>
 
-                    </main>
-                </div>
-                <div class="col-3 mt-4">
-                    <nav id="nav" aria-label="Secondary navigation" class="d-none d-xl-block col-12 bd-toc">
-                        <ul class="section-nav">
-                            <li class="toc-entry toc-h2">
-                                <a href="#intro"><?= Yii::t('app', 'Visão Geral') ?></a>
-                                <ul>
-                                    <li class="toc-entry toc-h3">
-                                        <a class="side-link" href="#auth"><?= Yii::t('app', 'Autenticação') ?></a>
-                                    </li>
-                                    <li class="toc-entry toc-h3">
-                                        <a class="side-link" href="#encode"><?= Yii::t('app', 'Encoding') ?></a>
-                                    </li>
-                                    <li class="toc-entry toc-h3">
-                                        <a class="side-link" href="#version"><?= Yii::t('app', 'Versão') ?></a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="toc-entry toc-h2">
-                                <a class="side-link" href="#tests"><?= Yii::t('app', 'Testar') ?></a>
-                            </li>
-
-                            <li class="toc-entry toc-h2">
-                                <a class="side-link" href="#codes"><?= Yii::t('app', 'Códigos de Resposta') ?></a>
-                            </li>
-
-                            <li class="toc-entry toc-h2">
-                                <a href="#endpoints"><?= Yii::t('app', 'Endpoints') ?></a>
-                                <ul>
-                                    <li class="toc-entry toc-h3">
-                                        <a class="side-link" href="#create"><?= Yii::t('app', 'Criar') ?></a>
-                                    </li>
-                                    <li class="toc-entry toc-h3">
-                                        <a class="side-link" href="#delete"><?= Yii::t('app', 'Apagar') ?></a>
-                                    </li>
-                                    <li class="toc-entry toc-h3">
-                                        <a class="side-link" href="#stats"><?= Yii::t('app', 'Estatísticas') ?></a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="toc-entry toc-h2">
-                                <a class="side-link" href="#changelog"><?= Yii::t('app', 'Changelog') ?></a>
-                            </li>
-
-                        </ul>
-                    </nav>
-                </div>
+                </main>
             </div>
+            <aside class="col-12 col-lg-3 order-1 order-lg-2 docs-sidebar">
+                <?= $this->render('_docs/navigation', [
+                    'label' => 'Índice da documentação da API',
+                    'items' => [
+                        ['intro', 'Visão geral', [
+                            ['auth', 'Autenticação'],
+                            ['encode', 'Formato dos pedidos'],
+                            ['version', 'Versão e endereço base'],
+                            ['examples', 'Exemplos cURL'],
+                            ['validation', 'Validação e CORS'],
+                            ['limits', 'Limitações'],
+                        ]],
+                        ['tests', 'Testar a integração'],
+                        ['codes', 'Códigos e erros'],
+                        ['endpoints', 'Endpoints', [
+                            ['create', 'Criar link'],
+                            ['delete', 'Apagar link'],
+                            ['stats', 'Consultar estatísticas'],
+                        ]],
+                        ['analytics', 'Estatísticas na página', [
+                            ['collected-data', 'Dados recolhidos'],
+                            ['geolocation', 'Geolocalização'],
+                        ]],
+                        ['changelog', 'Changelog'],
+                    ],
+                ]) ?>
+            </aside>
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $(window).bind('scroll', function () {
-            const navHeight = $(window).height() - 652;
-            if ($(window).scrollTop() > navHeight) {
-                $('#nav').addClass('fixed');
-            } else {
-                $('#nav').removeClass('fixed');
-            }
-        });
-    });
-</script>

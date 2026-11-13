@@ -1,9 +1,13 @@
 <?php
 
+use app\assets\AppAsset;
+
+$this->registerJsFile('@web/js/docs-navigation.js', ['depends' => [AppAsset::class]]);
+
 $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
 
 ?>
-<div class="section  mt-5">
+<div class="section mt-5 documentation-page">
     <div class="container">
         <div class="page-header">
             <div class="row">
@@ -13,16 +17,15 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-9">
-                <main class="col-12  bd-content" role="main">
+        <div class="row mt-5 docs-layout">
+            <div class="col-12 col-lg-9 order-2 order-lg-1 docs-content">
+                <main class="bd-content" role="main">
 
                     <div>
                         <h2 class="bd-title" id="intro"><?= Yii::t('app', 'Visão Geral') ?></h2>
                         <p class="bd-lead">
                             <?= Yii::t('app', 'Pensada para developers, a curtos-cli é uma cli simples e prática que permite usar a API curtos.pt através da linha de comandos.') ?>
                         </p>
-
                         <p><?= Yii::t('app', 'Os comandos abaixo são exemplos históricos. A API atual exige uma chave de uma conta ativa, e o registo público está desativado. Confirma no repositório da CLI as instruções de autenticação e configuração da versão que tens instalada; esta página não garante compatibilidade da versão antiga com a API atual.') ?></p>
                         <p><a href="<?= \yii\helpers\Url::to(['/api-v1']) ?>"><?= Yii::t('app', 'Consultar autenticação, exemplos cURL e tratamento de erros da API') ?></a></p>
 
@@ -99,56 +102,23 @@ OPTIONS
                 </main>
             </div>
 
-            <div class="col-3 mt-4">
-                <nav id="nav" aria-label="Secondary navigation" class="d-none d-xl-block col-12 bd-toc">
-                    <ul class="section-nav">
-                        <li class="toc-entry toc-h2">
-                            <a href="#intro"><?= Yii::t('app', 'Visão Geral') ?></a>
-                            <ul>
-                                <li class="toc-entry toc-h3">
-                                    <a class="side-link" href="#repos"><?= Yii::t('app', 'Repositórios') ?></a>
-                                </li>
-                                <li class="toc-entry toc-h3">
-                                    <a class="side-link" href="#version"><?= Yii::t('app', 'Versão') ?></a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="toc-entry toc-h2">
-                            <a class="side-link" href="#install"><?= Yii::t('app', 'Instalar') ?></a>
-                        </li>
-
-                        <li class="toc-entry toc-h2">
-                            <a href="#commands"><?= Yii::t('app', 'Comandos') ?></a>
-                            <ul>
-                                <li class="toc-entry toc-h3">
-                                    <a class="side-link" href="#create"><?= Yii::t('app', 'Criar') ?></a>
-                                </li>
-                                <li class="toc-entry toc-h3">
-                                    <a class="side-link" href="#delete"><?= Yii::t('app', 'Apagar') ?></a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="toc-entry toc-h2">
-                            <a class="side-link" href="#changelog"><?= Yii::t('app', 'Changelog') ?></a>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
+            <aside class="col-12 col-lg-3 order-1 order-lg-2 docs-sidebar">
+                <?= $this->render('_docs/navigation', [
+                    'label' => 'Índice da documentação da CLI',
+                    'items' => [
+                        ['intro', 'Visão geral', [
+                            ['repos', 'Repositórios'],
+                            ['version', 'Versão'],
+                        ]],
+                        ['install', 'Instalar'],
+                        ['commands', 'Comandos', [
+                            ['create', 'curtos create'],
+                            ['delete', 'curtos delete'],
+                        ]],
+                        ['changelog', 'Changelog'],
+                    ],
+                ]) ?>
+            </aside>
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $(window).bind('scroll', function () {
-            const navHeight = $(window).height() - 652;
-            if ($(window).scrollTop() > navHeight) {
-                $('#nav').addClass('fixed');
-            } else {
-                $('#nav').removeClass('fixed');
-            }
-        });
-    });
-</script>

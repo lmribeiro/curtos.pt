@@ -18,12 +18,9 @@ class ApiController extends Controller
     {
         if (parent::beforeAction($action)) {
 
-            header("Access-Control-Allow-Origin: *");
-            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-            header("Access-Control-Allow-Headers: X-XMLHttpRequest, Content-Type, Authorization, AuthToken");
-
             if (Yii::$app->request->isOptions) {
-                $this->sendOk('ok', null);
+                Yii::$app->response->setStatusCode(200);
+                return false;
             }
 
             if ($auth_key = Yii::$app->request->getHeaders()->get('authorization')) {
@@ -41,14 +38,21 @@ class ApiController extends Controller
 
     public function behaviors()
     {
-        $behaviors = parent::behaviors();
-
-        // add CORS filter
-        $behaviors['corsFilter'] = [
-            'class' => Cors::className(),
-        ];
-
-        return $behaviors;
+        return [
+            'corsFilter' => [
+                'class' => Cors::className(),
+                'cors' => [
+                    'Origin' => ['*'],
+                    'Access-Control-Request-Method' => ['GET', 'POST', 'DELETE', 'OPTIONS'],
+                    'Access-Control-Request-Headers' => ['Authorization', 'Content-Type', 'X-Requested-With', 'X-XMLHttpRequest', 'AuthToken'],
+                ],
+                'actions' => [
+                    'create' => ['Access-Control-Request-Method' => ['POST', 'OPTIONS']],
+                    'delete' => ['Access-Control-Request-Method' => ['DELETE', 'OPTIONS']],
+                    'stats' => ['Access-Control-Request-Method' => ['GET', 'OPTIONS']],
+                ],
+            ],
+        ] + parent::behaviors();
     }
 
     /**
@@ -204,8 +208,14 @@ class ApiController extends Controller
      */
     public function getParams()
     {
-        $post = file_get_contents("php://input");
-        return json_decode($post, true);
+        $post = json_decode(Yii::$app->request->getRawBody());
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            $this->sendError(400, 'Invalid JSON request body');
+        }
+        if (!$post instanceof \stdClass) {
+            $this->sendError(400, 'Request body must be a JSON object');
+        }
+        return (array) $post;
     }
 
 }

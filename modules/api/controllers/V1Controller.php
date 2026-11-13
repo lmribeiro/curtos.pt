@@ -25,12 +25,24 @@ class V1Controller extends ApiController
     public function actionCreate()
     {
         $post = $this->getRequiredFields(['target']);
-        $shorter = new Shorter();
-
-        if (strpos($post['target'], 'https://') === false) {
-            $this->sendError(400, 'Please provide a secure target with https');
+        if (!is_string($post['target']) || mb_strlen($post['target'], 'UTF-8') > 255
+            || filter_var($post['target'], FILTER_VALIDATE_URL) === false
+            || strtolower((string) parse_url($post['target'], PHP_URL_SCHEME)) !== 'https') {
+            $this->sendError(400, 'Please provide a valid HTTPS target of at most 255 characters');
         }
 
+        if (array_key_exists('expires_after', $post)) {
+            if (!is_int($post['expires_after']) || $post['expires_after'] <= 0) {
+                $this->sendError(400, 'expires_after must be a positive integer number of days');
+            }
+            $expiresAt = @strtotime('+' . $post['expires_after'] . ' days');
+            // The current MySQL TIMESTAMP column ends at 2038-01-19 03:14:07 UTC.
+            if ($expiresAt === false || $expiresAt <= time() || $expiresAt > 2147483647) {
+                $this->sendError(400, 'Expiration date exceeds the supported timestamp range');
+            }
+        }
+
+        $shorter = new Shorter();
         $link = $shorter->getShortLink($post['target'], $this->user, $post['expires_after'] ?? false);
 
         $data = [
@@ -49,8 +61,9 @@ class V1Controller extends ApiController
     public function actionDelete()
     {
         $post = $this->getRequiredFields(['code']);
+        $code = $this->validateCode($post['code']);
 
-        if (!$link = Link::findOne(['short' => $post['code']])) {
+        if (!$link = Link::findOne(['short' => $code])) {
             $this->sendError(404, 'Link not found');
         }
 
@@ -66,7 +79,7 @@ class V1Controller extends ApiController
 
     public function actionStats()
     {
-        $code = Yii::$app->request->get('code', null);
+        $code = $this->validateCode(Yii::$app->request->get('code', null));
 
         if (!$link = Link::findOne(['short' => $code])) {
             $this->sendError(404, 'Link not found');
@@ -83,6 +96,14 @@ class V1Controller extends ApiController
         ];
 
         $this->sendOk(200, 'Data retrieved with success', $data);
+    }
+
+    private function validateCode($code)
+    {
+        if (!is_string($code) || !preg_match('/^\w{1,255}$/D', $code)) {
+            $this->sendError(400, 'code must contain 1 to 255 letters, digits or underscores');
+        }
+        return $code;
     }
 
 }

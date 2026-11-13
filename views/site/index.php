@@ -1,16 +1,21 @@
 <?php
 /* @var $this yii\web\View */
 
-use yii\helpers\Url;
+use app\assets\AppAsset;
 
 $this->title = Yii::$app->name . " | " . Yii::t('app', 'Os teus links... curtos!');
+
+if (Yii::$app->user->isGuest) {
+    $this->registerCssFile('@web/css/guest-home.css', ['depends' => [AppAsset::class]]);
+    echo $this->render('_home/guest');
+    return;
+}
 
 ?>
 <div id="landing" class="section section-shaped mt-5">
     <div class="page-header">
         <div class="container shape-container d-flex align-items-center">
             <div class="col">
-                <?php if (!Yii::$app->user->isGuest) { ?>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-8 mx-auto text-center">
                         <h1 class="display-3"><?= Yii::t('app', 'Os teus links... curtos!') ?></h1>
@@ -44,28 +49,7 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'Os teus links... curtos!
                     </div>
                 </div>
             </div>
-            <?php } else { ?>
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-md-8 mx-auto text-center">
-                        <h1 class="display-3">
-                            <?= Yii::t('app', 'Url shortener ') ?>
-                        </h1>
-                        <div class="col-sm-12 col-md-12">
-                            <div class="text-lg-center text-center">
-                                <p>
-                                    <?= Yii::t('app', 'Gratuito e ') ?>
-                                    <a class="text-info" href="https://github.com/lmribeiro/curtos.pt" rel="noreferrer" class="nav-link" target="_blank">
-                                        <?= Yii::t('app', 'Open Source') ?>.
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mx-auto text-center mt-5">
-                        <img src="<?= Url::to('@web/img/curtos.gif', true) ?>" class="d-block w-100" alt="">
-                    </div>
-                </div>
-            <?php } ?>
+
         </div>
     </div>
 </div>

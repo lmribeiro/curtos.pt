@@ -23,6 +23,9 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'CLI');
                             <?= Yii::t('app', 'Pensada para developers, a curtos-cli é uma cli simples e prática que permite usar a API curtos.pt através da linha de comandos.') ?>
                         </p>
 
+                        <p><?= Yii::t('app', 'Os comandos abaixo são exemplos históricos. A API atual exige uma chave de uma conta ativa, e o registo público está desativado. Confirma no repositório da CLI as instruções de autenticação e configuração da versão que tens instalada; esta página não garante compatibilidade da versão antiga com a API atual.') ?></p>
+                        <p><a href="<?= \yii\helpers\Url::to(['/api-v1']) ?>"><?= Yii::t('app', 'Consultar autenticação, exemplos cURL e tratamento de erros da API') ?></a></p>
+
                         <h2 class="bd-title mt-2" id="repos"><?= Yii::t('app', 'Repositórios') ?></h2>
                         <p class="bd-lead">
                             GitHub: <a target="new"

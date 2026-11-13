@@ -178,6 +178,44 @@ tbody td {
     color: red!important;
 }
 
+.bd-content p,
+.bd-content li {
+    line-height: 1.85;
+}
+
+.bd-content p {
+    margin-bottom: 1.5rem;
+}
+
+.bd-content h2.bd-title {
+    margin-top: 3.5rem !important;
+    margin-bottom: 1.5rem;
+}
+
+.bd-content > div:first-child > h2:first-child {
+    margin-top: 0 !important;
+}
+
+.bd-content h3.bd-title {
+    margin-top: 2.5rem !important;
+    margin-bottom: 1.25rem;
+}
+
+.bd-content figure,
+.bd-content .table-responsive {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.bd-content ul,
+.bd-content ol {
+    margin-bottom: 2rem;
+}
+
+.bd-content li + li {
+    margin-top: .75rem;
+}
+
 .tumbler_wrapper {
     margin: 4px 15px;
     width: 50px;

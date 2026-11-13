@@ -40,13 +40,13 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'Sobre');
             <div class="col-md-4 mb-3">
                 <div class="info">
                     <h3><?= Yii::t('app', 'Preciso criar conta?') ?></h3>
-                    <p class="description"><?= Yii::t('app', 'Não é necessário criar conta para poder usar o Curtos.pt, no entanto utilizadores registados têm acesso a mais funcionalidades.') ?></p>
+                    <p class="description"><?= Yii::t('app', 'A criação e gestão de links e o acesso à API exigem uma conta ativa. O registo público está desativado nesta versão; os links curtos existentes podem ser seguidos sem iniciar sessão.') ?></p>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="info">
                     <h3><?= Yii::t('app', 'O link curto expira?') ?></h3>
-                    <p class="description"><?= Yii::t('app', 'Normalmente um link curto expira em 30 dias. Uma vez expirado, o link é automáticamente apagado. Utilizadores registados podem prelongar a data de expiração.') ?></p>
+                    <p class="description"><?= Yii::t('app', 'A data de expiração é calculada, por defeito, para 30 dias após a criação e pode ser renovada. Nesta versão, a data é informativa: o redirecionamento não a impõe e não existe remoção automática de links expirados.') ?></p>
                 </div>
             </div>
             <div class="col-md-4 mb-3">

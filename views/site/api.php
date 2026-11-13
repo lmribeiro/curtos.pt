@@ -34,6 +34,10 @@ $this->title = Yii::$app->name . " | " . Yii::t('app', 'API');
                         </div>
 
                         <div class="mt-5">
+                            <?php include __DIR__ . '/_api/analytics.php'; ?>
+                        </div>
+
+                        <div class="mt-5">
                             <?php include __DIR__ . '/_api/changelog.php'; ?>
                         </div>
 
